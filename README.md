@@ -21,6 +21,10 @@ yay -S bc blueberry bluez boost boost-libs coreutils dunst findutils fish fuzzel
 ```
 
 ```
+yay -S material-black-colors-theme gtk-theme-material-black flat-remix
+```
+
+```
 yay -S cava eww-wayland-git geticons gojq gtklock gtklock-playerctl-module gtklock-powerbar-module gtklock-userinfo-module hyprland python-material-color-utilities swww ttf-material-symbols-git xdg-desktop-portal-hyprland waybar-hyprland wlogout
 ```
 
