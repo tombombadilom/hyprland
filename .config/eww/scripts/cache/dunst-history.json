@@ -1,0 +1,99 @@
+{
+	"type" : "aa{sv}",
+	"data" : [
+		[
+			{
+				"body" : {
+					"type" : "s",
+					"data" : "You have received 1 new message\nin tom@croll.fr/INBOX.\nDe : 16888\nObjet : Amazon.fr &lt;confirmation-commande@amazon.fr&gt;"
+				},
+				"message" : {
+					"type" : "s",
+					"data" : "<b>New email</b>\nYou have received 1 new message\nin tom@croll.fr/INBOX.\nDe : 16888\nObjet : Amazon.fr &lt;confirmation-commande@amazon.fr&gt;"
+				},
+				"summary" : {
+					"type" : "s",
+					"data" : "New email"
+				},
+				"appname" : {
+					"type" : "s",
+					"data" : "evolution-mail-notification"
+				},
+				"category" : {
+					"type" : "s",
+					"data" : ""
+				},
+				"default_action_name" : {
+					"type" : "s",
+					"data" : "default"
+				},
+				"icon_path" : {
+					"type" : "s",
+					"data" : "/usr/share/icons/gnome/16x16/status/mail-unread.png"
+				},
+				"id" : {
+					"type" : "i",
+					"data" : 3
+				},
+				"timestamp" : {
+					"type" : "x",
+					"data" : 640763974
+				},
+				"timeout" : {
+					"type" : "x",
+					"data" : 8000000
+				},
+				"progress" : {
+					"type" : "i",
+					"data" : -1
+				}
+			},
+			{
+				"body" : {
+					"type" : "s",
+					"data" : "Vous avez reçu 1 nouveau message.\nDe : Amazon.fr &lt;confirmation-commande@amazon.fr&gt;\nObjet : Votre commande Amazon.fr de &quot;Cahier Grevisse - Français...&quot;\nDossier : tom@croll.fr : INBOX"
+				},
+				"message" : {
+					"type" : "s",
+					"data" : "<b>Nouveau courriel dans Evolution</b>\nVous avez reçu 1 nouveau message.\nDe : Amazon.fr &lt;confirmation-commande@amazon.fr&gt;\nObjet : Votre commande Amazon.fr de &quot;Cahier Grevisse - Français...&quot;\nDossier : tom@croll.fr : INBOX"
+				},
+				"summary" : {
+					"type" : "s",
+					"data" : "Nouveau courriel dans Evolution"
+				},
+				"appname" : {
+					"type" : "s",
+					"data" : "evolution-mail-notification"
+				},
+				"category" : {
+					"type" : "s",
+					"data" : ""
+				},
+				"default_action_name" : {
+					"type" : "s",
+					"data" : "default"
+				},
+				"icon_path" : {
+					"type" : "s",
+					"data" : ""
+				},
+				"id" : {
+					"type" : "i",
+					"data" : 2
+				},
+				"timestamp" : {
+					"type" : "x",
+					"data" : 640268694
+				},
+				"timeout" : {
+					"type" : "x",
+					"data" : 8000000
+				},
+				"progress" : {
+					"type" : "i",
+					"data" : -1
+				}
+			}
+		]
+	]
+}

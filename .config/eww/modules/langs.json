@@ -1,0 +1,14 @@
+[
+    {
+        "name": "English (United States)",
+        "name_method": "US",
+        "name_ibus": "xkb:us::eng",
+        "name_abbr": "ENG"
+    },
+    {
+        "name": "Francais (France)",
+        "name_method": "FR",
+        "name_ibus": "xkb:fr::fre",
+        "name_abbr": "fre"
+    },
+]

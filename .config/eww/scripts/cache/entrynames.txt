@@ -1,0 +1,238 @@
+ARandR
+About Me
+About Xfce
+Accessibility
+Adblock
+Advanced Network Configuration
+Alacritty
+Android Studio
+AppImage Installer
+Appearance
+Application Finder
+Archive Manager
+ArcoLinux Conky Toggle
+ArcoLinux Conkyzen
+ArcoLinux Welcome
+Arcolinux Desktop Trasher
+Arcolinux Tweak Tool
+Avahi SSH Server Browser
+Avahi VNC Server Browser
+Avahi Zeroconf Browser
+Azote
+Blender
+Blue Recorder
+Bluetooth
+Books
+Boxes
+Brave
+Bulk Rename
+CMake
+Caffeine-ng
+Calculator
+Calendar
+Catfish File Search
+Characters
+ChatGPT
+Cheese
+Chromium
+Clementine
+ClipGrab
+Clipboard Manager
+Clipboard Manager Settings
+Clocks
+Code - OSS
+Color Profile Viewer
+Color Profiles
+Conky Manager
+Contacts
+CopyQ
+Customize Look and Feel
+Default Applications
+Deluge
+Desktop
+Dia Diagram Editor
+Dictionary
+Discord
+Disk Usage Analyzer
+Disks
+Disks
+Display
+Displays Settings
+Document Scanner
+Document Viewer
+Electron
+Electron 18
+Electron 19
+Electron 22
+Electron 24
+Electron 25
+Element
+Evolution
+Extensions
+File Manager
+File Manager Settings
+Files
+Firefox Web Browser
+Firewall Configuration
+Fix Hardcoded Icons
+Font Manager
+Font Viewer
+Fonts
+Foot
+Foot Client
+Foot Server
+GNOME System Monitor
+GNU Image Manipulation Program
+GParted
+GParted
+GTK Settings
+Galculator
+GitAhead
+Glide
+GlslViewer
+GlslViewer
+Gpick
+Grsync
+Grub Customizer
+Grub Customizer
+HP Device Manager
+Hardware Locality lstopo
+Help
+Htop
+Icon Browser
+Icon picker
+Image Viewer
+IntelliJ IDEA Community
+Keyboard
+Kvantum Manager
+LSHW
+LibreOffice
+LibreOffice Base
+LibreOffice Calc
+LibreOffice Draw
+LibreOffice Impress
+LibreOffice Math
+LibreOffice Writer
+Log Out
+Logs
+MP3info
+Mail Reader
+Manage Printing
+Maps
+Master PDF Editor
+Meld
+Menu Editor
+Monitor Settings
+Mouse and Touchpad
+Music
+New Drawing
+Nextcloud Desktop
+Notes
+Notifications
+OBS Studio
+Openbox Configuration Manager
+Openbox Menu Editor
+Panel
+Panel Profiles
+Peek
+Photos
+Plank
+Power Manager
+Pragha
+Print Settings
+Privilege granting
+PuTTY
+Publii
+PulseAudio Equalizer
+PulseAudio Volume Control
+PulseAudio Volume Control
+QMPlay2
+Qt Assistant
+Qt Designer
+Qt Linguist
+Qt QDBusViewer 
+Qt V4L2 test Utility
+Qt V4L2 video capture utility
+Qt5 Settings
+Qt6 Settings
+Quick System Info
+Remote Viewer
+Removable Drives and Media
+RenderDoc
+Ristretto Image Viewer
+Rofi
+Rofi Theme Selector
+Run Program...
+Rygel Preferences
+Screenkey
+Screenshot
+Screenshot
+Sensor Viewer
+Session and Startup
+Settings
+Settings Editor
+Settings Manager
+SimpleScreenRecorder
+Software
+Software Token
+Software Token (small)
+System Monitor
+System Profiler and Benchmark
+System Profiler and Benchmark
+Task Manager
+Telegram Desktop
+Terminal
+Terminal Emulator
+Thunar File Manager
+Timeshift
+Tint2
+Tint2 Settings
+Transmission (Qt)
+USB Image Writer
+USB Image Writer
+USB Image Writer
+USB Stick Formatter
+USB Stick Formatter
+UXTerm
+VLC media player
+Variety
+Videos
+Vim
+Virtual Machine Manager
+Vivaldi
+Volume Icon
+Weather
+Web
+Web Browser
+WgShadertoy
+WhatsApp for Linux
+Window Manager
+Window Manager Tweaks
+Workspaces
+XDvi
+XTerm
+Xfburn
+Xfce Screensaver
+Xfce Terminal
+Xfce Terminal Settings
+YAD settings
+balenaEtcher
+conky
+dconf Editor
+dconf Editor
+gedit
+gmrun
+guitarix
+guvcview
+hp-uiscan
+mpv Media Player
+nitrogen
+nomacs
+nwg-panel Settings
+nwg-processes
+nwg-shell Settings
+picom
+qBittorrent
+urxvt
+urxvt (client)
+urxvt (tabbed)
