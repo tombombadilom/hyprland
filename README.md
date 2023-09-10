@@ -25,6 +25,6 @@ yay -S material-black-colors-theme gtk-theme-material-black flat-remix
 ```
 
 ```
-yay -S cava eww-wayland-git geticons gojq gtklock gtklock-playerctl-module gtklock-powerbar-module gtklock-userinfo-module hyprland python-material-color-utilities swww ttf-material-symbols-git xdg-desktop-portal-hyprland waybar-hyprland wlogout
+yay -S cava eww-wayland geticons gojq gtklock gtklock-playerctl-module gtklock-powerbar-module gtklock-userinfo-module hyprland python-material-color-utilities swww ttf-material-symbols xdg-desktop-portal-hyprland waybar-hyprland wlogout
 ```
 
