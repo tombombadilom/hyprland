@@ -17,7 +17,7 @@ yay -S python-pywal python-desktop-entry-lib python-poetry python-build python-p
 ```
 
 ```
-ya -S bc blueberry bluez boost boost-libs coreutils dunst findutils fish fuzzel fzf gawk gnome-control-center ibus imagemagick libqalculate light networkmanager network-manager-applet nlohmann-json pavucontrol plasma-browser-integration playerctl procps ripgrep socat sox starship swaybg swayidle ttf-jetbrains-mono udev upower util-linux xorg-xrandr wget wireplumber wl-clipboard yad
+yay -S bc blueberry bluez boost boost-libs coreutils dunst findutils fish fuzzel fzf gawk gnome-control-center ibus imagemagick libqalculate light networkmanager network-manager-applet nlohmann-json pavucontrol plasma-browser-integration playerctl procps ripgrep socat sox starship swaybg swayidle ttf-jetbrains-mono udev upower util-linux xorg-xrandr wget wireplumber wl-clipboard yad
 ```
 
 ```
