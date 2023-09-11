@@ -1,7 +1,7 @@
 # hyprland_config
 # hyprland Install
 ```
-yay -S conky-lua-archers dunst eww foot htop hypr hyprland sway i3 rofi HybridBar micro nano gtk-3.0 gtk-4.0 light menus mpv nitrogen wal pamac paru-bin plank QMPlay2 procps tint2 variety gtklock polybar waybar volumeicon swaync
+yay -S conky-lua-archers dunst eww-wayland foot htop hypr hyprland sway i3 rofi HybridBar micro nano gtk-3.0 gtk-4.0 light menus mpv nitrogen wal pamac paru-bin plank QMPlay2 procps tint2 variety gtklock polybar waybar volumeicon swaync
 ```
 ```
 yay -S anytype anyrun-git ncmpcpp slurp gojq archlinux-betterlockscreen archlinux-logout azote cava copyq
@@ -25,6 +25,6 @@ yay -S material-black-colors-theme gtk-theme-material-black flat-remix
 ```
 
 ```
-yay -S cava eww-wayland geticons gojq gtklock gtklock-playerctl-module gtklock-powerbar-module gtklock-userinfo-module hyprland python-material-color-utilities swww ttf-material-symbols xdg-desktop-portal-hyprland waybar-hyprland wlogout
+yay -S cava geticons gojq gtklock gtklock-playerctl-module gtklock-powerbar-module gtklock-userinfo-module hyprland python-material-color-utilities swww ttf-material-symbols xdg-desktop-portal-hyprland waybar-hyprland wlogout
 ```
 
