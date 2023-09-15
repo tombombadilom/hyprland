@@ -21,7 +21,7 @@ yay -S bc blueberry bluez boost boost-libs coreutils dunst findutils fish fuzzel
 ```
 
 ```
-yay -S material-black-colors-theme gtk-theme-material-black flat-remix
+yay -S ttf-material-symbols-git woff2-material-symbols-git material-black-colors-theme gtk-theme-material-black flat-remix
 ```
 
 ```
