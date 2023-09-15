@@ -7,7 +7,7 @@ yay -S conky-lua-archers dunst eww-wayland foot htop hypr hyprland sway i3 rofi 
 yay -S anytype anyrun-git ncmpcpp slurp gojq archlinux-betterlockscreen archlinux-logout azote cava copyq
 ```
 ```
-yay -S nwg-bar-bin nwg-displays nwg-dock nwg-dock-hyprland nwg-drawer nwg-look-bin nwg-panel
+yay -S nwg-bar-bin nwg-displays nwg-dock-bin nwg-dock-hyprland-bin nwg-drawer-bin nwg-look-bin nwg-panel
 ```
 
 [https://github.com/end-4/dots-hyprland/tree/hybrid]
