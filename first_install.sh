@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # Script shell to install sway, huprland and ewww
-<<<<<<< HEAD
 # Usage: cd $HOME/git_config && chmod +x+w first_install.sh && ./first_install.sh
 # This command is used to change the directory to $HOME/git_config,
 # make the first_install.sh file executable with read and write permissions,
@@ -28,25 +27,29 @@ export source_dir
 source_dir="$scripts/.config"
 
 # Set the local source directory path relative to the current script
-=======
 # git clone https://github.com/tombombadilom/hyprland.git git_config
-# Usage: cd $HOME/git_config && ./first_install.sh
+# Usage: cd $HOME/git_config && chmod +x+w first_install.sh && ./first_install.sh
 #
 # Dependencies: git, rsync, shellcheck
 # Source and target configuration folders
+# Set the config directory path
 export config_dir
 config_dir="$HOME/.config"
 
+# Set the local directory path
 export local_dir
 local_dir="$HOME/.local"
 
+# Get the directory path of the current script
 export scripts
 scripts="$(dirname "$0")"
 
+# Set the source directory path relative to the current script
 export source_dir
 source_dir="$scripts/.config"
 
->>>>>>> fa8b590e73 (started install script)
+# Set the local source directory path relative to the current script
+
 export local_source_dir
 local_source_dir="$scripts/.local"
 
