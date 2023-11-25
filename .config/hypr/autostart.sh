@@ -18,7 +18,11 @@ $HOME/.config/polybar/launch.sh &
 
 #change your keyboard if you need it
 setxkbmap -layout fr
+<<<<<<< HEAD:.config/hypr/autostart.sh
 ~/.config/hypr/import_gtk
+=======
+
+>>>>>>> 3c1e3f28de (update eww and hyprland config):hypr/autostart.sh
 # keybLayout=$(setxkbmap -v | awk -F "+" '/symbols/ {print $2}')
 
  if [ $keybLayout = "fr" ]; then
