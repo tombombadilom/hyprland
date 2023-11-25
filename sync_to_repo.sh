@@ -4,10 +4,14 @@
 # from the user's ~/.config folder to a git repository
 # This script allows to keep track of modifications
 # and easily synchronize the configuration across multiple machines and users
+<<<<<<< HEAD
 #
 # Usage: cd $HOME/git_config && ./sync_to_repo.sh
 #
 # Dependencies: git, rsync, shellcheck
+=======
+# Usage: ./sync_to_repo.sh
+>>>>>>> 144187f925 ( refactor to sync_to_repo.sh)
 
 # Source and target configuration folders
 src="$HOME/.config"
@@ -26,9 +30,12 @@ else
 fi
 
 # Load messages from the messages.sh file
+<<<<<<< HEAD
 
 # shellcheck source=./messages.sh
 # shellcheck disable=SC1091
+=======
+>>>>>>> 144187f925 ( refactor to sync_to_repo.sh)
 source "$scripts/messages.sh"
 
 # Detect the user's language
@@ -38,7 +45,11 @@ if [ -z "${LANG}" ]; then
   read -r user_locale
   export LANG="$user_locale"
   user_lang=${user_locale:0:2}
+<<<<<<< HEAD
   export user_lang="$user_lang"
+=======
+
+>>>>>>> 144187f925 ( refactor to sync_to_repo.sh)
   # Update configuration files for Sway, Hyprland, or Wayland
   # Replace paths and commands with the appropriate ones for your system
   if command -v sway &>/dev/null; then
@@ -57,7 +68,11 @@ else
   export user_lang="$user_lang"
 fi
 
+<<<<<<< HEAD
 # Check if rsync, shellcheck, git are installed, install missing packages if necessary
+=======
+# Check if rsync and git are installed, install missing packages if necessary
+>>>>>>> 144187f925 ( refactor to sync_to_repo.sh)
 missing_packages=()
 if ! command -v rsync &>/dev/null; then
   missing_packages+=("rsync")
@@ -65,6 +80,7 @@ fi
 if ! command -v git &>/dev/null; then
   missing_packages+=("git")
 fi
+<<<<<<< HEAD
 if ! command -v shellcheck &>/dev/null; then
   missing_packages+=("shellcheck")
 fi
@@ -72,13 +88,23 @@ fi
 # Install missing packages if prompted
 if [ ${#missing_packages[@]} -gt 0 ]; then
   get_message "missing_packages"
+=======
+
+# Install missing packages if prompted
+if [ ${#missing_packages[@]} -gt 0 ]; then
+  echo "$(get_message "missing_packages")"
+>>>>>>> 144187f925 ( refactor to sync_to_repo.sh)
   read -p "$(get_message "install_missing_packages")" -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     if [ "$os" == "Debian/Ubuntu" ]; then
       sudo apt install -y "${missing_packages[@]}"
     elif [ "$os" == "Arch" ]; then
+<<<<<<< HEAD
       yay -Syu "${missing_packages[@]}"
+=======
+      yay -S "${missing_packages[@]}"
+>>>>>>> 144187f925 ( refactor to sync_to_repo.sh)
     fi
   fi
 fi
@@ -98,7 +124,11 @@ done
 
 # Install missing packages if prompted
 if [ ${#created_dirs[@]} -gt 0 ]; then
+<<<<<<< HEAD
   get_message "missing_packages"
+=======
+  echo "$(get_message "install_missing_packages")"
+>>>>>>> 144187f925 ( refactor to sync_to_repo.sh)
   read -p "$(get_message "install_missing_packages")" -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -122,5 +152,10 @@ for dir in "${dirs[@]}"; do
   fi
 done
 
+<<<<<<< HEAD
 # Affichage du message de fin de synchronisation
 get_message "sync_completed"
+=======
+# Display sync completion message
+echo "$(get_message "sync_completed")"
+>>>>>>> 144187f925 ( refactor to sync_to_repo.sh)
