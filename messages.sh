@@ -31,6 +31,47 @@ messages["missing_packages_es"]="Faltan algunos paquetes requeridos. Por favor, 
 messages["install_missing_packages_en"]="Do you want to install the missing packages? (y/n)"
 messages["install_missing_packages_fr"]="Voulez-vous installer les paquets manquants ? (o/n)"
 messages["install_missing_packages_es"]="¿Quieres instalar los paquetes faltantes? (s/n)"
+# messages de first_install.sh
+# Existing messages for another script
+# ...
+
+# New messages for this script
+messages["system_language_not_detected_en"]="The system language was not detected."
+messages["system_language_not_detected_fr"]="La langue du système n'a pas été détectée."
+messages["system_language_not_detected_es"]="No se detectó el idioma del sistema."
+
+messages["enter_locale_code_en"]="Please enter the locale code (e.g., en_US.UTF-8, fr_FR.UTF-8):"
+messages["enter_locale_code_fr"]="Veuillez entrer le code de langue (par exemple, en_US.UTF-8, fr_FR.UTF-8) :"
+messages["enter_locale_code_es"]="Por favor, introduzca el código de localización (por ejemplo, en_US.UTF-8, fr_FR.UTF-8):"
+
+messages["update_config_for_sway_en"]="Updating configuration file for Sway."
+messages["update_config_for_sway_fr"]="Mise à jour du fichier de configuration pour Sway."
+messages["update_config_for_sway_es"]="Actualizando el archivo de configuración para Sway."
+
+messages["update_config_for_hyprland_en"]="Updating configuration file for Hyprland."
+messages["update_config_for_hyprland_fr"]="Mise à jour du fichier de configuration pour Hyprland."
+messages["update_config_for_hyprland_es"]="Actualizando el archivo de configuración para Hyprland."
+
+messages["restart_sway_effect_en"]="You may need to restart Sway for the changes to take effect."
+messages["restart_sway_effect_fr"]="Vous devrez peut-être redémarrer Sway pour que les changements prennent effet."
+messages["restart_sway_effect_es"]="Puede que necesite reiniciar Sway para que los cambios surtan efecto."
+
+messages["restart_hyprland_effect_en"]="You may need to restart Hyprland for the changes to take effect."
+messages["restart_hyprland_effect_fr"]="Vous devrez peut-être redémarrer Hyprland pour que les changements prennent effet."
+messages["restart_hyprland_effect_es"]="Puede que necesite reiniciar Hyprland para que los cambios surtan efecto."
+
+messages["rsync_not_installed_en"]="rsync is not installed. Installing..."
+messages["rsync_not_installed_fr"]="rsync n'est pas installé. Installation en cours..."
+messages["rsync_not_installed_es"]="rsync no está instalado. Instalando..."
+
+messages["git_not_installed_en"]="git is not installed. Installing..."
+messages["git_not_installed_fr"]="git n'est pas installé. Installation en cours..."
+messages["git_not_installed_es"]="git no está instalado. Instalando..."
+
+messages["shellcheck_not_installed_en"]="shellcheck is not installed. Installing..."
+messages["shellcheck_not_installed_fr"]="shellcheck n'est pas installé. Installation en cours..."
+messages["shellcheck_not_installed_es"]="shellcheck no está instalado. Instalando..."
+
 # Fonction pour obtenir le message dans la langue appropriée
 
 get_message() {

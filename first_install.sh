@@ -1,57 +1,17 @@
 #!/usr/bin/env bash
 
-# Script shell to install sway, huprland and ewww
+# Script shell to install sway, hyprland, and ewww
+
 # Usage: cd $HOME/git_config && chmod +x+w first_install.sh && ./first_install.sh
-# This command is used to change the directory to $HOME/git_config,
-# make the first_install.sh file executable with read and write permissions,
-# and then execute the first_install.sh script.
-# git clone https://github.com/tombombadilom/hyprland.git git_config
-# Usage: cd $HOME/git_config && chmod +x+w first_install.sh && ./first_install.sh
-#
+
 # Dependencies: git, rsync, shellcheck
+
 # Source and target configuration folders
-# Set the config directory path
-export config_dir
-config_dir="$HOME/.config"
-
-# Set the local directory path
-export local_dir
-local_dir="$HOME/.local"
-
-# Get the directory path of the current script
-export scripts
-scripts="$(dirname "$0")"
-
-# Set the source directory path relative to the current script
-export source_dir
-source_dir="$scripts/.config"
-
-# Set the local source directory path relative to the current script
-# git clone https://github.com/tombombadilom/hyprland.git git_config
-# Usage: cd $HOME/git_config && chmod +x+w first_install.sh && ./first_install.sh
-#
-# Dependencies: git, rsync, shellcheck
-# Source and target configuration folders
-# Set the config directory path
-export config_dir
-config_dir="$HOME/.config"
-
-# Set the local directory path
-export local_dir
-local_dir="$HOME/.local"
-
-# Get the directory path of the current script
-export scripts
-scripts="$(dirname "$0")"
-
-# Set the source directory path relative to the current script
-export source_dir
-source_dir="$scripts/.config"
-
-# Set the local source directory path relative to the current script
-
-export local_source_dir
-local_source_dir="$scripts/.local"
+export config_dir="$HOME/.config"
+export local_dir="$HOME/.local"
+export scripts="$(dirname "$0")"
+export source_dir="$scripts/.config"
+export local_source_dir="$scripts/.local"
 
 # Détecter la langue de l'utilisateur
 if [ -z "${LANG}" ]; then
@@ -86,6 +46,7 @@ source ./messages.sh
 
 # Crée le répertoire de destination s'il n'existe pas
 mkdir -p "$local_dir/bin"
+
 # Vérifie si rsync, git et shellcheck sont installeés
 # Si non, installez-les
 if ! command -v rsync &>/dev/null; then
@@ -112,9 +73,3 @@ if ! command -v shellcheck &>/dev/null; then
     yay -Syu shellcheck
   fi
 fi
-
-# use shellcheck to set up all the scripts
-shellcheck sync_to_repo.sh sync_to_system.sh message.sh first_install.sh
-
-# start the installation of sway, hyprland and eww
-#

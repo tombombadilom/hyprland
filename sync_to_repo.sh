@@ -9,14 +9,12 @@
 #
 # Dependencies: git, rsync, shellcheck
 
-# Usage: ./sync_to_repo.sh
-
 # Source and target configuration folders
-src="$HOME/.config"
-local="$HOME/.local"
-scripts="$(dirname "$0")"
-dest="$scripts/.config"
-dest_local="$scripts/.local"
+config_dir="$HOME/.config"
+local_dir="$HOME/.local"
+scripts_dir="$(dirname "$0")"
+dest_dir="$scripts_dir/.config"
+dest_local_dir="$scripts_dir/.local"
 
 # Identify the Linux distribution and install the appropriate packages
 if grep -qEi "(debian|ubuntu)" /etc/*release; then
@@ -30,7 +28,7 @@ fi
 # Load messages from the messages.sh file
 # shellcheck source=./messages.sh
 # shellcheck disable=SC1091
-source "$scripts/messages.sh"
+source "$scripts_dir/messages.sh"
 
 # Detect the user's language
 if [ -z "${LANG}" ]; then
@@ -44,12 +42,12 @@ if [ -z "${LANG}" ]; then
   # Replace paths and commands with the appropriate ones for your system
   if command -v sway &>/dev/null; then
     # For Sway, update the configuration file
-    echo "export LANG=$user_locale" >>"$src/sway/config"
+    echo "export LANG=$user_locale" >>"$config_dir/sway/config"
     # You may need to restart Sway for the changes to take effect
   fi
   if command -v hyprland &>/dev/null; then
     # For Hyprland, update the configuration file
-    echo "export LANG=$user_locale" >>"$src/hyprland/hyprland.conf"
+    echo "export LANG=$user_locale" >>"$config_dir/hyprland/hyprland.conf"
     # You may need to restart Hyprland for the changes to take effect
   fi
   # Add similar commands for Wayland or other window managers here
@@ -57,6 +55,7 @@ else
   user_lang=${LANG:0:2}
   export user_lang="$user_lang"
 fi
+
 # Check if rsync, shellcheck, git are installed, install missing packages if necessary
 missing_packages=()
 if ! command -v rsync &>/dev/null; then
@@ -70,46 +69,9 @@ if ! command -v shellcheck &>/dev/null; then
 fi
 
 # Install missing packages if prompted
-if [ ${#missing_packages[@]} -gt 0 ]; then
+if [ ${missing_packages[@]} -gt 0 ]; then
   get_message "missing_packages"
-# Install missing packages if prompted
-if [ ${#missing_packages[@]} -gt 0 ]; then
-  echo "$(get_message "missing_packages")"
-  read -p "$(get_message "install_missing_packages")" -n 1 -r
-if ! command -v shellcheck &>/dev/null; then
-  missing_packages+=("shellcheck")
-fi
-
-# Install missing packages if prompted
-if [ ${#missing_packages[@]} -gt 0 ]; then
-  get_message "missing_packages"
-  read -p "$(get_message "install_missing_packages")" -n 1 -r
-  echo
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
-    if [ "$os" == "Debian/Ubuntu" ]; then
-      sudo apt install -y "${missing_packages[@]}"
-    elif [ "$os" == "Arch" ]; then
-      yay -Syu "${missing_packages[@]}"
-    fi
-  fi
-fi
-
-# Update the last git update timestamp
-cd "$dest" && last_git_update=$(git log -1 --format="%ct")
-cd "$dest" || exit
-dirs=("nwg-displays" "nwg-dock" "nwg-look" "nwg-panel" "gtklock" "my_bar" "nwg-bar" "nwg-dock-hyprland" "swaync" "nwg-drawer" "sway" "paru" "volumeicon")
-
-# Install missing packages for directories that don't exist
-created_dirs=()
-for dir in "${dirs[@]}"; do
-  if [ ! -d "$dest/$dir" ]; then
-    created_dirs+=("$dir")
-  fi
-done
-
-# Install missing packages if prompted
-if [ ${#created_dirs[@]} -gt 0 ]; then
-  get_message "missing_packages"
+  read -p "$(get_message "missing_packages")"
   read -p "$(get_message "install_missing_packages")" -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -121,17 +83,17 @@ if [ ${#created_dirs[@]} -gt 0 ]; then
   fi
 fi
 
-# Sync directories in $dest and $dest_local
+# Sync directories in $dest_dir and $dest_local_dir
 for dir in "${dirs[@]}"; do
-  mkdir -p "$dest/$dir"
-  mkdir -p "$dest_local/$dir"
-  changed_files=$(find "$src/$dir" -type f -newermt "@$last_git_update")
+  mkdir -p "$dest_dir/$dir"
+  mkdir -p "$dest_local_dir/$dir"
+  changed_files=$(find "$config_dir/$dir" -type f -newermt "@$last_git_update")
   if [ -n "$changed_files" ]; then
     echo "Modifications found in $dir"
-    rsync -a "$src/$dir/" "$dest/$dir/"
-    rsync -a "$local/$dir/" "$dest_local/$dir/"
+    rsync -a "$config_dir/$dir/" "$dest_dir/$dir/"
+    rsync -a "$local_dir/$dir/" "$dest_local_dir/$dir/"
   fi
 done
 
-# Affichage du message de fin de synchronisation
+# Display the synchronization completion message
 get_message "sync_completed"
