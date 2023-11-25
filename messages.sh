@@ -40,7 +40,6 @@ get_message() {
   # dans la langue de l'utilisateur
   #
   echo "${messages[$key]:-${messages[${1}_en]}}"
-<<<<<<< HEAD
 }
 
 # Ask the user for their preferred language
@@ -51,6 +50,3 @@ if [[ ! " ${!messages[@]} " =~ "${user_lang}" ]]; then
   echo "Language not supported, defaulting to English."
   user_lang="en"
 fi
-=======
-}
->>>>>>> 144187f925 ( refactor to sync_to_repo.sh)
