@@ -83,12 +83,12 @@ find "$config_dir" -type d -not -path "$config_dir/lib/*" -print0 | while IFS= r
 
   echo "Modifications trouvées dans $dir"
 
-    # Ajouter le répertoire au JSON
-    existing_dirs["$dest_local"]=1
-  
-    # Synchroniser les fichiers modifiés du répertoire source vers le répertoire de destination
-    rsync -a "$dir/" "$dest/"
-    # Synchroniser les fichiers modifiés du répertoire source vers le répertoire local de destination,
-    # en excluant le sous-répertoire 'lib'
-    rsync -a --exclude 'lib' "$local_dir/${dir#$config_dir/}/" "$dest_local/"
-  done
+  # Ajouter le répertoire au JSON
+  existing_dirs["$dest_local"]=1
+
+  # Synchroniser les fichiers modifiés du répertoire source vers le répertoire de destination
+  rsync -a "$dir/" "$dest/"
+  # Synchroniser les fichiers modifiés du répertoire source vers le répertoire local de destination,
+  # en excluant le sous-répertoire 'lib'
+  rsync -a --exclude 'lib' "$local_dir/${dir#$config_dir/}/" "$dest_local/"
+done
