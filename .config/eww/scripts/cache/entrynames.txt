@@ -36,9 +36,13 @@ ChatGPT
 Cheese
 Chromium
 <<<<<<< HEAD:.config/eww/scripts/cache/entrynames.txt
+<<<<<<< HEAD:.config/eww/scripts/cache/entrynames.txt
 Clementine
 =======
 >>>>>>> b9840e1c11 (update config hypr and eww):eww/scripts/cache/entrynames.txt
+=======
+Clementine
+>>>>>>> 3c1e3f28de (update eww and hyprland config):eww/scripts/cache/entrynames.txt
 ClipGrab
 Clipboard Manager
 Clipboard Manager Settings
@@ -125,7 +129,6 @@ Maps
 Master PDF Editor
 Meld
 Menu Editor
-Micro
 Monitor Settings
 Mouse and Touchpad
 Music
