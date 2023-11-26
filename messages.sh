@@ -4,28 +4,36 @@ declare -A messages
 
 # Messages for the other script
 declare -gA messages=(
-  ["modifications_detected"]="Modifications detected in"
-  ["sync_in_progress"]="Synchronization in progress..."
-  ["new_directories_found"]="New directories found in .config:"
-  ["copy_directories_prompt"]="Do you want to copy these directories? (y/n)"
-  ["copy_prompt"]="Copy"
-  ["directory_copied"]="Copied."
-  ["sync_completed"]="Synchronization completed from .config to config"
+  ["missing_packages"]="Certains paquets requis sont manquants. Veuillez les installer avant de continuer."
+  ["install_missing_packages"]="Voulez-vous installer les paquets manquants ? (o/n)"
+  ["system_language_not_detected"]="La langue du système n'a pas été détectée."
+  ["enter_locale_code"]="Veuillez entrer le code de langue (par exemple, en_US.UTF-8, fr_FR.UTF-8) :"
+  ["update_config_for_sway"]="Mise à jour du fichier de configuration pour Sway."
+  ["update_config_for_hyprland"]="Mise à jour du fichier de configuration pour Hyprland."
+  ["restart_sway_effect"]="Vous devrez peut-être redémarrer Sway pour que les modifications prennent effet."
+  ["restart_hyprland_effect"]="Vous devrez peut-être redémarrer Hyprland pour que les modifications prennent effet."
+  ["rsync_not_installed_global"]="rsync n'est pas installé. Installation en cours..."
+  ["git_not_installed_global"]="git n'est pas installé. Installation en cours..."
+  ["shellcheck_not_installed_global"]="shellcheck n'est pas installé. Installation en cours..."
 )
 
-# New messages for this script
-declare -gA messages=(
-  ["missing_packages"]="Some required packages are missing. Please install them before continuing."
-  ["install_missing_packages"]="Do you want to install the missing packages? (y/n)"
-  ["system_language_not_detected"]="The system language was not detected."
-  ["enter_locale_code"]="Please enter the locale code (e.g., en_US.UTF-8, fr_FR.UTF-8):"
-  ["update_config_for_sway"]="Updating configuration file for Sway."
-  ["update_config_for_hyprland"]="Updating configuration file for Hyprland."
-  ["restart_sway_effect"]="You may need to restart Sway for the changes to take effect."
-  ["restart_hyprland_effect"]="You may need to restart Hyprland for the changes to take effect."
-  ["rsync_not_installed"]="rsync is not installed. Installing..."
-  ["git_not_installed"]="git is not installed. Installing..."
-  ["shellcheck_not_installed"]="shellcheck is not installed. Installing..."
+# global messages loaded a bit everwywhere
+declare -A messages_global=(
+  ["missing_packages_prompt"]="Certains paquets sont manquants. Voulez-vous les installer ? (O/n)"
+  ["installing_packages"]="Installation des paquets en cours..."
+  ["sync_completed"]="Synchronisation terminée."
+  ["sync_failed"]="La synchronisation a échoué."
+  ["rsync_not_installed"]="rsync n'est pas installé. Installation en cours..."
+  ["git_not_installed"]="git n'est pas installé. Installation en cours..."
+  ["shellcheck_not_installed"]="shellcheck n'est pas installé. Installation en cours..."
+  ["directory_creation"]="Création du répertoire :"
+  ["source_directory_not_found"]="Le répertoire source n'existe pas :"
+)
+
+declare -A messages_denials=(
+  ["missing_packages"]="Certains paquets sont manquants. Veuillez les installer avant de continuer."
+  ["install_missing_packages"]="Voulez-vous installer les paquets manquants ? (o/n)"
+  ["permission_denied"]="Accès refusé. Veuillez exécuter le script en tant que root ou avec sudo."
 )
 
 # Function to get a message based on the user's preferred language
@@ -40,14 +48,21 @@ get_message() {
 }
 
 # Read the user's preferred language
-read -rp "Please enter your preferred language (fr/en/es): " user_lang
+read -rp "Veuillez entrer votre langue préférée (fr/en/es) : " user_lang
 echo
 
 case "$user_lang" in
 fr | en | es)
-  echo "Language selected: $user_lang"
+  echo "Langue sélectionnée : $user_lang"
   ;;
 *)
-  echo "Invalid language selected: $user_lang"
+  echo "Langue sélectionnée invalide : $user_lang"
   ;;
 esac
+
+# Check if the language is functional
+if [[ "$user_lang" == "fr" ]]; then
+  echo "La langue française est fonctionnelle."
+else
+  echo "La langue sélectionnée n'est pas fonctionnelle."
+fi
