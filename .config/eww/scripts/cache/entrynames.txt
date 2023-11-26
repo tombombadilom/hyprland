@@ -53,6 +53,7 @@ Color Profiles
 Conky Manager
 Contacts
 CopyQ
+Cursor
 Customize Look and Feel
 Default Applications
 Deluge
@@ -76,6 +77,7 @@ Electron 25
 Element
 Evolution
 Extensions
+Eye of GNOME
 File Manager
 File Manager Settings
 Files
@@ -90,6 +92,7 @@ Foot Client
 Foot Server
 GNOME System Monitor
 GNU Image Manipulation Program
+GPU-Viewer
 GParted
 GParted
 GTK Settings
@@ -98,6 +101,7 @@ GitAhead
 Glide
 GlslViewer
 GlslViewer
+Google Drive
 Gpick
 Grsync
 Grub Customizer
@@ -108,10 +112,11 @@ Help
 Htop
 Icon Browser
 Icon picker
-Image Viewer
+Imager
 IntelliJ IDEA Community
 Keyboard
 Kvantum Manager
+LM Studio
 LSHW
 LibreOffice
 LibreOffice Base
@@ -171,7 +176,6 @@ Rofi
 Rofi Theme Selector
 Run Program...
 Rygel Preferences
-Screenkey
 Screenshot
 Screenshot
 Sensor Viewer
@@ -186,10 +190,13 @@ Software Token (small)
 System Monitor
 System Profiler and Benchmark
 System Profiler and Benchmark
+Tagger
 Task Manager
+Telegram Desktop
 Telegram Desktop
 Terminal
 Terminal Emulator
+Th3inspector
 Thunar File Manager
 Timeshift
 Tint2
