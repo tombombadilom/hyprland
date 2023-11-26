@@ -100,10 +100,32 @@ for package in "${missing_packages[@]}"; do
     fi
   fi
 done
+# Supprimez les répertoires clonés
+for package in "${packages_to_install[@]}"; do
+  if dpkg -l | grep -q "$package"; then
+    echo "Removing build directory for $package..."
+    rm -rf "$package"
+  fi
+done
 
 # Supprimez les répertoires clonés
 for package in "${packages_to_install[@]}"; do
   rm -rf "$package"
 done
+# Install fonts if not already installed
+if ! fc-list | grep -q "FiraCode"; then
+  echo "FiraCode font is not installed. Installing..."
+  # Install FiraCode font
+  # Add the installation command here
+fi
 
+# Additional configuration steps
+# Add any additional configuration steps here
+
+# Clean up
+echo "Cleaning up..."
+rm -rf "$HOME/git_config"
+
+# Display completion message
+echo "Installation completed successfully!"
 #   
