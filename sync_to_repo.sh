@@ -4,14 +4,17 @@
 # from the user's ~/.config folder to a git repository
 # This script allows to keep track of modifications
 # and easily synchronize the configuration across multiple machines and users
-# Usage: ./sync_to_repo.sh
+#
+# Usage: cd $HOME/git_config && ./sync_to_repo.sh
+#
+# Dependencies: git, rsync, shellcheck
 
 # Source and target configuration folders
 src="$HOME/.config"
 local="$HOME/.local"
-scripts="$HOME/git_config/"
-dest="$HOME/git_config/.config"
-dest_local="$HOME/git_config/.local"
+scripts="$(dirname "$0")"
+dest="$scripts/.config"
+dest_local="$scripts/.local"
 
 # Identify the Linux distribution and install the appropriate packages
 if grep -qEi "(debian|ubuntu)" /etc/*release; then
@@ -23,6 +26,9 @@ else
 fi
 
 # Load messages from the messages.sh file
+
+# shellcheck source=./messages.sh
+# shellcheck disable=SC1091
 source "$scripts/messages.sh"
 
 # Detect the user's language
@@ -32,7 +38,7 @@ if [ -z "${LANG}" ]; then
   read -r user_locale
   export LANG="$user_locale"
   user_lang=${user_locale:0:2}
-
+  export user_lang="$user_lang"
   # Update configuration files for Sway, Hyprland, or Wayland
   # Replace paths and commands with the appropriate ones for your system
   if command -v sway &>/dev/null; then
@@ -48,9 +54,10 @@ if [ -z "${LANG}" ]; then
   # Add similar commands for Wayland or other window managers here
 else
   user_lang=${LANG:0:2}
+  export user_lang="$user_lang"
 fi
 
-# Check if rsync and git are installed, install missing packages if necessary
+# Check if rsync, shellcheck, git are installed, install missing packages if necessary
 missing_packages=()
 if ! command -v rsync &>/dev/null; then
   missing_packages+=("rsync")
@@ -58,17 +65,20 @@ fi
 if ! command -v git &>/dev/null; then
   missing_packages+=("git")
 fi
+if ! command -v shellcheck &>/dev/null; then
+  missing_packages+=("shellcheck")
+fi
 
 # Install missing packages if prompted
 if [ ${#missing_packages[@]} -gt 0 ]; then
-  echo "$(get_message "missing_packages")"
+  get_message "missing_packages"
   read -p "$(get_message "install_missing_packages")" -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     if [ "$os" == "Debian/Ubuntu" ]; then
       sudo apt install -y "${missing_packages[@]}"
     elif [ "$os" == "Arch" ]; then
-      yay -S "${missing_packages[@]}"
+      yay -Syu "${missing_packages[@]}"
     fi
   fi
 fi
@@ -88,7 +98,7 @@ done
 
 # Install missing packages if prompted
 if [ ${#created_dirs[@]} -gt 0 ]; then
-  echo "$(get_message "install_missing_packages")"
+  get_message "missing_packages"
   read -p "$(get_message "install_missing_packages")" -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -112,5 +122,5 @@ for dir in "${dirs[@]}"; do
   fi
 done
 
-# Display sync completion message
-echo "$(get_message "sync_completed")"
+# Affichage du message de fin de synchronisation
+get_message "sync_completed"

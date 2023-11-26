@@ -1,4 +1,18 @@
 #!/usr/bin/env bash
+# Script shell to synchronize configuration files
+# from the user's ~/.git_config folder to the user's ~/.config folder
+# This script allows to keep track of modifications
+# and easily synchronize the configuration across multiple machines and users
+#
+# Usage: cd $HOME/git_config && ./sync_to_system.sh
+#
+# Dependencies: git, rsync, shellcheck
+# Variables pour les chemins
+config_dir="$HOME/.config"
+local_dir="$HOME/.local"
+scripts="$(dirname "$0")"
+source_dir="$scripts/.config"
+local_source_dir="$scripts/.local"
 
 # Liste des répertoires à synchroniser
 declare -a dirs=("HybridBar" "nwg-displays" "nwg-dock" "nwg-look" "nwg-panel" "gtklock" "my_bar" "nwg-bar" "nwg-dock-hyprland" "swaync" "nwg-drawer" "sway" "paru" "volumeicon")
@@ -13,20 +27,41 @@ else
   os="Unknown"
 fi
 
-# Variables pour les chemins
-config_dir="$HOME/.config"
-local_dir="$HOME/.local"
-scripts="$HOME/git_config/"
-source_dir="$HOME/git_config/.config"
-local_source_dir="$HOME/git_config/.local"
-
 # Crée le répertoire de destination s'il n'existe pas
 mkdir -p "$local_dir/bin"
+# Vérifie si rsync, git et shellcheck sont installeés
+# Si non, installez-les
+if ! command -v rsync &>/dev/null; then
+  echo "rsync is not installed. Installing..."
+  if [ "$os" == "Debian/Ubuntu" ]; then
+    sudo apt install -y rsync
+  elif [ "$os" == "Arch" ]; then
+    yay -Syu rsync
+  fi
+fi
+if ! command -v git &>/dev/null; then
+  echo "git is not installed. Installing..."
+  if [ "$os" == "Debian/Ubuntu" ]; then
+    sudo apt install -y git
+  elif [ "$os" == "Arch" ]; then
+    yay -Syu git
+  fi
+fi
+if ! command -v shellcheck &>/dev/null; then
+  echo "shellcheck is not installed. Installing..."
+  if [ "$os" == "Debian/Ubuntu" ]; then
+    sudo apt install -y shellcheck
+  elif [ "$os" == "Arch" ]; then
+    yay -Syu shellcheck
+  fi
+fi
 
 # Synchronise les fichiers avec rsync
-rsync -av --progress "$local_source_dir/bin/" "$local_dir/bin/"
+rsync -av --progress "$local_dir/bin/" "$local_source_dir/bin/"
 
 # Charger les messages depuis le fichier messages.sh
+# shellcheck source=./messages.sh
+# shellcheck disable=SC1091
 source "$scripts/messages.sh"
 
 # Détecter la langue de l'utilisateur
@@ -36,7 +71,7 @@ if [ -z "${LANG}" ]; then
   read -r user_locale
   export LANG="$user_locale"
   user_lang=${user_locale:0:2}
-
+  export user_lang="$user_lang"
   # Mettre à jour les fichiers de configuration pour Sway, Hyprland, ou Wayland
   # Remplacer les chemins et les commandes par ceux appropriés pour votre système
   if command -v sway &>/dev/null; then
@@ -52,6 +87,7 @@ if [ -z "${LANG}" ]; then
   # Ajoutez ici des commandes similaires pour Wayland ou d'autres gestionnaires de fenêtres
 else
   user_lang=${LANG:0:2}
+  export user_lang="$user_lang"
 fi
 
 # Boucle sur chaque répertoire

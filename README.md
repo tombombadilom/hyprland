@@ -9,13 +9,15 @@ sudo chmod +x+w message.sh sync_to_repo.sh sync_to_system.sh
 
 ## How to use
 
-### Install
+### First Install
 
 ```bash
 cd
 git clone https://github.com/tombombadilom/hyprland.git git_config
 cd git_config
-./sync_to_system.sh
+shellcheck sync_to_repo.sh sync_to_system.sh message.sh first_install.sh
+sudo chmod +x+w sync_to_repo.sh sync_to_system.sh message.sh first_install.sh
+
 ```
 
 ### sync sway, hyprland and wayland from git_config repository

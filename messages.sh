@@ -32,9 +32,13 @@ messages["install_missing_packages_en"]="Do you want to install the missing pack
 messages["install_missing_packages_fr"]="Voulez-vous installer les paquets manquants ? (o/n)"
 messages["install_missing_packages_es"]="¿Quieres instalar los paquetes faltantes? (s/n)"
 # Fonction pour obtenir le message dans la langue appropriée
+
 get_message() {
   local key="${1}_${user_lang}"
-  # Fallback to English if the message is not defined in the user's language
+  # Retour à la langue anglaise
+  # si le message n'est pas défini
+  # dans la langue de l'utilisateur
+  #
   echo "${messages[$key]:-${messages[${1}_en]}}"
 }
 
