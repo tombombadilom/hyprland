@@ -38,6 +38,11 @@ else
   user_lang=${LANG:0:2}
   export user_lang="$user_lang"
 fi
+# Installez le package `make` si nécessaire
+if ! dpkg -l | grep -q "make"; then
+  echo "make is not installed. Installing..."
+  sudo apt install -y make
+fi
 
 # First load messages from the messages.sh file
 # shellcheck source=./messages.sh
@@ -64,20 +69,14 @@ fi
 
 # Détecte le système d'exploitation
 os=""
-if grep -q "Ubuntu" /etc/os-release; then
-  os="Ubuntu"
-elif grep -q "Debian" /etc/os-release; then
-  os="Debian"
-elif grep -q "Arch" /etc/os-release; then
-  os="Arch"
-fi
+case $(grep -oP '(?<=^ID=).+' /etc/os-release) in
+  "ubuntu"|"debian"|"arch")
+    os=$BASH_REMATCH
+    ;;
+esac
 export os
 ## Install missing packages
-# Installez le package `make` si nécessaire
-if ! dpkg -l | grep -q "make"; then
-  echo "make is not installed. Installing..."
-  sudo apt install -y make
-fi
+
 
 missing_packages=("conky-lua-archers" "dunst" "eww-wayland" "foot" "HybridBar" "micro" "nano" "gtk-3.0" "gtk-4.0" "light" "menus" "mpv" "nitrogen" "wal" "pamac" "paru-bin" "plank" "QMPlay2" "procps" "tint2" "variety" "gtklock" "polybar" "waybar" "volumeicon" "swaync")
 packages_to_install=()
