@@ -1,0 +1,6 @@
+[Default Applications]
+model/lst=glslViewer.desktop
+model/ply=glslViewer.desktop
+model/obj=glslViewer.desktop
+model/gltf-binary=glslViewer.desktop
+model/gltf+json=glslViewer.desktop

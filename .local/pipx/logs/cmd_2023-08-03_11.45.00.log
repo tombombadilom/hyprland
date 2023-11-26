@@ -1,0 +1,42 @@
+    69.0ms (setup:799): 2023-08-03 11:45:00
+    69.1ms (setup:800): /usr/bin/pipx install pywal
+    69.1ms (setup:801): pipx version is 1.2.0
+    69.1ms (setup:802): Default python interpreter is '/usr/bin/python'
+    69.2ms (mkdir:81): creating directory /home/tom/.local/pipx/venvs
+    69.2ms (mkdir:81): creating directory /home/tom/.local/pipx/.cache
+    69.3ms (setup:810): Adding CACHEDIR.TAG to cache directory
+    69.8ms (package_name_from_spec:322): Determined package name: pywal
+    69.9ms (package_name_from_spec:323): Package name determined in 0.0s
+    70.8ms (run_subprocess:173): running /usr/bin/python -m venv --without-pip /home/tom/.local/pipx/venvs/pywal
+   114.7ms (run_subprocess:186): stdout:
+   114.8ms (run_subprocess:188): stderr:
+   114.9ms (run_subprocess:189): returncode: 0
+   115.7ms (run_subprocess:173): running /usr/bin/python -m venv --clear /home/tom/.local/pipx/shared
+  2492.0ms (run_subprocess:186): stdout:
+  2492.1ms (run_subprocess:188): stderr:
+  2492.2ms (run_subprocess:189): returncode: 0
+  2492.4ms (upgrade:91): Upgrading shared libraries in /home/tom/.local/pipx/shared
+  2493.1ms (run_subprocess:173): running /home/tom/.local/pipx/shared/bin/python -m pip --disable-pip-version-check install --force-reinstall -q --upgrade pip setuptools wheel
+  6162.4ms (run_subprocess:186): stdout:
+  6162.6ms (run_subprocess:188): stderr:
+  6162.6ms (run_subprocess:189): returncode: 0
+  6163.0ms (run_subprocess:173): running /home/tom/.local/pipx/venvs/pywal/bin/python -c import sysconfig; print(sysconfig.get_path('purelib'))
+  6172.9ms (run_subprocess:186): stdout: /home/tom/.local/pipx/venvs/pywal/lib/python3.11/site-packages
+  6173.0ms (run_subprocess:189): returncode: 0
+  6173.2ms (run_subprocess:173): running /home/tom/.local/pipx/shared/bin/python -c import sysconfig; print(sysconfig.get_path('purelib'))
+  6184.6ms (run_subprocess:186): stdout: /home/tom/.local/pipx/shared/lib/python3.11/site-packages
+  6184.6ms (run_subprocess:189): returncode: 0
+  6184.8ms (run_subprocess:173): running /home/tom/.local/pipx/venvs/pywal/bin/python --version
+  6187.2ms (run_subprocess:186): stdout: Python 3.11.3
+  6187.3ms (run_subprocess:188): stderr:
+  6187.3ms (run_subprocess:189): returncode: 0
+  6187.5ms (_parsed_package_to_package_or_url:147): cleaned package spec: pywal
+  6187.9ms (run_subprocess:173): running /home/tom/.local/pipx/venvs/pywal/bin/python -m pip install pywal
+  7782.8ms (run_subprocess:189): returncode: 0
+  7783.1ms (run_subprocess:173): running <fetch_info_in_venv commands>
+  7801.4ms (run_subprocess:186): stdout: {"sys_path": ["/usr/lib/python311.zip", "/usr/lib/python3.11", "/usr/lib/python3.11/lib-dynload", "/home/tom/.local/pipx/venvs/pywal/lib/python3.11/site-packages", "/home/tom/.local/pipx/shared/lib/python3.11/site-packages"], "python_version": "3.11.3", "environment": {"implementation_name": "cpython", "implementation_version": "3.11.3", "os_name": "posix", "platform_machine": "x86_64", "platform_release": "6.4.7-arch1-2", "platform_system": "Linux", "platform_version": "#1 SMP PREEMPT_DYNAMIC Mon, 31 Jul 2023 11:41:04 +0000", "python_full_version": "3.11.3", "platform_python_implementation": "CPython", "python_version": "3.11", "sys_platform": "linux"}}
+  7801.5ms (run_subprocess:189): returncode: 0
+  7804.6ms (get_venv_metadata_for_package:316): get_venv_metadata_for_package: 22ms
+  7804.6ms (_parsed_package_to_package_or_url:147): cleaned package spec: pywal
+  7805.1ms (_symlink_package_apps:147): ⚠️  Note: wal was already on your PATH at /usr/bin/wal
+  7805.7ms (cli:874): pipx finished.

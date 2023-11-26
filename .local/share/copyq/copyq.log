@@ -1,0 +1,4 @@
+CopyQ Warning [2023-07-23 21:46:53.933] : [default] QtWarning: QSocketNotifier: Can only be used with threads started with QThread
+CopyQ Warning [2023-07-23 21:46:54.041] : [default] QtWarning: QSocketNotifier: Can only be used with threads started with QThread
+CopyQ Warning [2023-07-23 21:46:55.022] : [default] QtWarning: QSocketNotifier: Can only be used with threads started with QThread
+CopyQ Warning [2023-07-23 21:47:03.050] : [default] QtWarning: QSocketNotifier: Can only be used with threads started with QThread

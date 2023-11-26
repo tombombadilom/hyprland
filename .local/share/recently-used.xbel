@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="file:///run/media/tom/TOSHIBA%20EXT/Backup_tom" added="2023-07-27T15:50:27.407406Z" modified="2023-07-30T07:59:28.958757Z" visited="2023-07-27T15:50:27.407408Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-07-30T07:59:28.958752Z" count="5"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tom" added="2023-07-27T15:50:43.983909Z" modified="2023-08-03T15:05:46.245275Z" visited="2023-07-27T15:50:43.983911Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-08-03T15:05:46.245272Z" count="12"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tom/Documents" added="2023-07-27T15:50:47.426916Z" modified="2023-07-30T07:42:00.594304Z" visited="2023-07-27T15:50:47.426918Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-07-30T07:42:00.594298Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tom/Documents/lettre.pdf" added="2023-07-27T15:59:36.786607Z" modified="2023-07-27T15:59:36.807670Z" visited="2023-07-27T15:59:36.786610Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/pdf"/>
+        <bookmark:applications>
+          <bookmark:application name="xdg-desktop-portal-gtk" exec="&apos;xdg-desktop-portal-gtk %u&apos;" modified="2023-07-27T15:59:36.807668Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///" added="2023-07-30T07:36:19.404090Z" modified="2023-07-30T07:36:19.404097Z" visited="2023-07-30T07:36:19.404091Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-07-30T07:36:19.404094Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="computer:///" added="2023-07-30T07:36:22.360155Z" modified="2023-08-03T15:05:31.270922Z" visited="2023-07-30T07:36:22.360157Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-08-03T15:05:31.270917Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/tom/TOSHIBA%20EXT/Backup_tom/Documents" added="2023-07-30T07:41:44.413871Z" modified="2023-07-30T07:41:44.413876Z" visited="2023-07-30T07:41:44.413872Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-07-30T07:41:44.413874Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/tom/TOSHIBA%20EXT/Backup_tom/Images" added="2023-07-30T07:42:17.788559Z" modified="2023-07-30T07:42:17.788571Z" visited="2023-07-30T07:42:17.788562Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-07-30T07:42:17.788565Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tom/Images" added="2023-07-30T07:42:26.656989Z" modified="2023-08-05T09:55:10.588769Z" visited="2023-07-30T07:42:26.656992Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-08-05T09:55:10.588766Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/tom/TOSHIBA%20EXT/Backup_tom/Musique" added="2023-07-30T07:59:33.830127Z" modified="2023-07-30T07:59:33.830133Z" visited="2023-07-30T07:59:33.830128Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-07-30T07:59:33.830130Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/tom/TOSHIBA%20EXT/Backup_tom/T%C3%A9l%C3%A9chargements" added="2023-07-30T07:59:46.972165Z" modified="2023-07-30T07:59:46.972179Z" visited="2023-07-30T07:59:46.972167Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-07-30T07:59:46.972171Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/tom/TOSHIBA%20EXT/Backup_tom/T%C3%A9l%C3%A9chargements/Telegram%20Desktop" added="2023-07-30T08:00:06.188645Z" modified="2023-07-30T08:00:06.188650Z" visited="2023-07-30T08:00:06.188646Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-07-30T08:00:06.188647Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tom/Documents/photo_2022-12-12_13-28-57.jpg" added="2023-07-30T14:23:02.252448Z" modified="2023-07-30T14:23:02.252467Z" visited="2023-07-30T14:23:02.252452Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/jpeg"/>
+        <bookmark:applications>
+          <bookmark:application name="Telegram Desktop" exec="&apos;telegram-desktop %u&apos;" modified="2023-07-30T14:23:02.252458Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tom/Images/Wallpaper-tom/2vmom5p.jpg" added="2023-07-30T16:26:57.067772Z" modified="2023-07-30T16:26:57.067784Z" visited="2023-07-30T16:26:57.067774Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/jpeg"/>
+        <bookmark:applications>
+          <bookmark:application name="brave" exec="&apos;brave %u&apos;" modified="2023-07-30T16:26:57.067778Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tom/.config/hypr" added="2023-08-03T13:00:48.656235Z" modified="2023-08-03T13:00:48.656248Z" visited="2023-08-03T13:00:48.656238Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="electron" exec="&apos;electron %u&apos;" modified="2023-08-03T13:00:48.656243Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tom/Images/wallpaper" added="2023-08-03T13:43:55.841446Z" modified="2023-08-05T09:55:13.810243Z" visited="2023-08-03T13:43:55.841449Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-08-05T09:55:13.810240Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tom/.config/eww/images/wallpaper/wallpaper" added="2023-08-03T14:06:30.895817Z" modified="2023-08-03T14:06:30.895830Z" visited="2023-08-03T14:06:30.895820Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-08-03T14:06:30.895825Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tom/Bureau" added="2023-08-03T15:04:28.233539Z" modified="2023-08-03T15:05:34.178986Z" visited="2023-08-03T15:04:28.233542Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-08-03T15:05:34.178982Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tom/Bureau/Roberto%20Just%20Wants%20More%20Big%20%5B2021%5D" added="2023-08-03T15:04:30.435708Z" modified="2023-08-03T15:04:30.435718Z" visited="2023-08-03T15:04:30.435711Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-08-03T15:04:30.435715Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tom/config" added="2023-08-03T15:04:41.357706Z" modified="2023-08-03T15:04:41.357721Z" visited="2023-08-03T15:04:41.357711Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-08-03T15:04:41.357715Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="trash:///" added="2023-08-03T15:05:33.636966Z" modified="2023-08-03T15:05:33.636976Z" visited="2023-08-03T15:05:33.636969Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2023-08-03T15:05:33.636972Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tom/T%C3%A9l%C3%A9chargements/Troll-OS.jpeg" added="2023-08-04T06:08:40.937661Z" modified="2023-08-04T06:08:52.087074Z" visited="2023-08-04T06:08:40.937664Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/jpeg"/>
+        <bookmark:applications>
+          <bookmark:application name="xdg-desktop-portal-gtk" exec="&apos;xdg-desktop-portal-gtk %u&apos;" modified="2023-08-04T06:08:52.087070Z" count="4"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tom/build/cv" added="2023-08-04T08:11:10.247999Z" modified="2023-08-04T08:11:10.248011Z" visited="2023-08-04T08:11:10.248003Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="electron" exec="&apos;electron %u&apos;" modified="2023-08-04T08:11:10.248006Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>

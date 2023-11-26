@@ -1,0 +1,9 @@
+[MIME Cache]
+application/x-openbox-theme=obconf.desktop;obkey.desktop;
+application/x-tint2-theme=tint2conf.desktop;
+model/gltf+json=glslViewer.desktop;
+model/gltf-binary=glslViewer.desktop;
+model/lst=glslViewer.desktop;
+model/obj=glslViewer.desktop;
+model/ply=glslViewer.desktop;
+text/plain=hardcode-fixer.desktop;quick-system-info.desktop;

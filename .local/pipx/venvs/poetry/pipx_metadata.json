@@ -1,0 +1,94 @@
+{
+    "injected_packages": {},
+    "main_package": {
+        "app_paths": [
+            {
+                "__Path__": "/home/tom/.local/pipx/venvs/poetry/bin/poetry",
+                "__type__": "Path"
+            }
+        ],
+        "app_paths_of_dependencies": {
+            "build": [
+                {
+                    "__Path__": "/home/tom/.local/pipx/venvs/poetry/bin/pyproject-build",
+                    "__type__": "Path"
+                }
+            ],
+            "cachecontrol": [
+                {
+                    "__Path__": "/home/tom/.local/pipx/venvs/poetry/bin/doesitcache",
+                    "__type__": "Path"
+                }
+            ],
+            "charset-normalizer": [
+                {
+                    "__Path__": "/home/tom/.local/pipx/venvs/poetry/bin/normalizer",
+                    "__type__": "Path"
+                }
+            ],
+            "dulwich": [
+                {
+                    "__Path__": "/home/tom/.local/pipx/venvs/poetry/bin/dul-receive-pack",
+                    "__type__": "Path"
+                },
+                {
+                    "__Path__": "/home/tom/.local/pipx/venvs/poetry/bin/dul-upload-pack",
+                    "__type__": "Path"
+                },
+                {
+                    "__Path__": "/home/tom/.local/pipx/venvs/poetry/bin/dulwich",
+                    "__type__": "Path"
+                }
+            ],
+            "jsonschema": [
+                {
+                    "__Path__": "/home/tom/.local/pipx/venvs/poetry/bin/jsonschema",
+                    "__type__": "Path"
+                }
+            ],
+            "keyring": [
+                {
+                    "__Path__": "/home/tom/.local/pipx/venvs/poetry/bin/keyring",
+                    "__type__": "Path"
+                }
+            ],
+            "pkginfo": [
+                {
+                    "__Path__": "/home/tom/.local/pipx/venvs/poetry/bin/pkginfo",
+                    "__type__": "Path"
+                }
+            ],
+            "virtualenv": [
+                {
+                    "__Path__": "/home/tom/.local/pipx/venvs/poetry/bin/virtualenv",
+                    "__type__": "Path"
+                }
+            ]
+        },
+        "apps": [
+            "poetry"
+        ],
+        "apps_of_dependencies": [
+            "pyproject-build",
+            "doesitcache",
+            "normalizer",
+            "dul-receive-pack",
+            "dul-upload-pack",
+            "dulwich",
+            "jsonschema",
+            "keyring",
+            "pkginfo",
+            "virtualenv"
+        ],
+        "include_apps": true,
+        "include_dependencies": false,
+        "package": "poetry",
+        "package_or_url": "poetry",
+        "package_version": "1.5.1",
+        "pip_args": [],
+        "suffix": ""
+    },
+    "pipx_metadata_version": "0.2",
+    "python_version": "Python 3.11.3",
+    "venv_args": []
+}

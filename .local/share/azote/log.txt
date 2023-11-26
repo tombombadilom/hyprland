@@ -1,0 +1,21 @@
+2023-07-15 21:44:45,060 INFO: Azote v1.12.3
+2023-07-15 21:44:45,060 INFO: Lang: 'fr_FR'
+2023-07-15 21:44:45,061 INFO: 63 translation phrases found in 'fr_FR'
+2023-07-15 21:44:45,064 INFO: Output found: {'name': 'DP-1', 'x': 0, 'y': 0, 'width': 2560, 'height': 1080, 'generic-name': 'LG Electronics LG ULTRAWIDE 0x00000101'}
+2023-07-15 21:44:45,066 INFO: Image sorting: new
+2023-07-15 21:44:45,066 INFO: Custom display: None
+2023-07-15 21:44:45,066 INFO: Old thumbnail width: 240
+2023-07-15 21:44:45,066 INFO: /home/tom/.config/azote/azoterc file loaded
+2023-07-15 21:44:45,066 INFO: Thumbnail size: (240, 135)
+2023-07-15 21:44:45,066 INFO: Number of columns: 3
+2023-07-15 21:44:45,066 INFO: Palette quality: 10 (10 by default, the less, the better & slower)
+2023-07-15 21:44:45,066 INFO: Files tracking interval: 5 seconds
+2023-07-15 21:44:45,066 INFO: Screen measurement delay: 300 ms
+2023-07-15 21:44:45,070 INFO: Image associations: {'jpg': {('Nouvelle fenêtre de navigation privée', '/usr/bin/chromium'), ('Swappy', 'swappy'), ('Éditeur d’image GIMP', 'gimp-2.10'), ('imv-dir', 'imv-dir'), ('nomacs', 'nomacs'), ('Feh', 'feh'), ('imv', 'imv'), ('Ristretto Image Viewer', 'ristretto'), ('Nouvelle fenêtre privée', '/usr/bin/vivaldi-stable'), ('Nouvelle fenêtre de navigation privée', 'brave'), ('Image Viewer', 'eog')}, 'jpeg': {('Nouvelle fenêtre de navigation privée', '/usr/bin/chromium'), ('Swappy', 'swappy'), ('Éditeur d’image GIMP', 'gimp-2.10'), ('imv-dir', 'imv-dir'), ('nomacs', 'nomacs'), ('Feh', 'feh'), ('imv', 'imv'), ('Ristretto Image Viewer', 'ristretto'), ('Nouvelle fenêtre privée', '/usr/bin/vivaldi-stable'), ('Nouvelle fenêtre de navigation privée', 'brave'), ('Image Viewer', 'eog')}, 'png': [('Nouvelle fenêtre de navigation privée', 'brave'), ('Nouvelle fenêtre de navigation privée', '/usr/bin/chromium'), ('Feh', 'feh'), ('Éditeur d’image GIMP', 'gimp-2.10'), ('imv-dir', 'imv-dir'), ('imv', 'imv'), ('Image Viewer', 'eog'), ('nomacs', 'nomacs'), ('Ristretto Image Viewer', 'ristretto'), ('Swappy', 'swappy'), ('Nouvelle fenêtre privée', '/usr/bin/vivaldi-stable')], 'webp': [('Nouvelle fenêtre de navigation privée', 'brave'), ('Nouvelle fenêtre de navigation privée', '/usr/bin/chromium'), ('Feh', 'feh'), ('Éditeur d’image GIMP', 'gimp-2.10'), ('Image Viewer', 'eog'), ('nomacs', 'nomacs'), ('Nouvelle fenêtre privée', '/usr/bin/vivaldi-stable')]}
+2023-07-15 21:44:45,083 INFO: Color picker: imagemagick library found
+2023-07-15 21:44:45,085 INFO: Color picker/Wayland: grim package found
+2023-07-15 21:44:45,087 INFO: Color picker/Wayland: slurp package found
+2023-07-15 21:44:45,087 INFO: Pick color from screen feature enabled
+2023-07-15 21:44:45,087 INFO: Environment: {'send2trash': True, 'yaml': True, 'app_indicator': True, 'wm': 'sway'}
+2023-07-15 21:44:45,087 INFO: Alacritty config file: /home/tom/.config/alacritty/alacritty.yml
+2023-07-15 21:44:45,087 INFO: /home/tom/.Xresources file found

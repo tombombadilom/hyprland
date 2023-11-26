@@ -1,0 +1,43 @@
+    70.3ms (setup:799): 2023-08-03 11:46:29
+    70.4ms (setup:800): /usr/bin/pipx install Pillow
+    70.4ms (setup:801): pipx version is 1.2.0
+    70.5ms (setup:802): Default python interpreter is '/usr/bin/python'
+    71.0ms (package_name_from_spec:322): Determined package name: pillow
+    71.0ms (package_name_from_spec:323): Package name determined in 0.0s
+    71.5ms (run_subprocess:173): running /usr/bin/python -m venv --without-pip /home/tom/.local/pipx/venvs/pillow
+   105.4ms (run_subprocess:186): stdout:
+   105.5ms (run_subprocess:188): stderr:
+   105.6ms (run_subprocess:189): returncode: 0
+   105.8ms (run_subprocess:173): running /home/tom/.local/pipx/venvs/pillow/bin/python -c import sysconfig; print(sysconfig.get_path('purelib'))
+   118.0ms (run_subprocess:186): stdout: /home/tom/.local/pipx/venvs/pillow/lib/python3.11/site-packages
+   118.1ms (run_subprocess:189): returncode: 0
+   118.3ms (run_subprocess:173): running /home/tom/.local/pipx/shared/bin/python -c import sysconfig; print(sysconfig.get_path('purelib'))
+   129.6ms (run_subprocess:186): stdout: /home/tom/.local/pipx/shared/lib/python3.11/site-packages
+   129.7ms (run_subprocess:189): returncode: 0
+   129.9ms (run_subprocess:173): running /home/tom/.local/pipx/venvs/pillow/bin/python --version
+   134.3ms (run_subprocess:186): stdout: Python 3.11.3
+   134.4ms (run_subprocess:188): stderr:
+   134.4ms (run_subprocess:189): returncode: 0
+   134.6ms (_parsed_package_to_package_or_url:147): cleaned package spec: pillow
+   135.2ms (run_subprocess:173): running /home/tom/.local/pipx/venvs/pillow/bin/python -m pip install pillow
+  1191.7ms (run_subprocess:189): returncode: 0
+  1192.1ms (run_subprocess:173): running <fetch_info_in_venv commands>
+  1209.6ms (run_subprocess:186): stdout: {"sys_path": ["/usr/lib/python311.zip", "/usr/lib/python3.11", "/usr/lib/python3.11/lib-dynload", "/home/tom/.local/pipx/venvs/pillow/lib/python3.11/site-packages", "/home/tom/.local/pipx/shared/lib/python3.11/site-packages"], "python_version": "3.11.3", "environment": {"implementation_name": "cpython", "implementation_version": "3.11.3", "os_name": "posix", "platform_machine": "x86_64", "platform_release": "6.4.7-arch1-2", "platform_system": "Linux", "platform_version": "#1 SMP PREEMPT_DYNAMIC Mon, 31 Jul 2023 11:41:04 +0000", "python_full_version": "3.11.3", "platform_python_implementation": "CPython", "python_version": "3.11", "sys_platform": "linux"}}
+  1209.6ms (run_subprocess:189): returncode: 0
+  1214.0ms (get_venv_metadata_for_package:316): get_venv_metadata_for_package: 22ms
+  1214.0ms (_parsed_package_to_package_or_url:147): cleaned package spec: pillow
+  1214.2ms (rmdir:55): removing directory /home/tom/.local/pipx/venvs/pillow
+  1217.9ms (cli:866): PipxError: No apps associated with package pillow or its dependencies. If you are attempting to install a library, pipx should not be used. Consider using pip or a similar tool instead.
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/site-packages/pipx/main.py", line 863, in cli
+    return run_pipx_command(parsed_pipx_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/pipx/main.py", line 214, in run_pipx_command
+    return commands.install(
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/pipx/commands/install.py", line 69, in install
+    run_post_install_actions(
+  File "/usr/lib/python3.11/site-packages/pipx/commands/common.py", line 357, in run_post_install_actions
+    raise PipxError(
+pipx.util.PipxError: No apps associated with package pillow or its dependencies. If you are attempting to install a library, pipx should not be used. Consider using pip or a similar tool instead.
+  1218.4ms (cli:874): pipx finished.
