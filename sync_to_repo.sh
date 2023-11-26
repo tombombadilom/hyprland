@@ -19,81 +19,49 @@ dest_local_dir="$scripts_dir/.local"
 # Identify the Linux distribution and install the appropriate packages
 if grep -qEi "(debian|ubuntu)" /etc/*release; then
   os="Debian/Ubuntu"
+  missing_packages=("rsync" "git" "shellcheck")
+  package_manager="apt"
 elif [ -f /etc/arch-release ]; then
   os="Arch"
+  missing_packages=("rsync" "git" "shellcheck")
+  package_manager="yay"
 else
   os="Unknown"
 fi
 
-# Load messages from the messages.sh file
-# shellcheck source=./messages.sh
-# shellcheck disable=SC1091
-source "$scripts_dir/messages.sh"
-
-# Detect the user's language
-if [ -z "${LANG}" ]; then
-  echo "The system language was not detected."
-  echo "Please enter the locale code (e.g., en_US.UTF-8, fr_FR.UTF-8):"
-  read -r user_locale
-  export LANG="$user_locale"
-  user_lang=${user_locale:0:2}
-  export user_lang="$user_lang"
-  # Update configuration files for Sway, Hyprland, or Wayland
-  # Replace paths and commands with the appropriate ones for your system
-  if command -v sway &>/dev/null; then
-    # For Sway, update the configuration file
-    echo "export LANG=$user_locale" >>"$config_dir/sway/config"
-    # You may need to restart Sway for the changes to take effect
-  fi
-  if command -v hyprland &>/dev/null; then
-    # For Hyprland, update the configuration file
-    echo "export LANG=$user_locale" >>"$config_dir/hyprland/hyprland.conf"
-    # You may need to restart Hyprland for the changes to take effect
-  fi
-  # Add similar commands for Wayland or other window managers here
-else
-  user_lang=${LANG:0:2}
-  export user_lang="$user_lang"
-fi
-
-# Check if rsync, shellcheck, git are installed, install missing packages if necessary
-missing_packages=()
-if ! command -v rsync &>/dev/null; then
-  missing_packages+=("rsync")
-fi
-if ! command -v git &>/dev/null; then
-  missing_packages+=("git")
-fi
-if ! command -v shellcheck &>/dev/null; then
-  missing_packages+=("shellcheck")
-fi
-
 # Install missing packages if prompted
-if [ ${missing_packages[@]} -gt 0 ]; then
-  get_message "missing_packages"
-  read -p "$(get_message "missing_packages")"
-  read -p "$(get_message "install_missing_packages")" -n 1 -r
+if [ ${#missing_packages[@]} -gt 0 ]; then
+  read -p "Some packages are missing. Do you want to install them? (Y/n)" -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     if [ "$os" == "Debian/Ubuntu" ]; then
-      sudo apt install -y "${created_dirs[@]}"
+      sudo "$package_manager" install -y "${missing_packages[@]}"
     elif [ "$os" == "Arch" ]; then
-      yay -Syu "${created_dirs[@]}"
+      yay -Syu "${missing_packages[@]}"
     fi
   fi
 fi
 
 # Sync directories in $dest_dir and $dest_local_dir
-for dir in "${dirs[@]}"; do
+for dir in "sway" "hyprland"; do
   mkdir -p "$dest_dir/$dir"
   mkdir -p "$dest_local_dir/$dir"
-  changed_files=$(find "$config_dir/$dir" -type f -newermt "@$last_git_update")
-  if [ -n "$changed_files" ]; then
+  changed_files=$(rsync -n --update "$config_dir/$dir/" "$dest_dir/$dir/" | wc -l)
+  if [ "$changed_files" -gt 0 ]; then
     echo "Modifications found in $dir"
     rsync -a "$config_dir/$dir/" "$dest_dir/$dir/"
-    rsync -a "$local_dir/$dir/" "$dest_local_dir/$dir/"
+    rsync -a --exclude 'lib' "$local_dir/$dir/" "$dest_local_dir/$dir/"
   fi
 done
 
-# Display the synchronization completion message
-get_message "sync_completed"
+# Prompt to add new files or directories in $dest_local_dir/bin/
+new_files=()
+while read -r -d $'\0'; do
+  new_files+=("$REPLY")
+done < <(find "$dest_local_dir/bin/" -type f -not -path "$dest_local_dir/lib/*" -print0)
+
+if [[ ${#new_files[@]} -gt 0 ]]; then
+  rsync -a --exclude 'lib' --files-from=<(printf "%s\n" "${new_files[@]}") "$dest_local_dir/bin/" "$local_dir/"
+fi
+
+echo "Synchronization completed."
