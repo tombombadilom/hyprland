@@ -66,17 +66,32 @@ fi
 # Détecter le système d'exploitation
 os=""
 case $(grep -oP '(?<=^ID=).+' /etc/os-release) in
-  "ubuntu" | "debian" | "arch")
-    os=$BASH_REMATCH
-    ;;
+"ubuntu" | "debian" | "arch")
+  os=$BASH_REMATCH
+  ;;
 esac
 
 export os
 
-## Installer les packages manquants
-missing_packages=("conky-lua-archers" "dunst" "eww-wayland" "foot" "HybridBar" "micro" "nano" "gtk-3.0" "gtk-4.0" "light" "menus" "mpv" "nitrogen" "wal" "pamac" "paru-bin" "plank" "QMPlay2" "procps" "tint2
-"variety" "gtklock" "polybar" "waybar" "volumeicon" "swaync")
+# Charger les packages à partir du fichier packages.json
+required_packages=($(jq -r '.[] | select(.isArchDependant == false) | .name' packages.json))
+
+# Vérifier si les packages sont installés
+missing_packages=()
+for package in "${required_packages[@]}"; do
+  if ! dpkg -l | grep -q "$package"; then
+    missing_packages+=("$package")
+  fi
+done
+
+# Installer les packages manquants
+if [ ${#missing_packages[@]} -gt 0 ]; then
+  echo "Installation des packages manquants : ${missing_packages[*]}"
+  sudo apt install -y "${missing_packages[@]}"
+fi
+
 packages_to_install=()
+
 # Construire et installer les packages
 failed_packages=()
 
@@ -93,7 +108,7 @@ for package in "${missing_packages[@]}"; do
       git clone "$repo_url"
       # Effectuez les étapes d'installation supplémentaires spécifiques au package
       cd "$(basename "$repo_url" .git)"
-      cd $repo_url # prendre le dernier repertoire de l'url 
+      cd $repo_url # prendre le dernier repertoire de l'url
       ./configure
       make install
 
