@@ -178,8 +178,6 @@ chmod +x+w *.sh
 - **xorg-xrandr**: [https://gitlab.freedesktop.org/xorg/app/xrandr](https://gitlab.freedesktop.org/xorg/app/xrandr).
 - **yad**: [https://github.com/v1cont/yad](https://github.com/v1cont/yad)¹.
 
-He ordenado los elementos según el nombre del proyecto, ignorando los prefijos comunes como "the", "a", etc.
-
 - (1) Arch Linux - Package Search. https://archlinux.org/packages/.
 - (2) Arch Linux · GitHub. https://github.com/orgs/archlinux/repositories.
 - (3) arch-linux-packages · GitHub Topics · GitHub. https://github.com/topics/arch-linux-packages.
