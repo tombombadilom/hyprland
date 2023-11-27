@@ -20,7 +20,95 @@ chmod +x+w *.sh
 ./first_install.sh
 ```
 
+## Packet equivalence table
+
+| **Nom**                     | **URL Github**                                                            | **Debian Bookworm** | **Ubuntu Luna/Mantic** |
+| --------------------------- | ------------------------------------------------------------------------- | ------------------- | ---------------------- |
+| anyrun-git                  | [Github](https://github.com/anyrun/anyrun-git)                            | ❌                  | ❌                     |
+| anytype                     | [Github](https://github.com/anytypeio/anytype)                            | ❌                  | ❌                     |
+| archlinux-betterlockscreen  | [Github](https://github.com/pavanjadhaw/archlinux-betterlockscreen)       | ❌                  | ❌                     |
+| archlinux-logout            | [Github](https://github.com/Thermi/ArchLinux-Logout)                      | ❌                  | ❌                     |
+| azote                       | [Github](https://github.com/nwg-piotr/azote)                              | ✅ ¹                | ✅ ¹                   |
+| bc                          | [Github](https://github.com/gavinhoward/bc)                               | ✅ ²                | ✅ ²                   |
+| blueberry                   | [Github](https://github.com/linuxmint/blueberry)                          | ✅ ³                | ✅ ³                   |
+| bluez                       | [Github](https://github.com/bluez/bluez)                                  | ✅ ⁴                | ✅ ⁴                   |
+| boost                       | [Github](https://github.com/boostorg/boost)                               | ✅ ⁵                | ✅ ⁵                   |
+| boost-libs                  | [Github](https://github.com/boostorg/boost)                               | ✅ ⁵                | ✅ ⁵                   |
+| cava                        | [Github](https://github.com/karlstav/cava)                                | ❌                  | ❌                     |
+| copyq                       | [Github](https://github.com/hluk/CopyQ)                                   | ✅ ⁶                | ✅ ⁶                   |
+| coreutils                   | [Github](https://github.com/coreutils/coreutils)                          | ✅ ⁷                | ✅ ⁷                   |
+| dunst                       | [Github](https://github.com/dunst-project/dunst)                          | ✅ ⁸                | ✅ ⁸                   |
+| findutils                   | [Github](https://github.com/gnulib/findutils)                             | ✅ ⁹                | ✅ ⁹                   |
+| fish                        | [Github](https://github.com/fish-shell/fish-shell)                        | ✅ [^10^]           | ✅ [^10^]              |
+| fuzzel                      | [Github](https://github.com/AlxHnr/fuzzel)                                | ❌                  | ❌                     |
+| fzf                         | [Github](https://github.com/junegunn/fzf)                                 | ✅ ¹¹               | ✅ ¹¹                  |
+| gawk                        | [Github](https://github.com/onetrueawk/awk)                               | ✅ ¹²               | ✅ ¹²                  |
+| gnome-control-center        | [Github](https://github.com/GNOME/gnome-control-center)                   | ✅                  | ✅                     |
+| gojq                        | [Github](https://github.com/itchyny/gojq)                                 | ❌                  | ❌                     |
+| hyprland                    | [Github](https://github.com/nwg-piotr/hyprland)                           | ❌                  | ❌                     |
+| ibus                        | [Github](https://github.com/ibus/ibus)                                    | ✅                  | ✅                     |
+| imagemagick                 | [Github](https://github.com/ImageMagick/ImageMagick)                      | ✅                  | ✅                     |
+| libqalculate                | [Github](https://github.com/Qalculate/libqalculate)                       | ✅                  | ✅                     |
+| light                       | [Github](https://github.com/haikarainen/light)                            | ✅                  | ✅                     |
+| mako                        | [Github](https://github.com/emersion/mako)                                | ✅                  | ✅                     |
+| ncmpcpp                     | [Github](https://github.com/ncmpcpp/ncmpcpp)                              | ✅                  | ✅                     |
+| networkmanager              | [Github](https://github.com/NetworkManager/NetworkManager)                | ✅                  | ✅                     |
+| network-manager-applet      | [Github](https://github.com/NetworkManager/network-manager-applet)        | ✅                  |
+| network-manager-applet      | [Github](https://github.com/NetworkManager/network-manager-applet)        | ❌                  | ❌                     |
+| nlohmann-json               | [Github](https://github.com/nlohmann/json)                                | ✅ ¹                | ✅ ¹                   |
+| nwg-bar-bin                 | [Github](https://github.com/nwg-piotr/nwg-bar)                            | ❌                  | ❌                     |
+| nwg-displays                | [Github](https://github.com/nwg-piotr/nwg-displays)                       | ❌                  | ❌                     |
+| nwg-dock-bin                | [Github](https://github.com/nwg-piotr/nwg-dock)                           | ❌                  | ❌                     |
+| nwg-dock-hyprland-bin       | [Github](https://github.com/nwg-piotr/nwg-dock)                           | ❌                  | ❌                     |
+| nwg-drawer-bin              | [Github](https://github.com/nwg-piotr/nwg-drawer)                         | ❌                  | ❌                     |
+| nwg-look-bin                | [Github](https://github.com/nwg-piotr/nwg-look)                           | ❌                  | ❌                     |
+| nwg-panel                   | [Github](https://github.com/nwg-piotr/nwg-panel)                          | ❌                  | ❌                     |
+| pavucontrol                 | [Github](https://github.com/pulseaudio/pavucontrol)                       | ✅ ²                | ✅ ²                   |
+| plasma-browser-integration  | [Github](https://github.com/KDE/plasma-browser-integration)               | ✅ ³                | ✅ ³                   |
+| playerctl                   | [Github](https://github.com/altdesktop/playerctl)                         | ✅ ⁴                | ✅ ⁴                   |
+| procps                      | [Github](https://gitlab.com/procps-ng/procps)                             | ✅ ⁵                | ✅ ⁵                   |
+| python-build                | [Github](https://github.com/pyenv/pyenv/tree/master/plugins/python-build) | ✅ ⁶                | ✅ ⁶                   |
+| python-desktop-entry-lib    | [Github](https://github.com/solus-project/python-desktop-entry)           | ❌                  | ❌                     |
+| python-pillow               | [Github](https://github.com/python-pillow/Pillow)                         | ✅ ⁷                | ✅ ⁷                   |
+| python-poetry               | [Github](https://github.com/python-poetry/poetry)                         | ✅ ⁸                | ✅ ⁸                   |
+| python-pywal                | [Github](https://github.com/dylanaraps/pywal)                             | ✅ ⁹                | ✅ ⁹                   |
+| ripgrep                     | [Github](https://github.com/BurntSushi/ripgrep)                           | ✅ [^10^]           | ✅ [^10^]              |
+| slurp                       | [Github](https://github.com/emersion/slurp)                               | ❌                  | ❌                     |
+| socat                       | [Github](https://github.com/craSH/socat)                                  | ✅ ¹¹               | ✅ ¹¹                  |
+| sox                         | [Github](https://github.com/chirlu/sox)                                   | ✅ ¹²               | ✅ ¹²                  |
+| starship                    | [Github](https://github.com/starship/starship)                            | ✅                  | ✅                     |
+| sway                        | [Github](https://github.com/swaywm/sway)                                  | ✅                  | ✅                     |
+| swaybg                      | [Github](https://github.com/swaywm/swaybg)                                | ✅                  | ✅                     |
+| swayidle                    | [Github](https://github.com/swaywm/swayidle)                              | ✅                  | ✅                     |
+| ttf-jetbrains-mono          | [Github](https://github.com/JetBrains/JetBrainsMono)                      | ✅                  | ✅                     |
+| udev                        | [Github](https://github.com/systemd/systemd)                              | ✅                  | ✅                     |
+| upower                      | [Github](https://gitlab.freedesktop.org/upower/upower)                    | ✅                  | ✅                     |
+| util-linux                  | [Github](https://github.com/karelzak/util-linux)                          | ✅ ¹                | ✅ ¹                   |
+| waybar                      | [Github](https://github.com/Alexays/Waybar)                               | ❌                  | ❌                     |
+| wayland                     | [Github](https://github.com/wayland-project/wayland)                      | ✅ ²                | ✅ ²                   |
+| wget                        | [Github](https://github.com/mirror/wget)                                  | ✅ ³                | ✅ ³                   |
+| wireplumber                 | [Github](https://github.com/wireplumber/wireplumber)                      | ❌                  | ❌                     |
+| wl-clipboard                | [Github](https://github.com/bugaevc/wl-clipboard)                         | ❌                  | ❌                     |
+| wlroots                     | [Github](https://github.com/swaywm/wlroots)                               | ✅ ⁴                | ✅ ⁴                   |
+| xdg-desktop-portal-hyprland | [Github](https://github.com/nwg-piotr/xdg-desktop-portal-hyprland)        | ❌                  | ❌                     |
+| xdg-desktop-portal-wlr      | [Github](https://github.com/emersion/xdg-desktop-portal-wlr)              | ❌                  | ❌                     |
+| xorg-xrandr                 | [Github](https://gitlab.freedesktop.org/xorg/app/xrandr)                  | ✅ ⁵                | ✅ ⁵                   |
+| yad                         | [Github](https://github.com/v1cont/yad)                                   | ❌                  | ❌                     |
+
+**Arch Linux** :
+
+1. [Arch Linux - Package Search]
+2. [Create A List Of Installed Packages And Install Them Later ... - OSTechNix]
+3. [Arch Linux Forums - Generating a List of Installed Packages / Newbie]
+4. [List of applications - ArchWiki]
+5. [pacman/Tips and tricks - ArchWiki]
+
+**Debian** : 6. [Debian 12 "bookworm" complete sources.list · GitHub] 7. [undefined] 8. [undefined] 9. [undefined]
+
+**Ubuntu** : 10. [LLVM Debian/Ubuntu packages] 11. [undefined] 12. [undefined]
+
 ### Packages URL and References
+
 - **anyrun-git**: No project found.
 - **anytype**: No project found.
 - **archlinux-betterlockscreen**: [https://github.com/pavanjadhaw/betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen)⁴.
