@@ -37,12 +37,6 @@ if [ -z "${LANG}" ]; then
 else
   user_lang=${LANG:0:2}
   export user_lang="$user_lang"
-fi
-# Installez le package `make` si nécessaire
-if ! dpkg -l | grep -q "make"; then
-  echo "make is not installed. Installing..."
-  sudo apt install -y make
-fi
 
 # First load messages from the messages.sh file
 # shellcheck source=./messages.sh
@@ -54,17 +48,16 @@ mkdir -p "$local_dir/bin"
 
 # Vérifie si rsync, git et shellcheck sont installeés
 # Si non, installez-les
-if ! command -v rsync &>/dev/null; then
-  echo "rsync is not installed. Installing..."
-  sudo apt install -y rsync
-fi
-if ! command -v git &>/dev/null; then
-  echo "git is not installed. Installing..."
-  sudo apt install -y git
-fi
-if ! command -v shellcheck &>/dev/null; then
-  echo "shellcheck is not installed. Installing..."
-  sudo apt install -y shellcheck
+required_packages=("make" "rsync" "git" "shellcheck")
+missing_packages=()
+for package in "${required_packages[@]}"; do
+  if ! dpkg -l | grep -q "$package"; then
+    missing_packages+=("$package")
+  fi
+done
+if [ ${#missing_packages[@]} -gt 0 ]; then
+  echo "Installing missing packages: ${missing_packages[*]}"
+  sudo apt install -y "${missing_packages[@]}"
 fi
 
 # Détecte le système d'exploitation
@@ -76,11 +69,10 @@ case $(grep -oP '(?<=^ID=).+' /etc/os-release) in
 esac
 export os
 ## Install missing packages
-
-
 missing_packages=("conky-lua-archers" "dunst" "eww-wayland" "foot" "HybridBar" "micro" "nano" "gtk-3.0" "gtk-4.0" "light" "menus" "mpv" "nitrogen" "wal" "pamac" "paru-bin" "plank" "QMPlay2" "procps" "tint2" "variety" "gtklock" "polybar" "waybar" "volumeicon" "swaync")
 packages_to_install=()
-
+# Build and install packages
+failed_packages=()
 for package in "${missing_packages[@]}"; do
   if ! dpkg -l | grep -q "$package"; then
     echo "$package is not installed. Installing..."
@@ -93,8 +85,12 @@ for package in "${missing_packages[@]}"; do
       git clone "$repo_url"
       # Effectuez les étapes d'installation supplémentaires spécifiques au package
       cd "$(basename "$repo_url" .git)"
+      cd $repo_url # prendre le dernier repertoire de l'url 
+      ./configure
       make install
-      cd ..
+      if ! make install; then
+        failed_packages+=("Package Name")
+      fi
       # Ajoutez le package à la liste des packages à supprimer
       packages_to_install+=("$package")
     fi
@@ -127,5 +123,12 @@ echo "Cleaning up..."
 rm -rf "$HOME/git_config"
 
 # Display completion message
-echo "Installation completed successfully!"
-#   
+cho "Installation completed successfully!"
+
+# Check for failed packages
+if [ ${#failed_packages[@]} -gt 0 ]; then
+  echo "The following packages failed to build or install:"
+  for failed_package in "${failed_packages[@]}"; do
+    echo "$failed_package"
+  done
+fi
