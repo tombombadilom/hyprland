@@ -21,11 +21,6 @@ chmod +x+w *.sh
 ```
 
 ### Packages URL and References
-
-Here are the URLs of the projects on Github.com for the packages you listed:
-
-Aquí tienes la lista ordenada alfabéticamente:
-
 - **anyrun-git**: No project found.
 - **anytype**: No project found.
 - **archlinux-betterlockscreen**: [https://github.com/pavanjadhaw/betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen)⁴.
