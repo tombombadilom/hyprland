@@ -122,8 +122,27 @@ sudo apt install hyprland
 ### Packages URL and References
 
 - **anyrun-git**: No project found.
-- **anytype**: No project found.
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+sudo apt install libgtk-3-dev libgdk-3-dev libpango1.0-dev libcairo2-dev libgdk-pixbuf2.0-dev libglib2.0-dev
+git clone https://github.com/Kirottu/anyrun.git
+cd anyrun
+cargo build --release
+cargo install --path anyrun/
+mkdir -p ~/.config/anyrun/plugins
+cp target/release/*.so ~/.config/anyrun/plugins
+cp examples/config.ron ~/.config/anyrun/config.ron
+```
+
 - **archlinux-betterlockscreen**: [https://github.com/pavanjadhaw/betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen)⁴.
+```bash
+wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | sudo bash -s system
+
+wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | bash -s user
+
+```
 - **archlinux-logout**: No project found.
 - **azote**: [https://github.com/nwg-piotr/azote](https://github.com/nwg-piotr/azote)⁵.
 - **bc**: [https://github.com/gavinhoward/bc](https://github.com/gavinhoward/bc).
@@ -145,6 +164,7 @@ sudo apt install hyprland
 - **ibus**: [https://github.com/ibus/ibus](https://github.com/ibus/ibus)⁵.
 - **imagemagick**: [https://github.com/ImageMagick/ImageMagick](https://github.com/ImageMagick/ImageMagick).
 - **libqalculate**: [https://github.com/Qalculate/libqalculate](https://github.com/Qalculate/libqalculate).
+- **libwlroots-dev**: [https://gitlab.freedesktop.org/xorg/lib/libxcb](https://gitlab.freedesktop.org/xorg/lib/libxcb).
 - **light**: [https://github.com/haikarainen/light](https://github.com/haikarainen/light).
 - **ncmpcpp**: [https://github.com/ncmpcpp/ncmpcpp](https://github.com/ncmpcpp/ncmpcpp)¹.
 - **networkmanager**: [https://gitlab.freedesktop.org/NetworkManager/NetworkManager](https://gitlab.freedesktop.org/NetworkManager/NetworkManager).
