@@ -1,82 +1,352 @@
 [
-    "anytype",
-    "anyrun-git",
-    "ncmpcpp",
-    "slurp",
-    "gojq",
-    "archlinux-betterlockscreen",
-    "archlinux-logout",
-    "azote",
-    "cava",
-    "copyq",
-    "nwg-bar-bin",
-    "nwg-displays",
-    "nwg-dock-bin",
-    "nwg-dock-hyprland-bin",
-    "nwg-drawer-bin",
-    "nwg-look-bin",
-    "nwg-panel",
-    "python-pywal",
-    "python-desktop-entry-lib",
-    "python-poetry",
-    "python-build",
-    "python-pillow",
-    "bc",
-    "blueberry",
-    "bluez",
-    "boost",
-    "boost-libs",
-    "coreutils",
-    "dunst",
-    "findutils",
-    "fish",
-    "fuzzel",
-    "fzf",
-    "gawk",
-    "gnome-control-center",
-    "ibus",
-    "imagemagick",
-    "libqalculate",
-    "light",
-    "networkmanager",
-    "network-manager-applet",
-    "nlohmann-json",
-    "pavucontrol",
-    "plasma-browser-integration",
-    "playerctl",
-    "procps",
-    "ripgrep",
-    "socat",
-    "sox",
-    "starship",
-    "swaybg",
-    "swayidle",
-    "ttf-jetbrains-mono",
-    "udev",
-    "upower",
-    "util-linux",
-    "xorg-xrandr",
-    "wget",
-    "wireplumber",
-    "wl-clipboard",
-    "yad",
-    "ttf-material-symbols-git",
-    "woff2-material-symbols-git",
-    "material-black-colors-theme",
-    "gtk-theme-material-black",
-    "flat-remix",
-    "cava",
-    "geticons",
-    "gojq",
-    "gtklock",
-    "gtklock-playerctl-module",
-    "gtklock-powerbar-module",
-    "gtklock-userinfo-module",
-    "hyprland",
-    "python-material-color-utilities",
-    "swww",
-    "ttf-material-symbols",
-    "xdg-desktop-portal-hyprland",
-    "waybar-hyprland",
-    "wlogout"
-  ]
+  {
+    "name": "anytype",
+    "URL": null,
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "anyrun-git",
+    "URL": null,
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "ncmpcpp",
+    "URL": "https://github.com/ncmpcpp/ncmpcpp",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "archlinux-betterlockscreen",
+    "URL": "https://github.com/pavanjadhaw/betterlockscreen",
+    "isArchDependant": true,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "archlinux-logout",
+    "URL": "https://github.com/pavanjadhaw/archlinux-logout",
+    "isArchDependant": true,
+    "alternatives": {
+      "debian": {
+        "name": "gtk-logout",
+        "URL": "https://github.com/pavanjadhaw/gtk-logout",
+        "isDebianDependant": false
+      },
+      "ubuntu": {
+        "name": "gtk-logout",
+        "URL": "https://github.com/pavanjadhaw/gtk-logout",
+        "isDebianDependant": false
+      }
+    }
+  },
+  {
+    "name": "azote",
+    "URL": "https://github.com/nwg-piotr/azote",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "cava",
+    "URL": "https://github.com/karlstav/cava",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "copyq",
+    "URL": "https://github.com/hluk/CopyQ",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "nwg-bar-bin",
+    "URL": "https://github.com/nwg-piotr/nwg-bar",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "nwg-displays",
+    "URL": "https://github.com/nwg-piotr/nwg-displays",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "nwg-dock-bin",
+    "URL": "https://github.com/nwg-piotr/nwg-dock",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "nwg-dock-hyprland-bin",
+    "URL": "https://github.com/nwg-piotr/nwg-dock",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "nwg-look-bin",
+    "URL": "https://github.com/nwg-piotr/nwg-look",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "nwg-panel",
+    "URL": "https://github.com/nwg-piotr/nwg-panel",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "python-pywal",
+    "URL": "https://github.com/dylanaraps/pywal",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "python-desktop-entry-lib",
+    "URL": "https://github.com/solus-project/desktop-file-utils",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "python-poetry",
+    "URL": "https://github.com/python-poetry/poetry",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "python-build",
+    "URL": "https://github.com/pyenv/pyenv/tree/master/plugins/python-build",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "python-pillow",
+    "URL": "https://github.com/python-pillow/Pillow",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "bc",
+    "URL": "https://github.com/gavinhoward/bc",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "blueberry",
+    "URL": "https://github.com/linuxmint/blueberry",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "bluez",
+    "URL": "https://git.kernel.org/pub/scm/bluetooth/bluez.git",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "boost",
+    "URL": "https://github.com/boostorg/boost",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "boost-libs",
+    "URL": "https://github.com/boostorg/boost",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "coreutils",
+    "URL": "https://github.com/coreutils/coreutils",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "dunst",
+    "URL": "https://github.com/dunst-project/dunst",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "findutils",
+    "URL": "https://github.com/gnulib-modules/findutils",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "fish",
+    "URL": "https://github.com/fish-shell/fish-shell",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "fuzzel",
+    "URL": null,
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "fzf",
+    "URL": "https://github.com/junegunn/fzf",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "gawk",
+    "URL": "https://git.savannah.gnu.org/cgit/gawk.git",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "gnome-control-center",
+    "URL": "https://gitlab.gnome.org/GNOME/gnome-control-center",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "ibus",
+    "URL": "https://github.com/ibus/ibus",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "imagemagick",
+    "URL": "https://github.com/ImageMagick/ImageMagick",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "libqalculate",
+    "URL": "https://github.com/Qalculate/libqalculate",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "light",
+    "URL": "https://github.com/haikarainen/light",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "networkmanager",
+    "URL": "https://gitlab.freedesktop.org/NetworkManager/NetworkManager",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  },
+  {
+    "name": "network-manager-applet",
+    "URL": "https://gitlab.gnome.org/GNOME/network-manager-applet",
+    "isArchDependant": false,
+    "alternatives": {
+      "debian": {},
+      "ubuntu": {}
+    }
+  }
+]
