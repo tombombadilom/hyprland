@@ -97,22 +97,27 @@ chmod +x+w *.sh
 
 **Arch Linux** :
 
-1. [Arch Linux - Package Search]
-2. [Create A List Of Installed Packages And Install Them Later ... - OSTechNix]
-3. [Arch Linux Forums - Generating a List of Installed Packages / Newbie]
-4. [List of applications - ArchWiki]
-5. [pacman/Tips and tricks - ArchWiki]
+- 1. [Arch Linux - Package Search]
+- 2. [Create A List Of Installed Packages And Install Them Later ... - OSTechNix]
+- 3. [Arch Linux Forums - Generating a List of Installed Packages / Newbie]
+- 4. [List of applications - ArchWiki]
+- 5. [pacman/Tips and tricks - ArchWiki]
 
-**Debian** : 
-6. [Debian 12 "bookworm" complete sources.list · GitHub] 
-7. [undefined] 
-8. [undefined] 
-9. [undefined]
+**Debian** :
 
-**Ubuntu** : 
-10. [LLVM Debian/Ubuntu packages] 
-11. [undefined] 
-12. [undefined]
+- 6. [Debian 12 "bookworm" complete sources.list · GitHub]
+- 7. [Hyprland on Debian 12](https://software.opensuse.org/download.html?project=home%3ASunderland93%3Ahyprland-debian&package=hyprland)
+
+```bash
+echo 'deb http://download.opensuse.org/repositories/home:/Sunderland93:/hyprland-debian/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/home:Sunderland93:hyprland-debian.list
+curl -fsSL https://download.opensuse.org/repositories/home:Sunderland93:hyprland-debian/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_Sunderland93_hyprland-debian.gpg > /dev/null
+sudo apt update
+sudo apt install hyprland
+```
+
+**Ubuntu** :
+
+- 8. [LLVM Debian/Ubuntu packages]
 
 ### Packages URL and References
 
