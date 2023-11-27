@@ -103,9 +103,16 @@ chmod +x+w *.sh
 4. [List of applications - ArchWiki]
 5. [pacman/Tips and tricks - ArchWiki]
 
-**Debian** : 6. [Debian 12 "bookworm" complete sources.list · GitHub] 7. [undefined] 8. [undefined] 9. [undefined]
+**Debian** : 
+6. [Debian 12 "bookworm" complete sources.list · GitHub] 
+7. [undefined] 
+8. [undefined] 
+9. [undefined]
 
-**Ubuntu** : 10. [LLVM Debian/Ubuntu packages] 11. [undefined] 12. [undefined]
+**Ubuntu** : 
+10. [LLVM Debian/Ubuntu packages] 
+11. [undefined] 
+12. [undefined]
 
 ### Packages URL and References
 
