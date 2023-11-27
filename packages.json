@@ -126,6 +126,12 @@
     "alternatives": { "debian": {}, "ubuntu": {} }
   },
   {
+    "name": "hyprland",
+    "URL": "https://aur.archlinux.org/packages/hyprland/",
+    "isArchDependant": false,
+    "alternatives": { "debian": {}, "ubuntu": {} }
+  },
+  {
     "name": "ibus",
     "URL": "https://aur.archlinux.org/packages/ibus/",
     "isArchDependant": false,
@@ -146,6 +152,12 @@
   {
     "name": "light",
     "URL": "https://aur.archlinux.org/packages/light/",
+    "isArchDependant": false,
+    "alternatives": { "debian": {}, "ubuntu": {} }
+  },
+  {
+    "name": "mako",
+    "URL": "https://aur.archlinux.org/packages/mako/",
     "isArchDependant": false,
     "alternatives": { "debian": {}, "ubuntu": {} }
   },
@@ -300,6 +312,12 @@
     "alternatives": { "debian": {}, "ubuntu": {} }
   },
   {
+    "name": "sway",
+    "URL": "https://aur.archlinux.org/packages/sway/",
+    "isArchDependant": false,
+    "alternatives": { "debian": {}, "ubuntu": {} }
+  },
+  {
     "name": "swaybg",
     "URL": "https://aur.archlinux.org/packages/swaybg/",
     "isArchDependant": false,
@@ -336,6 +354,18 @@
     "alternatives": { "debian": {}, "ubuntu": {} }
   },
   {
+    "name": "waybar",
+    "URL": "https://aur.archlinux.org/packages/waybar/",
+    "isArchDependant": false,
+    "alternatives": { "debian": {}, "ubuntu": {} }
+  },
+  {
+    "name": "wayland",
+    "URL": "https://aur.archlinux.org/packages/wayland/",
+    "isArchDependant": false,
+    "alternatives": { "debian": {}, "ubuntu": {} }
+  },
+  {
     "name": "wget",
     "URL": "https://aur.archlinux.org/packages/wget/",
     "isArchDependant": false,
@@ -350,6 +380,24 @@
   {
     "name": "wl-clipboard",
     "URL": "https://aur.archlinux.org/packages/wl-clipboard/",
+    "isArchDependant": false,
+    "alternatives": { "debian": {}, "ubuntu": {} }
+  },
+  {
+    "name": "wlroots",
+    "URL": "https://aur.archlinux.org/packages/wlroots/",
+    "isArchDependant": false,
+    "alternatives": { "debian": {}, "ubuntu": {} }
+  },
+  {
+    "name": "xdg-desktop-portal-hyprland",
+    "URL": "https://aur.archlinux.org/packages/xdg-desktop-portal-hyprland/",
+    "isArchDependant": false,
+    "alternatives": { "debian": {}, "ubuntu": {} }
+  },
+  {
+    "name": "xdg-desktop-portal-wlr",
+    "URL": "https://aur.archlinux.org/packages/xdg-desktop-portal-wlr/",
     "isArchDependant": false,
     "alternatives": { "debian": {}, "ubuntu": {} }
   },
