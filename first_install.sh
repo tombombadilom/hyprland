@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-# Script shell to install sway, hyprland, and ewww
+# Script shell pour installer sway, hyprland et ewww
 
-# Usage: cd $HOME/git_config && chmod +x+w first_install.sh && ./first_install.sh
+# Usage : cd $HOME/git_config && chmod +x+w first_install.sh && ./first_install.sh
 
-# Dependencies: git, rsync, shellcheck
+# Dépendances : git, rsync, shellcheck
 
-# Source and target configuration folders
+# Répertoires source et cible de configuration
 export config_dir="$HOME/.config"
 export local_dir="$HOME/.local"
 export scripts="$(dirname "$0")"
@@ -15,8 +15,8 @@ export local_source_dir="$scripts/.local"
 
 # Détecter la langue de l'utilisateur
 if [ -z "${LANG}" ]; then
-  echo "The system language was not detected."
-  echo "Please enter the locale code (e.g., en_US.UTF-8, fr_FR.UTF-8):"
+  echo "La langue du système n'a pas été détectée."
+  echo "Veuillez entrer le code de locale (ex: en_US.UTF-8, fr_FR.UTF-8) :"
   read -r user_locale
   export LANG="$user_locale"
   user_lang=${user_locale:0:2}
@@ -24,12 +24,12 @@ if [ -z "${LANG}" ]; then
   # Mettre à jour les fichiers de configuration pour Sway, Hyprland, ou Wayland
   # Remplacer les chemins et les commandes par ceux appropriés pour votre système
   if command -v sway &>/dev/null; then
-    # Pour Sway, mettez à jour le fichier de configuration
+    # Pour Sway, mettre à jour le fichier de configuration
     echo "export LANG=$user_locale" >>~/.config/sway/config
     # Vous devrez peut-être redémarrer Sway pour que les changements prennent effet
   fi
   if command -v hyprland &>/dev/null; then
-    # Pour Hyprland, mettez à jour le fichier de configuration
+    # Pour Hyprland, mettre à jour le fichier de configuration
     echo "export LANG=$user_locale" >>~/.config/hyprland/hyprland.conf
     # Vous devrez peut-être redémarrer Hyprland pour que les changements prennent effet
   fi
@@ -37,49 +37,57 @@ if [ -z "${LANG}" ]; then
 else
   user_lang=${LANG:0:2}
   export user_lang="$user_lang"
+fi
 
-# First load messages from the messages.sh file
+# Charger les messages à partir du fichier messages.sh
 # shellcheck source=./messages.sh
 # shellcheck disable=SC1091
 source ./messages.sh
 
-# Crée le répertoire de destination s'il n'existe pas
+# Créer le répertoire de destination s'il n'existe pas
 mkdir -p "$local_dir/bin"
 
-# Vérifie si rsync, git et shellcheck sont installeés
-# Si non, installez-les
+# Vérifier si rsync, git et shellcheck sont installés
+# Sinon, les installer
 required_packages=("make" "rsync" "git" "shellcheck")
 missing_packages=()
+
 for package in "${required_packages[@]}"; do
   if ! dpkg -l | grep -q "$package"; then
     missing_packages+=("$package")
   fi
 done
+
 if [ ${#missing_packages[@]} -gt 0 ]; then
-  echo "Installing missing packages: ${missing_packages[*]}"
+  echo "Installation des packages manquants : ${missing_packages[*]}"
   sudo apt install -y "${missing_packages[@]}"
 fi
 
-# Détecte le système d'exploitation
+# Détecter le système d'exploitation
 os=""
 case $(grep -oP '(?<=^ID=).+' /etc/os-release) in
-  "ubuntu"|"debian"|"arch")
+  "ubuntu" | "debian" | "arch")
     os=$BASH_REMATCH
     ;;
 esac
+
 export os
-## Install missing packages
-missing_packages=("conky-lua-archers" "dunst" "eww-wayland" "foot" "HybridBar" "micro" "nano" "gtk-3.0" "gtk-4.0" "light" "menus" "mpv" "nitrogen" "wal" "pamac" "paru-bin" "plank" "QMPlay2" "procps" "tint2" "variety" "gtklock" "polybar" "waybar" "volumeicon" "swaync")
+
+## Installer les packages manquants
+missing_packages=("conky-lua-archers" "dunst" "eww-wayland" "foot" "HybridBar" "micro" "nano" "gtk-3.0" "gtk-4.0" "light" "menus" "mpv" "nitrogen" "wal" "pamac" "paru-bin" "plank" "QMPlay2" "procps" "tint2
+"variety" "gtklock" "polybar" "waybar" "volumeicon" "swaync")
 packages_to_install=()
-# Build and install packages
+# Construire et installer les packages
 failed_packages=()
+
 for package in "${missing_packages[@]}"; do
   if ! dpkg -l | grep -q "$package"; then
-    echo "$package is not installed. Installing..."
+    echo "$package n'est pas installé. Installation..."
     # Utilisez l'API GitHub pour rechercher le dépôt correspondant au package
     repo_url=$(curl -s "https://api.github.com/search/repositories?q=$package" | jq -r '.items[0].html_url')
+
     if [[ "$repo_url" == null ]]; then
-      echo "No repository found for $package."
+      echo "Aucun dépôt trouvé pour $package."
     else
       # Clonez le dépôt
       git clone "$repo_url"
@@ -88,46 +96,45 @@ for package in "${missing_packages[@]}"; do
       cd $repo_url # prendre le dernier repertoire de l'url 
       ./configure
       make install
+
       if ! make install; then
-        failed_packages+=("Package Name")
+        failed_packages+=("$package")
       fi
+
       # Ajoutez le package à la liste des packages à supprimer
       packages_to_install+=("$package")
     fi
   fi
 done
+
 # Supprimez les répertoires clonés
 for package in "${packages_to_install[@]}"; do
   if dpkg -l | grep -q "$package"; then
-    echo "Removing build directory for $package..."
+    echo "Suppression du répertoire de construction pour $package..."
     rm -rf "$package"
   fi
 done
 
-# Supprimez les répertoires clonés
-for package in "${packages_to_install[@]}"; do
-  rm -rf "$package"
-done
 # Install fonts if not already installed
 if ! fc-list | grep -q "FiraCode"; then
-  echo "FiraCode font is not installed. Installing..."
-  # Install FiraCode font
-  # Add the installation command here
+  echo "La police FiraCode n'est pas installée. Installation..."
+  # Installez la police FiraCode
+  # Ajoutez ici la commande d'installation
 fi
 
-# Additional configuration steps
-# Add any additional configuration steps here
+# Étapes de configuration supplémentaires
+# Ajoutez ici les étapes de configuration supplémentaires
 
-# Clean up
-echo "Cleaning up..."
+# Nettoyage
+echo "Nettoyage..."
 rm -rf "$HOME/git_config"
 
-# Display completion message
-cho "Installation completed successfully!"
+# Affichage du message de fin
+echo "Installation terminée avec succès!"
 
-# Check for failed packages
+# Vérification des packages en échec
 if [ ${#failed_packages[@]} -gt 0 ]; then
-  echo "The following packages failed to build or install:"
+  echo "Les packages suivants n'ont pas pu être construits ou installés :"
   for failed_package in "${failed_packages[@]}"; do
     echo "$failed_package"
   done
