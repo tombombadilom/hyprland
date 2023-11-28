@@ -200,6 +200,8 @@ git clone https://github.com/nwg-piotr/nwg-shell.git
 cd nwg-shell
 chmod +x setup.py
 sudo python3 setup.py install
+cd ../
+sudo rm -rf nwg-shell
 ```
 
 - **pavucontrol**: [https://freedesktop.org/software/pulseaudio/pavucontrol/](https://freedesktop.org/software/pulseaudio/pavucontrol/).
