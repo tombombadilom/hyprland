@@ -3,7 +3,8 @@
 ## Set scripts executables
 
 ```bashwg-look).
-cd git_config
+sudo git clone https://github.com/tombombadilom/hyprland.git hyprlnad
+cd hyprland
 sudo chmod +x+w message.sh sync_to_repo.sh sync_to_system.sh
 ```
 
@@ -13,8 +14,8 @@ sudo chmod +x+w message.sh sync_to_repo.sh sync_to_system.sh
 
 ```bash
 cd
-git clone https://github.com/tombombadilom/hyprland.git hyprland_config
-cd hyprland_config
+git clone https://github.com/tombombadilom/hyprland.git hyprland
+cd hyprland
 # hyprland Install
 chmod +x+w *.sh
 ./first_install.sh
