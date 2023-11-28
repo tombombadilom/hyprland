@@ -13,6 +13,8 @@ sudo chmod +x+w message.sh sync_to_repo.sh sync_to_system.sh
 ### First Install
 
 ```bash
+su -
+apt install -y vim sudo curl wget 
 cd
 git clone https://github.com/tombombadilom/hyprland.git hyprland
 cd hyprland
