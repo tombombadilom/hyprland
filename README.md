@@ -108,13 +108,6 @@ chmod +x+w *.sh
 - 6. [Debian 12 "bookworm" complete sources.list · GitHub]
 - 7. [Hyprland on Debian 12](https://software.opensuse.org/download.html?project=home%3ASunderland93%3Ahyprland-debian&package=hyprland)
 
-```bash
-echo 'deb http://download.opensuse.org/repositories/home:/Sunderland93:/hyprland-debian/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/home:Sunderland93:hyprland-debian.list
-curl -fsSL https://download.opensuse.org/repositories/home:Sunderland93:hyprland-debian/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_Sunderland93_hyprland-debian.gpg > /dev/null
-sudo apt update
-sudo apt install hyprland
-```
-
 **Ubuntu** :
 
 - 8. [LLVM Debian/Ubuntu packages]
