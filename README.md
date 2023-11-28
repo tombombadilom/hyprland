@@ -126,7 +126,7 @@ sudo apt install hyprland
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
-sudo apt install libgtk-3-dev libgdk-3-dev libpango1.0-dev libcairo2-dev libgdk-pixbuf2.0-dev libglib2.0-dev
+sudo apt install -y libgtk-3-dev libgdk-3-dev libpango1.0-dev libcairo2-dev libgdk-pixbuf2.0-dev libglib2.0-dev
 git clone https://github.com/Kirottu/anyrun.git
 cd anyrun
 cargo build --release
@@ -134,16 +134,31 @@ cargo install --path anyrun/
 mkdir -p ~/.config/anyrun/plugins
 cp target/release/*.so ~/.config/anyrun/plugins
 cp examples/config.ron ~/.config/anyrun/config.ron
+rustup self uninstall
+cd ../
+rm -rf anyrun
 ```
 
-- **archlinux-betterlockscreen**: [https://github.com/pavanjadhaw/betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen)⁴.
+- **betterlockscreen**: [https://github.com/pavanjadhaw/betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen)⁴.
+
 ```bash
+sudo apt install -y libpam0g-dev libcairo2-dev libxcb1-dev libxcb-dpms0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xinerama0-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-keysyms1-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf imagemagick libev-dev
+git clone https://github.com/Raymo111/i3lock-color.git
+cd i3lock-color
+autoreconf -i && ./configure && make
+sudo make install
+cd ../
+rm -rf i3lock-color
+# autoinstall for system
 wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | sudo bash -s system
-
+# autoinstall for user
 wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/install.sh -O - -q | bash -s user
+# remove dev packages
+sudo apt remove -y libpam0g-dev libcairo2-dev libxcb1-dev libxcb-dpms0-dev libxcb-image0-dev libxcb-util0-dev libxcb-xinerama0-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-keysyms1-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libev-dev
+sudo apt autoremove -y
 
 ```
-- **archlinux-logout**: No project found.
+
 - **azote**: [https://github.com/nwg-piotr/azote](https://github.com/nwg-piotr/azote)⁵.
 - **bc**: [https://github.com/gavinhoward/bc](https://github.com/gavinhoward/bc).
 - **blueberry**: [https://github.com/linuxmint/blueberry](https://github.com/linuxmint/blueberry).
@@ -177,6 +192,15 @@ wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/in
 - **nwg-drawer-bin**: [https://github.com/nwg-piotr/nwg-drawer](https://github.com/nwg-piotr/nwg-drawer).
 - **nwg-look-bin**: [https://github.com/nwg-piotr/nwg-look](https://github.com/nwg-piotr/nwg-look).
 - **nwg-panel**: [https://github.com/nwg-piotr/nwg-panel](https://github.com/nwg-piotr/nwg-panel).
+- **nwg-shell**: [https://github.com/nwg-piotr/nwg-shell](https://github.com/nwg-piotr/nwg-shell).
+
+```bash
+git clone https://github.com/nwg-piotr/nwg-shell.git
+cd nwg-shell
+chmod +x setup.py
+sudo python3 setup.py install
+```
+
 - **pavucontrol**: [https://freedesktop.org/software/pulseaudio/pavucontrol/](https://freedesktop.org/software/pulseaudio/pavucontrol/).
 - **plasma-browser-integration**: [https://invent.kde.org/plasma/plasma-browser-integration](https://invent.kde.org/plasma/plasma-browser-integration).
 - **playerctl**: [https://github.com/altdesktop/playerctl](https://github.com/altdesktop/playerctl).
@@ -208,7 +232,9 @@ wget https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/in
 - (3) arch-linux-packages · GitHub Topics · GitHub. https://github.com/topics/arch-linux-packages.
 - (4) Arch Linux · GitHub. https://github.com/archlinux.
 - (5) GitHub - archlinux/archinstall: Arch Linux installer - https://github.com/archlinux/archinstall.
+
 ### Troubleshooting
+
 ```bash
 E: Impossible de trouver le paquet anyrun-git
 E: Impossible de trouver le paquet anytype
@@ -236,6 +262,7 @@ E: Impossible de trouver le paquet starship
 E: Impossible de trouver le paquet ttf-jetbrains-mono
 E: Impossible de trouver le paquet xorg-xrandr
 ```
+
 ### sync sway, hyprland and wayland from git_config repository
 
 ```
