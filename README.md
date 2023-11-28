@@ -195,6 +195,7 @@ sudo apt autoremove -y
 - **nwg-shell**: [https://github.com/nwg-piotr/nwg-shell](https://github.com/nwg-piotr/nwg-shell).
 
 ```bash
+sudo apt install python3-setuptools
 git clone https://github.com/nwg-piotr/nwg-shell.git
 cd nwg-shell
 chmod +x setup.py
