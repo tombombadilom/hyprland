@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
 packages=(
-  "anyrun-git"
   "anytype"
-  "archlinux-betterlockscreen"
-  "archlinux-logout"
+  "betterlockscreen"
   "azote"
   "bc"
   "blueberry"

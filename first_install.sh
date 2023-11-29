@@ -29,7 +29,7 @@ if [ -z "${LANG}" ]; then
     echo "export LANG=$user_locale" >>~/.config/hyprland/hyprland.conf
     # You may need to restart Hyprland for the changes to take effect.
   fi
-    if command -v hyprland &>/dev/null; then
+  if command -v hyprland &>/dev/null; then
     # For Hyprland, update the configuration file
     echo "export LANG=$user_locale" >>~/.config/hyprland/hyprland.conf
     # You may need to restart Hyprland for the changes to take effect.
@@ -40,35 +40,35 @@ else
   export user_lang="$user_lang"
 fi
 
-
 # Load messages from messages.sh file
 # shellcheck source=./messages.sh
 # shellcheck disable=SC1091
 source ./messages.sh
 
-
 # Create destination directory if none exists
 mkdir -p "$local_dir/bin"
-
 
 # Check that rsync, git and shellcheck are installed
 # If not, install them
 required_packages=("make" "rsync" "git" "shellcheck")
 missing_packages=()
 
-
 for package in "${required_packages[@]}"; do
   if ! dpkg -l | grep -q "$package"; then
-    missing_packages+=("$package")
+    # Check if package corresponds to a script file
+    if [ -f "${package}.sh" ]; then
+      echo "Running ${package}.sh script to install ${package}"
+      ./"${package}.sh"
+    else
+      missing_packages+=("$package")
+    fi
   fi
 done
-
 
 if [ ${#missing_packages[@]} -gt 0 ]; then
   echo "Installing missing packages: ${missing_packages[*]}"
   sudo apt install -y "${missing_packages[@]}"
 fi
-
 
 # Detect operating system
 os=""
@@ -77,10 +77,7 @@ case $(grep -oP '(?<=^ID=).+' /etc/os-release) in
   os=$BASH_REMATCH
   ;;
 esac
-
-
 export os
-
 
 # Load packages from packages.json file
 required_packages=($(jq -r '.[] | select(.isArchDependant == false) | .name' packages.json))

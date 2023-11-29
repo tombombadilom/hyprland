@@ -7,4 +7,4 @@ make build
 sudo make install
 cd ../
 rm -rf dunst
-sudo apt autoremove
+sudo apt auto-remove -y
