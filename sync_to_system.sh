@@ -1,13 +1,4 @@
-#!/usr/bin/env bash
-
-# Script shell pour synchroniser les fichiers de configuration
-# depuis le dossier ~/.git_config de l'utilisateur vers le dossier ~/.config de l'utilisateur
-# Ce script permet de garder une trace des modifications
-# et de synchroniser facilement la configuration sur plusieurs machines et utilisateurs
-#
-# Usage: cd $HOME/git_config && ./sync_to_system.sh
-#
-# Dépendances : git, rsync, shellcheck
+#!/bin/sh
 
 # Variables pour les chemins
 config_dir="$HOME/.config"
@@ -24,31 +15,57 @@ mkdir -p "$local_dir/bin"
 
 # Vérifie si rsync, git et shellcheck sont installés
 # Si non, installez-les
-if ! command -v rsync &>/dev/null; then
+if ! command -v rsync > /dev/null 2>&1; then
   echo "rsync n'est pas installé. Installation en cours..."
-  # shellcheck disable=SC2154
-  if [ "$os" == "Debian/Ubuntu" ]; then
+  if [ "$(uname)" = "Darwin" ]; then
+    brew install rsync
+  elif [ -x "$(command -v apt)" ]; then
     sudo apt install -y rsync
-  elif [ "$os" == "Arch" ]; then
-    yay -Syu rsync
+  elif [ -x "$(command -v yum)" ]; then
+    sudo yum install -y rsync
+  elif [ -x "$(command -v dnf)" ]; then
+    sudo dnf install -y rsync
+  elif [ -x "$(command -v zypper)" ]; then
+    sudo zypper install -y rsync
+  else
+    echo "Impossible de trouver un gestionnaire de paquets compatible."
+    exit 1
   fi
 fi
 
-if ! command -v git &>/dev/null; then
+if ! command -v git > /dev/null 2>&1; then
   echo "git n'est pas installé. Installation en cours..."
-  if [ "$os" == "Debian/Ubuntu" ]; then
+  if [ "$(uname)" = "Darwin" ]; then
+    brew install git
+  elif [ -x "$(command -v apt)" ]; then
     sudo apt install -y git
-  elif [ "$os" == "Arch" ]; then
-    yay -Syu git
+  elif [ -x "$(command -v yum)" ]; then
+    sudo yum install -y git
+  elif [ -x "$(command -v dnf)" ]; then
+    sudo dnf install -y git
+  elif [ -x "$(command -v zypper)" ]; then
+    sudo zypper install -y git
+  else
+    echo "Impossible de trouver un gestionnaire de paquets compatible."
+    exit 1
   fi
 fi
 
-if ! command -v shellcheck &>/dev/null; then
+if ! command -v shellcheck > /dev/null 2>&1; then
   echo "shellcheck n'est pas installé. Installation en cours..."
-  if [ "$os" == "Debian/Ubuntu" ]; then
+  if [ "$(uname)" = "Darwin" ]; then
+    brew install shellcheck
+  elif [ -x "$(command -v apt)" ]; then
     sudo apt install -y shellcheck
-  elif [ "$os" == "Arch" ]; then
-    yay -Syu shellcheck
+  elif [ -x "$(command -v yum)" ]; then
+    sudo yum install -y shellcheck
+  elif [ -x "$(command -v dnf)" ]; then
+    sudo dnf install -y shellcheck
+  elif [ -x "$(command -v zypper)" ]; then
+    sudo zypper install -y shellcheck
+  else
+    echo "Impossible de trouver un gestionnaire de paquets compatible."
+    exit 1
   fi
 fi
 
