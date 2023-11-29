@@ -372,12 +372,6 @@
     "alternatives": { "debian": {}, "ubuntu": {} }
   },
   {
-    "name": "wlroots",
-    "URL": "https://aur.archlinux.org/packages/wlroots/",
-    "isArchDependant": false,
-    "alternatives": { "debian": {}, "ubuntu": {} }
-  },
-  {
     "name": "xdg-desktop-portal-hyprland",
     "URL": "https://aur.archlinux.org/packages/xdg-desktop-portal-hyprland/",
     "isArchDependant": false,
