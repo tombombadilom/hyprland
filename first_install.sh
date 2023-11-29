@@ -3,6 +3,7 @@
 # Configuration source and target directories
 export config_dir="$HOME/.config"
 export local_dir="$HOME/.local"
+# shellcheck disable=SC2155
 export scripts="$(dirname "$0")"
 export source_dir="$scripts/.config"
 export modules_source_dir="$scripts/modules"
@@ -23,6 +24,7 @@ if command -v hyprland &>/dev/null; then
 fi
 
 # Load messages from messages.sh file
+# shellcheck disable=SC1091
 source ./messages.sh
 
 # Create destination directory if none exists
@@ -47,6 +49,7 @@ fi
 os=""
 case $(grep -oP '(?<=^ID=).+' /etc/os-release) in
 "ubuntu" | "debian" | "arch")
+  # shellcheck disable=SC2128
   os=$BASH_REMATCH
   ;;
 esac
@@ -77,6 +80,7 @@ for package in "${required_packages[@]}"; do
   ((progress_counter++))
 
   # Calculate the progress percentage
+  # shellcheck disable=SC2154
   progress_percentage=$((progress_counter * 100 / total_packages))
 
   # Update progress file
