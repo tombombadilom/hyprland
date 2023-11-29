@@ -73,7 +73,7 @@ export os
 # shellcheck disable=SC2207
 required_packages=($(jq -r '.[] | select(.isArchDependant == false) | .name' packages.json))
 
-# Check if packages are installed
+# Check if packages are installed or they are in modules/.
 missing_packages=()
 for package in "${required_packages[@]}"; do
   if ! dpkg -l | grep -q "$package"; then
