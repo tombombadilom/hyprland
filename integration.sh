@@ -71,7 +71,8 @@ echo "$json_output" >packages.json
 # Installer la bibliothèque tqdm si elle n'est pas déjà installée
 if ! command -v tqdm &>/dev/null; then
   echo "La bibliothèque tqdm n'est pas installée. Installation en cours..."
-  sudo apt-get -y install python-pip
+  sudo apt-get -y install python3-pip python3-pipv pv
+  # Installer tqdm
   # Installer pipx
   pip install --user pipx
   # Ajouter pipx au PATH
