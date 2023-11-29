@@ -69,6 +69,7 @@ sudo apt-get update -q
 # Installation du package nécessaire
 echo "Installation du package..."
 progress_bar 10
+# shellcheck disable=SC2102
 sudo apt-get install -y [nom_du_package]
 
 # Nettoyage après installation
@@ -85,7 +86,7 @@ for package in "${required_packages[@]}"; do
   fi
 done
 
-if [ ${#missing_packages[@]} -gt 0 ]; then
+if [ ${#missing_packages[@]} -gt g0 ]; then
   echo "Installing missing packages: ${missing_packages[*]}"
   sudo apt-get install -y --no-install-recommends "${missing_packages[@]}"
 fi
