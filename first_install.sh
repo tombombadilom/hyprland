@@ -1,3 +1,6 @@
+I want this script , to check if the required packages are installed
+and if not, to install them before droping the user in.
+
 #!/usr/bin/env bash
 
 # Configuration source and target directories
