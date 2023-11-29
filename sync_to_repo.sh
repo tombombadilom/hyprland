@@ -16,79 +16,78 @@ scripts_dir="$(dirname "$0")"
 dest_dir="$scripts_dir/.config"
 dest_local_dir="$scripts_dir/.local"
 
-# Identifier la distribution Linux et installer les paquets appropriés
-if grep -qEi "(debian|ubuntu)" /etc/*release; then
-  os="Debian/Ubuntu"
-  missing_packages=("rsync" "git" "shellcheck" "jq")
-  package_manager="apt"
-elif [ -f /etc/arch-release ]; then
-  os="Arch"
-  missing_packages=("rsync" "git" "shellcheck" "jq")
-  package_manager="yay"
-else
-  os="Unknown"
+# Fichier JSON de suivi des répertoires
+json_file="allowed_dirs.json"
+
+# Créer le fichier JSON s'il n'existe pas
+if [ ! -f "$json_file" ]; then
+  touch "$json_file"
+  echo '{ "directories": [] }' > "$json_file"
 fi
 
-# Installer les paquets manquants si demandé
-if [ ${#missing_packages[@]} -gt 0 ]; then
-  read -p "Certains paquets sont manquants. Voulez-vous les installer ? (Y/n)" -n 1 -r
-  echo
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
-    if [ "$os" == "Debian/Ubuntu" ]; then
-      sudo "$package_manager" install -y "${missing_packages[@]}"
-    elif [ "$os" == "Arch" ]; then
-      yay -Syu "${missing_packages[@]}"
-    fi
-  fi
-fi
+# Lire l'état actuel à partir du fichier JSON
+state=$(cat "$json_file")
 
-# Charger le fichier JSON
-json_file="$local_dir/share/state.json"
-if [ -f "$json_file" ]; then
-  state=$(jq -r '.' "$json_file")
-else
-  state='{"files":[],"directories":[]}'
-fi
-
-# Create associative array to store existing directories
-declare -A existing_dirs
+# Vérifier s'il y a des modifications dans le répertoire
+# shellcheck disable=SC2066
 for dir in "${state[directories]}"; do
-  existing_dirs["$dir"]=1
+  # shellcheck disable=SC2295
+  dest_local="$dest_local_dir/${dir#$config_dir/}"
+  # shellcheck disable=SC2154
+  if ! find "$dir" -type f -newer "$dest" -print -quit | grep -q . ; then
+    continue
+  fi
+
+  # Vérifier si le répertoire local existe déjà
+  if [ -d "$dest_local" ]; then
+    # Ajouter le répertoire à la liste des nouveaux répertoires
+    new_directories+=("$dir")
+  fi
 done
 
-# Create set to store existing files
-existing_files=()
-for file in "${state[files]}"; do
-  existing_files+=("$file")
-done
-
-# Synchroniser les répertoires dans $dest_dir et $dest_local_dir
-find "$config_dir" -type d -not -path "$config_dir/lib/*" -print0 | while IFS= read -r -d '' dir; do
-  dest="$dest_dir/${dir#$config_dir/}"
+# Traiter les nouveaux répertoires
+for dir in "${new_directories[@]}"; do
+  # shellcheck disable=SC2295
   dest_local="$dest_local_dir/${dir#$config_dir/}"
 
-  # Vérifier si le répertoire est déjà dans le JSON
-  if [[ ${existing_dirs[$dest_local]} ]]; then
-    continue
-  fi
+  echo "Synchronisation du répertoire $dir ..."
 
-  # Créer les répertoires de destination s'ils n'existent pas
-  mkdir -p "$dest"
-  mkdir -p "$dest_local"
+  # Synchroniser les fichiers du répertoire vers la destination
+  rsync -avz --delete "$dir" "$dest"
 
-  # Vérifier s'il y a des modifications dans le répertoire
-  if ! find "$dir" -type f -newer "$dest" -print -quit | grep -q .; then
-    continue
-  fi
-
-  echo "Modifications trouvées dans $dir"
-
-  # Ajouter le répertoire au JSON
-  existing_dirs["$dest_local"]=1
-
-  # Synchroniser les fichiers modifiés du répertoire source vers le répertoire de destination
-  rsync -a "$dir/" "$dest/"
-  # Synchroniser les fichiers modifiés du répertoire source vers le répertoire local de destination,
-  # en excluant le sous-répertoire 'lib'
-  rsync -a --exclude 'lib' "$local_dir/${dir#$config_dir/}/" "$dest_local/"
+  # Mettre à jour le fichier JSON avec le nouveau répertoire
+  state=$(jq --arg dir "$dest_local" '.directories += [$dir]' <<< "$state")
+  echo "$state" > "$json_file"
 done
+
+# Supprimer les répertoires en trop
+# shellcheck disable=SC2066
+for dir in "${state[directories]}"; do
+  # shellcheck disable=SC2295
+  dest_local="$dest_local_dir/${dir#$config_dir/}"
+  if [ ! -d "$dir" ] && [ -d "$dest_local" ]; then
+    rm -rf "$dest_local"
+    state=$(jq --arg dir "$dest_local" '.directories -= [$dir]' <<< "$state")
+    echo "$state" > "$json_file"
+  fi
+done
+
+# Créer un fichier denials.txt avec les répertoires refusés
+echo -n "" > denials.txt
+# shellcheck disable=SC2066
+for dir in "${state[directories]}"; do
+  # shellcheck disable=SC2295
+  dest_local="$dest_local_dir/${dir#$config_dir/}"
+  # shellcheck disable=SC2076
+  # shellcheck disable=SC2199
+  if ! [[ " ${new_directories[@]} " =~ " ${dir} " ]]; then
+    echo "$dir" >> denials.txt
+  fi
+done
+
+# Synchroniser les fichiers dans $dest_dir et $dest_local_dir en excluant denials.txt
+rsync -avz --delete --exclude='denials.txt' "$dest_dir/" "$config_dir"
+rsync -avz --delete --exclude='denials.txt' "$dest_local_dir/" "$local_dir"
+
+echo "Synchronisation terminée."
+exit 0
