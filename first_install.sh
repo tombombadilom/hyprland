@@ -14,20 +14,6 @@ export LANG="$user_locale"
 user_lang=${user_locale:0:2}
 export user_lang="$user_lang"
 
-# Configuration source and target directories
-export config_dir="$HOME/.config"
-export local_dir="$HOME/.local"
-# shellcheck disable=SC2155
-export scripts="$(dirname "$0")"
-export source_dir="$scripts/.config"
-export modules_dir="$scripts/modules"
-
-# Set user locale
-export user_locale="en_US.UTF-8"
-export LANG="$user_locale"
-user_lang=${user_locale:0:2}
-export user_lang="$user_lang"
-
 # Update configuration files for Sway, Hyprland, or Wayland
 if command -v sway &>/dev/null; then
   echo "export LANG=$user_locale" >>"$config_dir/sway/config"
