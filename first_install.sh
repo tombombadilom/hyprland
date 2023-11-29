@@ -82,6 +82,9 @@ for package in "${required_packages[@]}"; do
   if ! dpkg -l | grep -q "$package"; then
     missing_packages+=("$package")
   fi
+  if [ -d "$local_source_dir/$package" ]; then
+    missing_packages+=("$package")
+  fi
 done
 
 if [ ${#missing_packages[@]} -gt 0 ]; then
