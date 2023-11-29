@@ -1,25 +1,13 @@
 [
   {
-    "name": "anyrun-git",
-    "URL": "https://aur.archlinux.org/packages/anyrun-git/",
-    "isArchDependant": false,
-    "alternatives": { "debian": {}, "ubuntu": {} }
-  },
-  {
     "name": "anytype",
     "URL": "https://aur.archlinux.org/packages/anytype/",
     "isArchDependant": false,
     "alternatives": { "debian": {}, "ubuntu": {} }
   },
   {
-    "name": "archlinux-betterlockscreen",
+    "name": "betterlockscreen",
     "URL": "https://aur.archlinux.org/packages/archlinux-betterlockscreen/",
-    "isArchDependant": false,
-    "alternatives": { "debian": {}, "ubuntu": {} }
-  },
-  {
-    "name": "archlinux-logout",
-    "URL": "https://aur.archlinux.org/packages/archlinux-logout/",
     "isArchDependant": false,
     "alternatives": { "debian": {}, "ubuntu": {} }
   },
