@@ -90,23 +90,39 @@ packages=(
 )
 required_packages=("make" "rsync" "git" "shellcheck" "yay" "jq") # Add any additional required packages
 missing_packages=()
-#!/bin/bash
 
 # Fonction pour afficher la barre de progression
 progress_bar() {
-@@ -79,65 +140,3 @@ sudo apt-get autoremove -y
-sudo apt-get clean
+  local duration=$1
+  # shellcheck disable=SC2155
+  local start_time=$(date +%s)
+  local end_time=$((start_time + duration))
+  local current_time=$start_time
 
-echo "Installation et nettoyage terminés."
-
+  # shellcheck disable=SC2086
+  while [ $current_time -lt $end_time ]; do
+    local current=$((current_time - start_time))
+    local total=$((end_time - start_time))
+    local progress=$((current * 100 / total))
+    local filled=$((progress / 2)) # Diviser par 2 pour ajuster à la largeur de 50
+    local unfilled=$((50 - filled))
+    echo -ne "\r\033[32m["
+    for i in $(seq 1 $filled); do echo -n '#'; done
+    # shellcheck disable=SC2034
+    for i in $(seq 1 $unfilled); do echo -n '-'; done
+    echo -ne "\033[0m] $progress%"
+    current_time=$(date +%s)
+    sleep 1
+  done
+  echo -e "\n"
+}
 # Install each package individually
 for package in "${packages[@]}"; do
   echo "Installing $package..."
-  sudo apt install -y $package 2
-  >&1 | tee "log_$package.txt" || echo "Failed to install $package, skipping..."
+  sudo apt install -y $package 2>&1 | tee "log_$package.txt" || echo "Failed to install $package, skipping..."
 done
 
-if [ ${#missing_packages[@]} -gt g0 ]; then
+if [ ${#missing_packages[@]} -gt 0 ]; then
   echo "Installing missing packages: ${missing_packages[*]}"
   sudo apt-get install -y --no-install-recommends "${missing_packages[@]}"
 fi
@@ -117,8 +133,6 @@ case $(grep -oP '(?<=^ID=).+' /etc/os-release) in
 "ubuntu" | "debian" | "arch")
   # shellcheck disable=SC2128
   os=$BASH_REMATCH
-  ;;
-esac
 export os
 
 # Load packages from packages.json file
