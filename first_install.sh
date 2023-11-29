@@ -29,6 +29,7 @@ source ./messages.sh
 
 # Create destination directory if none exists
 mkdir -p "$local_dir/bin"
+# shellcheck disable=SC2034
 packages=(
   "anytype"
   "betterlockscreen"
@@ -93,7 +94,9 @@ packages=(
   "yad"
 )
 # Check that required packages are installed
+# shellcheck disable=SC2034
 required_packages=("make" "rsync" "git" "shellcheck" "yay" "jq") # Add any additional required packages
+# shellcheck disable=SC2034
 missing_packages=()
 
 # Fonction pour afficher la barre de progression

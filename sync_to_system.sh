@@ -26,6 +26,7 @@ mkdir -p "$local_dir/bin"
 # Si non, installez-les
 if ! command -v rsync &>/dev/null; then
   echo "rsync n'est pas installé. Installation en cours..."
+  # shellcheck disable=SC2154
   if [ "$os" == "Debian/Ubuntu" ]; then
     sudo apt install -y rsync
   elif [ "$os" == "Arch" ]; then
