@@ -106,7 +106,7 @@ mkdir -p "$local_dir/bin"
 
 # Check that rsync, git and shellcheck are installed
 # If not, install them
-required_packages=("sudo" "vim" "make" "rsync" "git" "shellcheck" "curl" "vim" "jq" "yay" "build-essential) 
+required_packages=("sudo" "vim" "make" "rsync" "git" "shellcheck" "curl" "vim" "jq" "yay" "build-essential") 
 missing_packages=()
 
 for package in "${required_packages[@]}"; do
