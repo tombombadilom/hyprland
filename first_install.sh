@@ -1,6 +1,3 @@
-# I want this script , to check if the required packages are installed
-# and if not, to install them before droping the user in.
-
 #!/usr/bin/env bash
 
 # Configuration source and target directories
@@ -21,20 +18,16 @@ if [ -z "${LANG}" ]; then
   export user_lang="$user_lang"
 
   # Update configuration files for Sway, Hyprland, or Wayland
-  # Replace paths and commands with those appropriate for your system
   if command -v sway &>/dev/null; then
     # For Sway, update configuration file
     echo "export LANG=$user_locale" >>"$config_dir/sway/config"
-    # You may need to restart Sway for the changes to take effect.
   fi
 
   if command -v hyprland &>/dev/null; then
     # For Hyprland, update the configuration file
     echo "export LANG=$user_locale" >>"$config_dir/hyprland/hyprland.conf"
-    # You may need to restart Hyprland for the changes to take effect.
   fi
 
-  # Add similar commands here for Wayland or other window managers
 else
   user_lang=${LANG:0:2}
   export user_lang="$user_lang"
@@ -83,6 +76,11 @@ for package in "${required_packages[@]}"; do
     missing_packages+=("$package")
   fi
   if [ -d "$local_source_dir/$package" ]; then
+    cd "$local_source_dir/$package" || exit
+    # shellcheck disable=SC2086
+    ./$package.sh
+    cd ../
+  else
     missing_packages+=("$package")
   fi
 done
