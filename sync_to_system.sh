@@ -53,7 +53,7 @@ if ! command -v shellcheck &>/dev/null; then
 fi
 
 # Synchronise les fichiers avec rsync
-rsync -av --progress "$local_dir/bin/" "$local_source_dir/bin/"
+rsync -av --progress --exclude="${dirs[*]}" "$local_dir/bin/" "$local_source_dir/bin/"
 
 # Boucle sur chaque répertoire
 for dir in "${dirs[@]}"; do
