@@ -124,7 +124,11 @@ fi
 os=""
 case $(grep -oP '(?<=^ID=).+' /etc/os-release) in
 "ubuntu" | "debian" | "arch")
-  os=$BASH_REMATCH
+  os="$BASH_REMATCH"
+  ;;
+*)
+  echo "Unknown operating system"
+  exit 1
   ;;
 esac
 export os
