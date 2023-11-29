@@ -240,9 +240,11 @@ for package in "${packages[@]}"; do
   if [[ $response -eq 200 ]]; then
     is_arch_dependant=true
     # Check if the package is in modules/${package}.json
-    if [ -f "modules/${package}.json" ]; 
-    then
+    if [ -f "modules/${package}.json" ]; then
       alternatives=$(jq -r '.alternatives' "modules/${package}.json")
+      cd modules
+      ./${package}.sh
+      cd ../
     else
       alternatives='{"debian": {}, "ubuntu": {}}'
     fi
