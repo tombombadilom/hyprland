@@ -6,7 +6,7 @@ export local_dir="$HOME/.local"
 # shellcheck disable=SC2155
 export scripts="$(dirname "$0")"
 export source_dir="$scripts/.config"
-export modules_dir="$scripts/modules"
+ modules_dir="$scripts/modules"
 
 # Set user locale
 export user_locale="en_US.UTF-8"
@@ -93,53 +93,21 @@ packages=(
   "zathura-pdf-mupdf"
   "yad"
 )
-# Check that required packages are installed
-# shellcheck disable=SC2034
-required_packages=("make" "rsync" "git" "shellcheck" "yay" "jq") # Add any additional required packages
-# shellcheck disable=SC2034
-missing_packages=()
 
-# Fonction pour afficher la barre de progression
-progress_bar() {
-  local duration=$1
-  # shellcheck disable=SC2155
-  local start_time=$(date +%s)
-  local end_time=$((start_time + duration))
-  local current_time=$start_time
+# Update package list
+echo "Updating package list..."
+sudo apt update -q
 
-  # shellcheck disable=SC2086
-  while [ $current_time -lt $end_time ]; do
-    local current=$((current_time - start_time))
-    local total=$((end_time - start_time))
-    local progress=$((current * 100 / total))
-    local filled=$((progress / 2)) # Diviser par 2 pour ajuster à la largeur de 50
-    local unfilled=$((50 - filled))
-    echo -ne "\r\033[32m["
-    for i in $(seq 1 $filled); do echo -n '#'; done
-    # shellcheck disable=SC2034
-    for i in $(seq 1 $unfilled); do echo -n '-'; done
-    echo -ne "\033[0m] $progress%"
-    current_time=$(date +%s)
-    sleep 1
-  done
-  echo -e "\n"
-}
+# Install each package individually
+for package in "${packages[@]}"; do
+  echo "Installing $package..."
+  sudo apt install -y $package 2
+  >&1 | tee "log_$package.txt" || echo "Failed to install $package, skipping..."
+done
 
-# Mise à jour de la liste des paquets
-echo "Mise à jour des paquets..."
-progress_bar 5
-sudo apt-get update -q
+# Cleanup after installation
+echo "Cleaning up..."
+sudo apt autoremove -y
+sudo apt clean
 
-# Installation du package nécessaire
-echo "Installation du package..."
-progress_bar 10
-# shellcheck disable=SC2102
-sudo apt-get install -y [nom_du_package]
-
-# Nettoyage après installation
-echo "Nettoyage..."
-progress_bar 5
-sudo apt-get autoremove -y
-sudo apt-get clean
-
-echo "Installation et nettoyage terminés."
+echo "Installation and cleanup completed."
