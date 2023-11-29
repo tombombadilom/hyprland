@@ -61,7 +61,7 @@ for package in "${required_packages[@]}"; do
   if ! dpkg -s "$package" &>/dev/null; then
     missing_packages+=("$package")
   fi
-  if [ -d "$modules_source_dir/$package" ]; then
+  if [ -d "$modules_source_dir/$package.sh" ]; then
     cd "$modules_source_dir/$package" || exit
     # shellcheck disable=SC2086
     ./$package.sh
