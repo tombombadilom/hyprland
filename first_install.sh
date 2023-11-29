@@ -99,22 +99,18 @@ else
   export user_lang="$user_lang"
 fi
 
-
 # Load messages from messages.sh file
 # shellcheck source=./messages.sh
 # shellcheck disable=SC1091
 source ./messages.sh
 
-
 # Create destination directory if none exists
 mkdir -p "$local_dir/bin"
-
 
 # Check that rsync, git and shellcheck are installed
 # If not, install them
 required_packages=("make" "rsync" "git" "shellcheck")
 missing_packages=()
-
 
 for package in "${required_packages[@]}"; do
   if ! dpkg -l | grep -q "$package"; then
@@ -122,12 +118,10 @@ for package in "${required_packages[@]}"; do
   fi
 done
 
-
 if [ ${#missing_packages[@]} -gt 0 ]; then
   echo "Installing missing packages: ${missing_packages[*]}"
   sudo apt install -y "${missing_packages[@]}"
 fi
-
 
 # Detect operating system
 os=""
@@ -136,10 +130,7 @@ case $(grep -oP '(?<=^ID=).+' /etc/os-release) in
   os=$BASH_REMATCH
   ;;
 esac
-
-
 export os
-
-
 # Load packages from packages.json file
 required_packages=($(jq -r '.[] | select(.isArchDependant == false) | .name' packages.json))
+
