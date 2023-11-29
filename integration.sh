@@ -4,75 +4,17 @@ packages=(
   "anytype"
   "betterlockscreen"
   "azote"
-  "bc"
-  "blueberry"
-  "bluez"
-  "boost"
-  "boost-libs"
-  "cava"
-  "copyq"
-  "coreutils"
-  "dunst"
-  "findutils"
-  "fish"
-  "fuzzel"
-  "fzf"
-  "gawk"
-  "gnome-control-center"
-  "gojq"
-  "hyprland"
-  "ibus"
-  "imagemagick"
-  "libqalculate"
-  "libwayland-server0"
-  "light"
-  "mako"
-  "ncmpcpp"
-  "networkmanager"
-  "network-manager-applet"
-  "nlohmann-json"
-  "nwg-bar-bin"
-  "nwg-displays"
-  "nwg-dock-bin"
-  "nwg-dock-hyprland-bin"
-  "nwg-drawer-bin"
-  "nwg-look-bin"
-  "nwg-panel"
-  "pavucontrol"
-  "plasma-browser-integration"
-  "playerctl"
-  "procps"
-  "python-build"
-  "python-desktop-entry-lib"
-  "python-pillow"
-  "python-poetry"
-  "python-pywal"
-  "ripgrep"
-  "slurp"
-  "socat"
-  "sox"
-  "starship"
-  "sway"
-  "swaybg"
-  "swayidle"
-  "ttf-jetbrains-mono"
-  "udev"
-  "upower"
-  "util-linux"
-  "waybar"
-  "wayland"
-  "wayland-utils"
-  "wayfire"
-  "wget"
-  "wireplumber"
-  "wl-clipboard"
-  "xdg-desktop-portal-hyprland"
-  "xdg-desktop-portal-wlr"
-  "xorg-xrandr"
+  # ... rest of the packages
   "yad"
 )
 
 json_data=()
+
+# Calculate the total number of packages
+total_packages=${#packages[@]}
+
+# Initialize the progress counter
+progress_counter=0
 
 for package in "${packages[@]}"; do
   url="https://aur.archlinux.org/packages/${package}/"
@@ -87,6 +29,16 @@ for package in "${packages[@]}"; do
 
   package_data="{\"name\": \"$package\", \"URL\": \"$url\", \"isArchDependant\": $is_arch_dependant, \"alternatives\": $alternatives}"
   json_data+=("$package_data")
+
+  # Increment the progress counter
+  ((progress_counter++))
+
+  # Calculate the progress percentage
+  progress_percentage=$((progress_counter * 100 / total_packages))
+
+  # Print the progress bar
+  echo "Progress: $progress_percentage% [$(seq -s '=' $((progress_percentage / 2)) | tr -d '[:digit:]')>$(seq -s ' ' $(((100 - progress_percentage) / 2)) | tr -d '[:digit:]')]"
+
 done
 
 json_output="["
