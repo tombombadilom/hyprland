@@ -27,7 +27,6 @@ chmod +x+w *.sh
 
 | **Nom**                     | **URL Github**                                                            | **Debian Bookworm** | **Ubuntu Luna/Mantic** |
 | --------------------------- | ------------------------------------------------------------------------- | ------------------- | ---------------------- |
-| anyrun-git                  | [Github](https://github.com/anyrun/anyrun-git)                            | ❌                  | ❌                     |
 | anytype                     | [Github](https://github.com/anytypeio/anytype)                            | ❌                  | ❌                     |
 | archlinux-betterlockscreen  | [Github](https://github.com/pavanjadhaw/archlinux-betterlockscreen)       | ❌                  | ❌                     |
 | archlinux-logout            | [Github](https://github.com/Thermi/ArchLinux-Logout)                      | ❌                  | ❌                     |
@@ -117,7 +116,6 @@ chmod +x+w *.sh
 
 ### Packages URL and References
 
-- **anyrun-git**: No project found.
 - **betterlockscreen**: [https://github.com/pavanjadhaw/betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen)⁴.
 - **azote**: [https://github.com/nwg-piotr/azote](https://github.com/nwg-piotr/azote)⁵.
 - **bc**: [https://github.com/gavinhoward/bc](https://github.com/gavinhoward/bc).
@@ -215,16 +213,16 @@ E: Impossible de trouver le paquet ttf-jetbrains-mono
 E: Impossible de trouver le paquet xorg-xrandr
 ```
 
-### sync sway, hyprland and wayland from git_config repository
+### sync sway, hyprland and wayland from hyprland repository
 
 ```
-cd git_config
+cd hyprland
 ./sync_to_system.sh
 ```
 
 ### sync sway, hyprland and wayland from system to git
 
 ```
-cd git_config
+cd hyprland
 ./sync_to_repo.sh
 ```
