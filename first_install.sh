@@ -57,6 +57,9 @@ export os
 required_packages=($(jq -r '.[] | select(.isArchDependant == false) | .name' packages.json))
 missing_packages=()
 
+# Create a temporary file to store the progress
+progress_file=$(mktemp)
+
 for package in "${required_packages[@]}"; do
   if ! dpkg -s "$package" &>/dev/null; then
     missing_packages+=("$package")
@@ -69,9 +72,22 @@ for package in "${required_packages[@]}"; do
   else
     missing_packages+=("$package")
   fi
+
+  # Increment the progress counter
+  ((progress_counter++))
+
+  # Calculate the progress percentage
+  progress_percentage=$((progress_counter * 100 / total_packages))
+
+  # Update progress file
+  echo "$progress_percentage" >"$progress_file"
+
 done
 
 if [ ${#missing_packages[@]} -gt 0 ]; then
   echo "Installing missing packages: ${missing_packages[*]}"
   sudo apt-get install -y --no-install-recommends "${missing_packages[@]}"
 fi
+
+# Remove the temporary progress file
+rm "$progress_file"
