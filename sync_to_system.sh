@@ -70,5 +70,4 @@ for dir in "${dirs[@]}"; do
   fi
 done
 
-
 echo "Synchronisation terminée de config vers .config"
