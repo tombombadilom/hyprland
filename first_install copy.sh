@@ -15,6 +15,15 @@ LANG="$user_locale"
 user_lang=${user_locale:0:2}
 user_lang="$user_lang"
 
+# Check if dialog package is installed
+if ! command -v dialog &> /dev/null; then
+  echo "Installing dialog package..."
+  if ! sudo apt install -y dialog; then
+    echo "Failed to install dialog package. Exiting..."
+    exit 1
+  fi
+fi
+
 # Update configuration files for Sway, Hyprland, or Wayland
 if command -v sway &>/dev/null; then
   echo "export LANG=$user_locale" >> "$config_dir/sway/config"
@@ -98,15 +107,15 @@ packages=(
 
 # Check that required packages are installed
 # shellcheck disable=SC2034
-required_packages=("dialog" "make" "rsync" "git" "shellcheck" "yay" "jq") # Add any additional required packages
+required_packages=("make" "rsync" "git" "shellcheck" "yay" "jq") # Add any additional required packages
 
 # Update package list
 echo "Updating packages..."
-sudo apt-get update -q
+sudo apt update -q
 
 # Install required packages
 for package in "${required_packages[@]}"; do
-  if ! sudo apt-get install -y "$package"; then
+  if ! sudo apt install -y "$package"; then
     echo "$package" >> "$log_file"
   else
     echo "$package" >> "$log_file"
@@ -115,7 +124,7 @@ done
 
 # Install packages
 for package in "${packages[@]}"; do
-  if ! sudo apt-get install -y "$package"; then
+  if ! sudo apt install -y "$package"; then
     if [ -f "$modules_dir/$package.sh" ]; then
       "$modules_dir/$package.sh"
       echo "$package" >> "$log_file"
@@ -132,4 +141,4 @@ for package in "${packages[@]}"; do
        
  # Clean up after installation
  echo "Cleaning up..."
- sudo apt-get autoremove
+ sudo apt autoremove
