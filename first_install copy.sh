@@ -107,7 +107,7 @@ packages=(
 
 # Check that required packages are installed
 # shellcheck disable=SC2034
-required_packages=("make" "rsync" "git" "shellcheck" "yay" "jq") # Add any additional required packages
+required_packages=("make" "rsync" "git" "shellcheck" "jq") # Add any additional required packages
 
 # Update package list
 echo "Updating packages..."
