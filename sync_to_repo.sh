@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-
+scripts="$(dirname "$0")"
+# shellcheck disable=SC2086
+mkdir -p "$scripts/log"
 # Script shell pour synchroniser les fichiers de configuration
 # du dossier ~/.config de l'utilisateur vers un dépôt git
 # Ce script permet de suivre les modifications
@@ -15,10 +17,15 @@ local_dir="$HOME/.local"
 scripts_dir="$(dirname "$0")"
 dest_dir="$scripts_dir/.config"
 dest_local_dir="$scripts_dir/.local"
+# shellcheck disable=SC2154
+log_dir="$script/log"
+log_file="$log_dir/sync_to_repo.log"
 
 # Fichier JSON de suivi des répertoires
 json_file="allowed_dirs.json"
 denials_file="denials.json"
+
+echo "Starting synchronisation to repository..." | tee  "$log_file"
 
 # Vérifier si le fichier JSON existe
 if [ ! -f "$json_file" ]; then
