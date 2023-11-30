@@ -1,35 +1,35 @@
 #!/usr/bin/env bash
 
 # Configuration source and target directories
-export config_dir="$HOME/.config"
-export local_dir="$HOME/.local"
-# shellcheck disable=SC2155
-export scripts="$(dirname "$0")"
-export source_dir="$scripts/.config"
-export modules_dir="$scripts/modules"
+config_dir="$HOME/.config"
+local_dir="$HOME/.local"
+scripts="$(dirname "$0")"
+source_dir="$scripts/.config"
+modules_dir="$scripts/modules"
+log_file="$local_dir/installation_log.txt"
 
 # Set user locale
-export user_locale="en_US.UTF-8"
-export LANG="$user_locale"
+user_locale="en_US.UTF-8"
+LANG="$user_locale"
 user_lang=${user_locale:0:2}
-export user_lang="$user_lang"
+user_lang="$user_lang"
 
 # Update configuration files for Sway, Hyprland, or Wayland
 if command -v sway &>/dev/null; then
-  echo "export LANG=$user_locale" >>"$config_dir/sway/config"
+  echo "export LANG=$user_locale" >> "$config_dir/sway/config"
 fi
 
 if command -v hyprland &>/dev/null; then
-  echo "export LANG=$user_locale" >>"$config_dir/hyprland/hyprland.conf"
+  echo "export LANG=$user_locale" >> "$config_dir/hyprland/hyprland.conf"
 fi
 
 # Load messages from messages.sh file
-# shellcheck disable=SC1091
-source ./messages.sh
+source "$scripts/messages.sh"
 
 # Create destination directory if none exists
 mkdir -p "$local_dir/bin"
-# shellcheck disable=SC2034
+
+# Packages to install
 packages=(
   "anytype"
   "betterlockscreen"
@@ -93,42 +93,37 @@ packages=(
   "zathura-pdf-mupdf"
   "yad"
 )
+
 # Check that required packages are installed
 # shellcheck disable=SC2034
 required_packages=("make" "rsync" "git" "shellcheck" "yay" "jq") # Add any additional required packages
 # shellcheck disable=SC2034
-missing_packages=()
-# Mise à jour de la liste des paquets
-echo "Mise à jour des paquets..."
+missing_packages=() # Remove unused variable
+
+
+# Update package list
+echo "Updating packages..."
 sudo apt-get update -q
 
-# Installation des packages
-total=${#to_install[@]}
-for ((i=1; i<=total; i++)); do
-  package=${to_install[$i-1]}
-  
-  sudo apt-get install -y "$package"
-
-  # Vérifier les modules en cas d'échec
-  if [ $? -ne 0 ]; then
+# Install packages
+for package in "${packages[@]}"; do
+  if ! sudo apt-get install -y "$package"; then
     if [ -f "$modules_dir/$package.sh" ]; then
       "$modules_dir/$package.sh"
-      echo "$package" >> "$installed_packages_module_log"
+      echo "$package" >> "$log_file"
     else
-      echo "$package" >> "$installed_packages_error_log"
+      echo "$package" >> "$log_file"
     fi
   else
-    echo "$package" >> "$installed_packages_log"
+    echo "$package" >> "$log_file"
   fi
 
-  # Barre de progression
-  progress=$((i * 100 / total))
-  printf "\rProgress : [==========] %d%%" $progress
+  progress=$((progress + 1))
+  if ((progress % 10 == 0)); then
+    printf "\rProgress : [==========] %d%%" $((progress * 100 / total))
+  fi
 done
 
-# Nettoyage après installation
-echo "Nettoyage..."
-sudo apt-get autoremove -y
-sudo apt-get clean
-
-echo "Installation et nettoyage terminés."
+# Clean up after installation
+echo "Cleaning up..."
+sudo apt-get autoremove
