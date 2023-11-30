@@ -9,7 +9,9 @@ function log() {
 }
 
 log "Check if hyprland is installed"
-if ! command -v hyprland &> /dev/null; then
+if command -v hyprland &> /dev/null; then
+    log "hyprland is already installed"
+else
     log "hyprland not found, installing..."
     echo 'deb http://download.opensuse.org/repositories/home:/Sunderland93:/hyprland-debian/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/home:Sunderland93:hyprland-debian.list
     curl -fsSL https://download.opensuse.org/repositories/home:Sunderland93:hyprland-debian/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_Sunderland93_hyprland-debian.gpg > /dev/null
@@ -28,11 +30,17 @@ pv -n < /dev/zero | sudo dd of=/dev/null bs=1M count=100 2>&1 | \
         echo "$progress"
     done
 
-# Uninstall development libraries
-if command -v hyprland &> /dev/null; then
-    log "Uninstalling development libraries..."
-    sudo apt remove -y libgtk-3-dev
-    log "Uninstallation complete"
+# Check if libpam0g-dev is installed
+if dpkg-query -W -f='${Status}' libpam0g-dev 2>/dev/null | grep -q "install ok installed"; then
+    log "libpam0g-dev is already installed"
+else
+    log "Installing libpam0g-dev..."
+    sudo apt install -y libpam0g-dev
+    log "Installation complete"
 fi
 
-log "Refactoring complete"
+log "Uninstalling development libraries..."
+sudo apt remove -y libgtk-3-dev
+log "Uninstallation complete"
+
+log "Installation complete"
