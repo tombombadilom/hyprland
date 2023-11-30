@@ -53,11 +53,9 @@ fi
 
 if ! command -v shellcheck > /dev/null 2>&1; then
   echo "shellcheck n'est pas installé. Installation en cours..."
-  if [ "$(uname)" = "Darwin" ]; then
-    brew install shellcheck
-  elif [ -x "$(command -v apt)" ]; then
+  if  [ -x "$(command -v apt)" ]; then
     sudo apt install -y shellcheck
-  else [ -x "$(command -v yum)" ]; then
+  else 
     echo "Impossible de trouver un gestionnaire de paquets compatible."
     exit 1
   fi
