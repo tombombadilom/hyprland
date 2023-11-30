@@ -22,8 +22,8 @@ log_dir="$script/log"
 log_file="$log_dir/sync_to_repo.log"
 
 # Fichier JSON de suivi des répertoires
-json_file="allowed_dirs.json"
-denials_file="denials.json"
+json_file="$scripts/allowed_dirs.json"
+denials_file="$scripts/denials.json"
 
 echo "Starting synchronisation to repository..." | tee  "$log_file"
 
