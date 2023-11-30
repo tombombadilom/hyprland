@@ -98,41 +98,13 @@ packages=(
 required_packages=("make" "rsync" "git" "shellcheck" "yay" "jq") # Add any additional required packages
 # shellcheck disable=SC2034
 missing_packages=()
-
-# Function to display the progress bar
-progress_bar() {
-  local duration=$1
-  local start_time=$(date +%s)
-  local end_time=$((start_time + duration))
-  local current_time=$start_time
-
-  while [ $current_time -lt $end_time ]; do
-    local current=$((current_time - start_time))
-    local total=$((end_time - start_time))
-    local progress=$((current * 100 / total))
-    local filled=$((progress / 2)) # Divide by 2 to adjust to a width of 50
-    local unfilled=$((50 - filled))
-    printf "\rProgress : [%-${filled}s%-${unfilled}s] %d%%" $(printf "%-${filled}s" "="
-    printf "%-${unfilled}s" " ") $progress
-    sleep 0.1
-    ((current_time++))
-    # shellcheck disable=SC2154
-    if [ $current_time -ge $end_time ]; then
-      printf "\n"
-      break  # Terminate the function
-    fi
-  done
-}
-
 # Mise à jour de la liste des paquets
 echo "Mise à jour des paquets..."
-progress_bar 5
 sudo apt-get update -q
 
 # Installation des packages
 total=${#to_install[@]}
 for ((i=1; i<=total; i++)); do
-
   package=${to_install[$i-1]}
   
   sudo apt-get install -y "$package"
@@ -151,14 +123,11 @@ for ((i=1; i<=total; i++)); do
 
   # Barre de progression
   progress=$((i * 100 / total))
-  bar_length=$((progress / 2))
-  printf "\rProgress : [%-${bar_length}s] %d%%" $(printf "%-${bar_length}s" "=") $progress
-  
+  printf "\rProgress : [==========] %d%%" $progress
 done
 
 # Nettoyage après installation
 echo "Nettoyage..."
-progress_bar 5
 sudo apt-get autoremove -y
 sudo apt-get clean
 
