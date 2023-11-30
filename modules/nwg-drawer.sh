@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
-
+# shellcheck disable=SC2034
+scripts="$(dirname "$0")"
 package="nwg-drawer"
-log_dir="log"
+log_dir="$scripts/log"
 log_file="$log_dir/$package.log"
+
+echo "Entering $package..." >> "$log_file"
+
 progress=""
 
 function log() {

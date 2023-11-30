@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
-
+# shellcheck disable=SC2034
+scripts="$(dirname "$0")"
 package="nwg-shell"
-log_dir="log"
+log_dir="$scripts/log"
 log_file="$log_dir/$package.log"
 
-sudo apt install -y python3-setuptools
+echo "Entering $package..." >> "$log_file"
 
+if ! dpkg -s python3-setuptools >/dev/null 2>&1; then
+    echo "Installing python3-setuptools..." >> "$log_file"
+    sudo apt install -y python3-setuptools >> "$log_file" 2>&1
+fi
 # Function to print log messages
 function log_message() {
     echo "$(date +"%Y-%m-%d %H:%M:%S") $1" >> "$log_file"
@@ -27,19 +32,23 @@ function print_progress() {
 }
 
 log_message "Installing nwg-shell..."
-git clone https://github.com/nwg-piotr/nwg-shell.git
+echo "Installing nwg-shell..." >> "$log_file"
+git clone https://github.com/nwg-piotr/nwg-shell.git >> "$log_file" 2>&1
 cd nwg-shell || exit
 chmod +x setup.py
 
 log_message "Running setup.py..."
-sudo python3 setup.py install
+echo "Running setup.py..." >> "$log_file"
+sudo python3 setup.py install >> "$log_file" 2>&1
 
 # Uninstallation of development libraries
 log_message "Uninstalling development libraries..."
-sudo apt remove -y python3-setuptools
-sudo apt auto-remove -y
+echo "Uninstalling development libraries..." >> "$log_file"
+sudo apt remove -y python3-setuptools >> "$log_file" 2>&1
+sudo apt auto-remove -y >> "$log_file" 2>&1
 
 cd ../
 sudo rm -rf nwg-shell
 
 log_message "Installation complete."
+echo "Installation complete." >> "$log_file"

@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
+scripts="$(dirname "$0")"
 package="betterlockscreen"
-log_dir="log"
+log_dir="$scripts/log"
 log_file="$log_dir/$package.log"
+
+echo "Entering $package..." >> "$log_file"
 
 install_dependencies() {
     # List of dependencies

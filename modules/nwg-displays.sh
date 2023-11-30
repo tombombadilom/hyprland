@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 # Variables
-package="nwg-bar"
-log_dir="log"
+# shellcheck disable=SC2034
+scripts="$(dirname "$0")"
+package="nwg-displays"
+log_dir="$scripts/log"
 log_file="$log_dir/$package.log"
 duration=0.1
 prefix="Progress: "
@@ -10,6 +12,8 @@ suffix=""
 chars=("▏" "▎" "▍" "▌" "▋" "▊" "▉" "█")
 num_chars=${#chars[@]}
 total_width=50
+
+echo "Entering $package..." >> "$log_file"
 
 # Add logging
 log() {

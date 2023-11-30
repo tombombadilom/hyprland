@@ -115,6 +115,7 @@ sudo apt update -q
 
 # Install required packages
 for package in "${required_packages[@]}"; do
+  echo "Entering $package..." >> "$log_file"
   if ! sudo apt install -y "$package"; then
     echo "$package" >> "$log_file"
   else
@@ -124,6 +125,7 @@ done
 
 # Install packages
 for package in "${packages[@]}"; do
+  echo "Entering $package..." >> "$log_file"
   if ! sudo apt install -y "$package"; then
     if [ -f "$modules_dir/$package.sh" ]; then
       "$modules_dir/$package.sh"

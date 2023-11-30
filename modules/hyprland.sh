@@ -1,14 +1,21 @@
 #!/usr/bin/env bash
 
-package="hyprland"
-log_dir="log"
+scripts="$(dirname "$0")"
+package="anyrun"
+log_dir="$scripts/log"
 log_file="$log_dir/$package.log"
+
+echo "Entering $package..." >> "$log_file"
 
 function log() {
     echo "$1" >> "$log_file"
 }
 
-log "Check if hyprland is installed"
+echo "Entering $package..." >> "$log_file"
+
+
+# Check if hyprland is already installed
+log "Checking if hyprland is installed"
 if command -v hyprland &> /dev/null; then
     log "hyprland is already installed"
 else
@@ -20,27 +27,17 @@ else
     log "Installation complete"
 fi
 
-log "Add progress and log"
-# Add your code for adding progress and log here
-
-# Progress bar (added)
-log "Adding progress bar"
-pv -n < /dev/zero | sudo dd of=/dev/null bs=1M count=100 2>&1 | \
-    while read -r progress; do
-        echo "$progress"
-    done
-
-# Check if libpam0g-dev is installed
+# Check if libpam0g-dev is already installed
+log "Checking if libpam0g-dev is installed"
 if dpkg-query -W -f='${Status}' libpam0g-dev 2>/dev/null | grep -q "install ok installed"; then
     log "libpam0g-dev is already installed"
 else
-    log "Installing libpam0g-dev..."
+    log "libpam0g-dev not found, installing..."
     sudo apt install -y libpam0g-dev
     log "Installation complete"
 fi
 
+# Uninstall development libraries
 log "Uninstalling development libraries..."
 sudo apt remove -y libgtk-3-dev
 log "Uninstallation complete"
-
-log "Installation complete"

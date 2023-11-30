@@ -3,14 +3,16 @@ package="dunst"
 log_dir="log"
 log_file="$log_dir/$package.log"
 
-# Check if dunst is already installed
-if command -v dunst &> /dev/null; then
-    echo "dunst is already installed. Skipping installation."
-    exit 0
-fi
+echo "Entering $package..." >> "$log_file"
 
-# Install dependencies
-sudo apt install -y dbus libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libcairo2-dev libnotify-dev wayland-client-protocols xdg-utils
+# Check if dependencies are already installed
+dependencies=("dbus" "libxinerama-dev" "libxrandr-dev" "libxss-dev" "libglib2.0-dev" "libpango1.0-dev" "libcairo2-dev" "libnotify-dev" "wayland-client-protocols" "xdg-utils")
+
+for dependency in "${dependencies[@]}"; do
+    if dpkg -s "$dependency" &> /dev/null; then
+        echo "$dependency is already installed. Skipping installation." >> "$log_file"
+    fi
+done
 
 # Clone dunst repository
 git clone https://github.com/dunst-project/dunst.git
@@ -39,7 +41,9 @@ rm -rf dunst
 sudo apt auto-remove -y
 
 # Uninstall dependencies
-sudo apt remove -y libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libcairo2-dev libnotify-dev wayland-client-protocols xdg-utils
+for dependency in "${dependencies[@]}"; do
+    sudo apt remove -y "$dependency"
+done
 
 # Log installation completion
 echo "dunst installation finished successfully." >> "$log_file"

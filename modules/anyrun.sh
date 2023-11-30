@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
-
+# shellcheck disable=SC2034
+scripts="$(dirname "$0")"
 package="anyrun"
-log_dir="log"
+# shellcheck disable=SC2154
+log_dir="$script/log"
 log_file="$log_dir/$package.log"
+
+echo "Entering $package..." >> "$log_file"
 
 # Check if anyrun is already installed
 if ! command -v anyrun &> /dev/null

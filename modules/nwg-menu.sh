@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2034
+scripts="$(dirname "$0")"
+package="nwg-menu"
+# shellcheck disable=SC2154
+log_dir="$script/log"
+log_file="$log_dir/$package.log"
 
-package="golang-go"
-log_dir="/path/to/log/dir"
-log_file="/path/to/log/file.log"
+echo "Entering $package..." >> "$log_file"
+
 progress="[                    ]"
 
 # Check if the package is already installed
@@ -35,11 +40,29 @@ make build
 
 # Add progress bar for dependencies download
 log "Downloading dependencies..."
-log "Progress: $progress 0%"
 
 # Run the command to download dependencies
 # Add the code for the progress bar here
 # Update the progress bar as the dependencies are being downloaded
+
+# Example progress bar implementation
+total_dependencies=10
+current_progress=0
+while [ $current_progress -lt $total_dependencies ]; do
+    current_progress=$((current_progress + 1))
+    percentage=$((current_progress * 10))
+    progress="["
+    for ((i=0; i<current_progress; i++)); do
+        progress+="="
+    done
+    progress+=">"
+    for ((i=current_progress; i<total_dependencies; i++)); do
+        progress+=" "
+    done
+    progress+="]"
+    log "Progress: $progress $percentage%"
+    sleep 1
+done
 
 # Make install
 log "Running make install..."

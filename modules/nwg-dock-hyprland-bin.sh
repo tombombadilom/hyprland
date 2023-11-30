@@ -1,8 +1,15 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2034
+scripts="$(dirname "$0")"
 package="nwg-dock-hyprland-bin"
-log_dir="log"
+# shellcheck disable=SC2154
+log_dir="$scripts/log"
 log_file="$log_dir/$package.log"
 
+echo "Entering $package..." >> "$log_file"
+
 # Progress bar
+# shellcheck disable=SC2120
 progress_bar() {
     local current=$1
     local total=$2
