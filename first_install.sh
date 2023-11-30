@@ -114,6 +114,14 @@ update_progress() {
 # Function to install package and update logs
 install_package() {
   package="$1"
+  
+  # Check if package is already installed
+  if dpkg-query -W -f='${Status}' "$package" 2>/dev/null | grep -q "installed"; then
+    echo "$package is already installed."
+    echo "$package" >> "$log_file"
+    return
+  fi
+  
   if ! sudo apt-get install -y "$package"; then
     if [ -f "$modules_dir/$package.sh" ]; then
       "$modules_dir/$package.sh"
