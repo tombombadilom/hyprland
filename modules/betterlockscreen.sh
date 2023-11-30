@@ -33,6 +33,15 @@ install_dependencies() {
     echo
 }
 
+check_betterlockscreen_installed() {
+    if ! dpkg -s "$package" > /dev/null 2>&1; then
+        echo "$package is not installed" | tee -a "$log_file"
+        # Additional logic to handle the case when betterlockscreen is not installed
+    else
+        echo "$package is already installed" | tee -a "$log_file"
+    fi
+}
+
 clone_i3lock_color() {
     git clone https://github.com/Raymo111/i3lock-color.git
     cd i3lock-color || exit
@@ -56,6 +65,7 @@ remove_dependencies() {
 
 # Refactored code
 install_dependencies
+check_betterlockscreen_installed
 clone_i3lock_color
 autoinstall_system
 autoinstall_user
