@@ -57,13 +57,7 @@ if ! command -v shellcheck > /dev/null 2>&1; then
     brew install shellcheck
   elif [ -x "$(command -v apt)" ]; then
     sudo apt install -y shellcheck
-  elif [ -x "$(command -v yum)" ]; then
-    sudo yum install -y shellcheck
-  elif [ -x "$(command -v dnf)" ]; then
-    sudo dnf install -y shellcheck
-  elif [ -x "$(command -v zypper)" ]; then
-    sudo zypper install -y shellcheck
-  else
+  else [ -x "$(command -v yum)" ]; then
     echo "Impossible de trouver un gestionnaire de paquets compatible."
     exit 1
   fi
