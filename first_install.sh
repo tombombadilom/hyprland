@@ -1,18 +1,22 @@
 #!/usr/bin/env bash
-
+scripts="$(dirname "$0")"
+# shellcheck disable=SC2086
+mkdir -p $scripts/log
 # Configuration source and target directories
 config_dir="$HOME/.config"
 local_dir="$HOME/.local"
-scripts="$(dirname "$0")"
+# shellcheck disable=SC2034
 source_dir="$scripts/.config"
 modules_dir="$scripts/modules"
-log_file="$local_dir/installation_log.txt"
+# shellcheck disable=SC2154
+log_dir="$script/log"
+log_file="$log_dir/installation_log.txt"
 
 # Set user locale
 user_locale="en_US.UTF-8"
 LANG="$user_locale"
+# shellcheck disable=SC2034
 user_lang=${user_locale:0:2}
-user_lang="$user_lang"
 
 # Update configuration files for Sway, Hyprland, or Wayland
 if command -v sway &>/dev/null; then
@@ -24,6 +28,7 @@ if command -v hyprland &>/dev/null; then
 fi
 
 # Load messages from messages.sh file
+# shellcheck disable=SC1091
 source "$scripts/messages.sh"
 
 # Create destination directory if none exists
@@ -95,7 +100,9 @@ packages=(
 )
 
 # Check that required packages are installed
+# shellcheck disable=SC2034
 required_packages=("make" "rsync" "git" "shellcheck" "yay" "jq") # Add any additional required packages
+# shellcheck disable=SC2034
 missing_packages=()
 
 # Update package list
