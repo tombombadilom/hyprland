@@ -31,6 +31,7 @@ mkdir -p "$local_dir/bin"
 
 # Packages to install
 packages=(
+  "dialog"
   "anytype"
   "betterlockscreen"
   "azote"
@@ -97,13 +98,19 @@ packages=(
 # Check that required packages are installed
 # shellcheck disable=SC2034
 required_packages=("dialog" "make" "rsync" "git" "shellcheck" "yay" "jq") # Add any additional required packages
-# shellcheck disable=SC2034
-missing_packages=() # Remove unused variable
-
 
 # Update package list
 echo "Updating packages..."
 sudo apt-get update -q
+
+# Install required packages
+for package in "${required_packages[@]}"; do
+  if ! sudo apt-get install -y "$package"; then
+    echo "$package" >> "$log_file"
+  else
+    echo "$package" >> "$log_file"
+  fi
+done
 
 # Install packages
 for package in "${packages[@]}"; do
@@ -114,16 +121,14 @@ for package in "${packages[@]}"; do
     else
       echo "$package" >> "$log_file"
     fi
-  else
-    echo "$package" >> "$log_file"
   fi
-
+      
   progress=$((progress + 1))
   if ((progress % 10 == 0)); then
     printf "\rProgress : [==========] %d%%" $((progress * 100 / total))
   fi
 done
-
+      
 # Clean up after installation
 echo "Cleaning up..."
 sudo apt-get autoremove
