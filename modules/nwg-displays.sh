@@ -13,7 +13,7 @@ chars=("▏" "▎" "▍" "▌" "▋" "▊" "▉" "█")
 num_chars=${#chars[@]}
 total_width=50
 
-echo "Entering $package..." >> "$log_file"
+echo "Entering $package..." | tee -a "$log_file"
 
 # Add logging
 log() {

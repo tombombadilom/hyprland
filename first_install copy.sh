@@ -26,11 +26,11 @@ fi
 
 # Update configuration files for Sway, Hyprland, or Wayland
 if command -v sway &>/dev/null; then
-  echo "export LANG=$user_locale" >> "$config_dir/sway/config"
+  echo "export LANG=$user_locale" | tee -a "$config_dir/sway/config"
 fi
 
 if command -v hyprland &>/dev/null; then
-  echo "export LANG=$user_locale" >> "$config_dir/hyprland/hyprland.conf"
+  echo "export LANG=$user_locale" | tee -a "$config_dir/hyprland/hyprland.conf"
 fi
 
 # Load messages from messages.sh file
@@ -115,23 +115,23 @@ sudo apt update -q
 
 # Install required packages
 for package in "${required_packages[@]}"; do
-  echo "Entering $package..." >> "$log_file"
+  echo "Entering $package..." | tee -a "$log_file"
   if ! sudo apt install -y "$package"; then
-    echo "$package" >> "$log_file"
+    echo "$package" | tee -a "$log_file"
   else
-    echo "$package" >> "$log_file"
+    echo "$package" | tee -a "$log_file"
   fi
 done
 
 # Install packages
 for package in "${packages[@]}"; do
-  echo "Entering $package..." >> "$log_file"
+  echo "Entering $package..." | tee -a "$log_file"
   if ! sudo apt install -y "$package"; then
     if [ -f "$modules_dir/$package.sh" ]; then
       "$modules_dir/$package.sh"
-      echo "$package" >> "$log_file"
+      echo "$package" | tee -a "$log_file"
     else
-      echo "$package" >> "$log_file"
+      echo "$package" | tee -a "$log_file"
     fi
    fi
        

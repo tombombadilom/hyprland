@@ -7,7 +7,7 @@ package="nwg-bar"
 log_dir="$scripts/log"
 log_file="$log_dir/$package.log"
 
-echo "Entering $package..." >> "$log_file"
+echo "Entering $package..." | tee -a "$log_file"
 
 # Create log directory
 mkdir -p $log_dir
@@ -15,7 +15,7 @@ mkdir -p $log_dir
 # Function to log messages
 log() {
   local message=$1
-  echo "$(date +"%Y-%m-%d %H:%M:%S"): $message" >> $log_file
+  echo "$(date +"%Y-%m-%d %H:%M:%S"): $message" | tee -a $log_file
 }
 
 # Function to display progress bar
@@ -43,11 +43,11 @@ if command -v $package &> /dev/null; then
 else
     # Install required packages
     log "Installing required packages..."
-    sudo apt install -y golang-go libgtk-3-dev libgtk-layer-shell0 &>> $log_file
+    sudo apt install -y golang-go libgtk-3-dev libgtk-layer-shell0 &| tee -a $log_file
 
     # Clone repository
     log "Cloning $package repository..."
-    git clone https://github.com/nwg-piotr/nwg-bar.git &>> $log_file || {
+    git clone https://github.com/nwg-piotr/nwg-bar.git &| tee -a $log_file || {
         log "Failed to clone repository."
         exit 1
     }
@@ -59,21 +59,21 @@ else
 
     # Get dependencies
     log "Running 'make get'..."
-    make get &>> $log_file || {
+    make get &| tee -a $log_file || {
         log "Failed to run 'make get'."
         exit 1
     }
 
     # Build
     log "Running 'make build'..."
-    make build &>> $log_file || {
+    make build &| tee -a $log_file || {
         log "Failed to run 'make build'."
         exit 1
     }
 
     # Install
     log "Installing $package..."
-    sudo make install &>> $log_file || {
+    sudo make install &| tee -a $log_file || {
         log "Failed to install $package."
         exit 1
     }
@@ -86,7 +86,7 @@ else
 
     # Uninstall dev libraries
     log "Removing development libraries..."
-    sudo apt -y remove --autoremove golang-go libgtk-3-dev libgtk-layer-shell0 &>> $log_file
+    sudo apt -y remove --autoremove golang-go libgtk-3-dev libgtk-layer-shell0 &| tee -a $log_file
 
     log "Refactoring complete."
 fi

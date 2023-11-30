@@ -5,12 +5,12 @@ package="gojq"
 log_dir="log"
 log_file="$log_dir/$package.log"
 
-echo "Entering $package..." >> "$log_file"
+echo "Entering $package..." | tee -a "$log_file"
 
 # Function to log messages
 log() {
   local message=$1
-  echo "$(date +"%Y-%m-%d %H:%M:%S"): $message" >> "$log_file"
+  echo "$(date +"%Y-%m-%d %H:%M:%S"): $message" | tee -a "$log_file"
 }
 
 # Function to check if package is already installed
@@ -44,7 +44,7 @@ fi
 # Add gojq to the PATH
 if ! grep -q "$(go env GOPATH)/bin" ~/.bashrc; then
   log "Adding gojq to the PATH..."
-  echo "export PATH=\$PATH:$(go env GOPATH)/bin" >> ~/.bashrc
+  echo "export PATH=\$PATH:$(go env GOPATH)/bin" | tee -a ~/.bashrc
   source ~/.bashrc
 fi
 

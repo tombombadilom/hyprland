@@ -6,7 +6,7 @@ package="nwg-menu"
 log_dir="$script/log"
 log_file="$log_dir/$package.log"
 
-echo "Entering $package..." >> "$log_file"
+echo "Entering $package..." | tee -a "$log_file"
 
 progress="[                    ]"
 
@@ -25,7 +25,7 @@ cd nwg-menu || exit
 # Add logs
 function log() {
     echo "$1"
-    echo "$(date): $1" >> "$log_file"
+    echo "$(date): $1" | tee -a "$log_file"
 }
 
 log "Cloning repository..."

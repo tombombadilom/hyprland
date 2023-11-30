@@ -5,13 +5,13 @@ package="anyrun"
 log_dir="$scripts/log"
 log_file="$log_dir/$package.log"
 
-echo "Entering $package..." >> "$log_file"
+echo "Entering $package..." | tee -a "$log_file"
 
 function log() {
-    echo "$1" >> "$log_file"
+    echo "$1" | tee -a "$log_file"
 }
 
-echo "Entering $package..." >> "$log_file"
+echo "Entering $package..." | tee -a "$log_file"
 
 
 # Check if hyprland is already installed

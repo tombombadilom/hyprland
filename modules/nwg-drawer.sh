@@ -5,12 +5,12 @@ package="nwg-drawer"
 log_dir="$scripts/log"
 log_file="$log_dir/$package.log"
 
-echo "Entering $package..." >> "$log_file"
+echo "Entering $package..." | tee -a "$log_file"
 
 progress=""
 
 function log() {
-    echo "$(date +"%Y-%m-%d %H:%M:%S"): $1" >> "$log_file"
+    echo "$(date +"%Y-%m-%d %H:%M:%S"): $1" | tee -a "$log_file"
 }
 
 function show_progress() {

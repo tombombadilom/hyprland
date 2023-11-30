@@ -6,12 +6,12 @@ package="anyrun"
 log_dir="$script/log"
 log_file="$log_dir/$package.log"
 
-echo "Entering $package..." >> "$log_file"
+echo "Entering $package..." | tee -a "$log_file"
 
 # Check if anyrun is already installed
 if ! command -v anyrun &> /dev/null
 then
-    echo "anyrun is not installed. Starting installation..." >> "$log_file"
+    echo "anyrun is not installed. Starting installation..." | tee -a "$log_file"
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     source "$HOME"/.cargo/env
     sudo apt install -y libgtk-3-dev libgdk-3-dev libpango1.0-dev libcairo2-dev libgdk-pixbuf2.0-dev libglib2.0-dev
@@ -25,9 +25,9 @@ then
     rustup self uninstall -y
     cd ../
     rm -rf anyrun
-    echo "anyrun installation completed successfully." >> "$log_file"
+    echo "anyrun installation completed successfully." | tee -a "$log_file"
 else
-    echo "anyrun is already installed" >> "$log_file"
+    echo "anyrun is already installed" | tee -a "$log_file"
 fi
 
 # Add a progress bar for dependencies download and package installation
@@ -59,7 +59,7 @@ progress_bar 10
 
 # Make install
 echo "Running make install..."
-echo "$(date): Running make install" >> "$log_file"
+echo "$(date): Running make install" | tee -a "$log_file"
 sudo make install
 
 # Uninstall dev libraries
@@ -67,4 +67,4 @@ echo "Uninstalling dev libraries..."
 sudo apt remove -y libgtk-3-dev libgdk-3-dev libpango1.0-dev libcairo2-dev libgdk-pixbuf2.0-dev libglib2.0-dev
 
 # Installation complete
-echo "Installation complete." >> "$log_file"
+echo "Installation complete." | tee -a "$log_file"

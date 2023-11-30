@@ -4,7 +4,7 @@ package="betterlockscreen"
 log_dir="$scripts/log"
 log_file="$log_dir/$package.log"
 
-echo "Entering $package..." >> "$log_file"
+echo "Entering $package..." | tee -a "$log_file"
 
 install_dependencies() {
     # List of dependencies
@@ -16,10 +16,12 @@ install_dependencies() {
     local completed_dependencies=0
 
     # Uninstall development libraries
+    echo "Uninstalling development libraries..." | tee -a "$log_file"
     sudo apt remove -y "${dependencies[@]}"
 
     for dependency in "${dependencies[@]}"; do
         if ! dpkg -s "$dependency" > /dev/null 2>&1; then
+            echo "$dependency is not installed" | tee -a "$log_file"
             sudo apt install -y "$dependency"
             echo "Installed $dependency" | tee -a "$log_file"
         else

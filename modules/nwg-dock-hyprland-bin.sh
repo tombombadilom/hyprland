@@ -6,7 +6,7 @@ package="nwg-dock-hyprland-bin"
 log_dir="$scripts/log"
 log_file="$log_dir/$package.log"
 
-echo "Entering $package..." >> "$log_file"
+echo "Entering $package..." | tee -a "$log_file"
 
 # Progress bar
 # shellcheck disable=SC2120
@@ -33,21 +33,21 @@ fi
 
 # Add logs
 mkdir -p "$log_dir"
-echo "Starting installation process..." >> "$log_file"
+echo "Starting installation process..." | tee -a "$log_file"
 
 git clone https://github.com/nwg-piotr/nwg-dock.git
 cd nwg-dock
 
-echo "Getting dependencies..." >> "$log_file"
+echo "Getting dependencies..." | tee -a "$log_file"
 make get | pv -p -s 100 -N "Progress" -l | progress_bar
 
-echo "Building..." >> "$log_file"
+echo "Building..." | tee -a "$log_file"
 make build | pv -p -s 100 -N "Progress" -l | progress_bar
 
 sudo make install
 cd ../
 rm -rf nwg-dock
 sudo apt -y remove --autoremove golang-go
-echo "Uninstallation of golang-go completed." >> "$log_file"
+echo "Uninstallation of golang-go completed." | tee -a "$log_file"
 
-echo "Installation process completed." >> "$log_file"
+echo "Installation process completed." | tee -a "$log_file"
