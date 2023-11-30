@@ -96,7 +96,7 @@ packages=(
 
 # Check that required packages are installed
 # shellcheck disable=SC2034
-required_packages=("make" "rsync" "git" "shellcheck" "yay" "jq") # Add any additional required packages
+required_packages=("dialog" "make" "rsync" "git" "shellcheck" "yay" "jq") # Add any additional required packages
 # shellcheck disable=SC2034
 missing_packages=() # Remove unused variable
 
