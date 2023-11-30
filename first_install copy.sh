@@ -10,7 +10,7 @@ modules_dir="$scripts/modules"
 log_file="$scripts/log/installation_log.txt"
 
 # Set user locale
-user_locale="en_US.UTF-8"
+user_locale="fr_FR.UTF-8"
 LANG="$user_locale"
 user_lang=${user_locale:0:2}
 user_lang="$user_lang"
@@ -122,14 +122,14 @@ for package in "${packages[@]}"; do
     else
       echo "$package" >> "$log_file"
     fi
-  fi
-      
-  progress=$((progress + 1))
-  if ((progress % 10 == 0)); then
-    printf "\rProgress : [==========] %d%%" $((progress * 100 / total))
-  fi
-done
-      
-# Clean up after installation
-echo "Cleaning up..."
-sudo apt-get autoremove
+   fi
+       
+   progress=$((progress + 1))
+   if ((progress % 10 == 0)); then
+     printf "\rProgress : [==========] %d%%" $((progress * 100 / total))
+   fi
+ done
+       
+ # Clean up after installation
+ echo "Cleaning up..."
+ sudo apt-get autoremove
