@@ -99,30 +99,22 @@ required_packages=("make" "rsync" "git" "shellcheck" "yay" "jq") # Add any addit
 # shellcheck disable=SC2034
 missing_packages=()
 
-# Fonction pour afficher la barre de progression
+# Function to display progress bar
 progress_bar() {
   local duration=$1
-  # shellcheck disable=SC2155
-  local start_time=$(date +%s)
+  local start_time=$(date)
   local end_time=$((start_time + duration))
   local current_time=$start_time
 
-  # shellcheck disable=SC2086
   while [ $current_time -lt $end_time ]; do
-    local current=$((current_time - start_time))
-    local total=$((end_time - start_time))
-    local progress=$((current * 100 / total))
-    local filled=$((progress / 2)) # Diviser par 2 pour ajuster à la largeur de 50
+    local current=$((current_time - start    local total=$((end_time - start_time))
+    local progress=$((current * 100 / total local filled=$((progress / 2))
     local unfilled=$((50 - filled))
-    echo -ne "\r\033[32m["
-    for i in $(seq 1 $filled); do echo -n '#'; done
-    # shellcheck disable=SC2034
-    for i in $(seq 1 $unfilled); do echo -n '-'; done
-    echo -ne "\033[0m] $progress%"
+    printf "\r[\033[32m%s\033[0m] %" $(printf '#%.0s' $(seq 1 $filled)) $progress
     current_time=$(date +%s)
     sleep 1
   done
-  echo -e "\n"
+ e "\n"
 }
 
 # Mise à jour de la liste des paquets
