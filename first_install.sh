@@ -105,7 +105,7 @@ for ((i=1; i<=total; i++)); do
   fi
 
   # Barre de progression
-  printf "\rProgress : [%-50s] %d%%" $(seq -s= $i 50) $((i*100/total))
+  printf "\rProgress : [%-*s] %d%%" $((progress / 2)) "====================" $progress
   
 done
 
