@@ -116,10 +116,13 @@ progress_bar() {
   done
   echo -e "\n"
 }
+
+# create log directory
+mkdir -p log
 # Install each package individually
 for package in "${packages[@]}"; do
   echo "Installing $package..."
-  sudo apt install -y $package 2>&1 | tee "log_$package.txt" || echo "Failed to install $package, skipping..."
+  sudo apt install -y $package 2>&1 | tee "log/$package.log" || echo "Failed to install $package, skipping..."
 done
 
 if [ ${#missing_packages[@]} -gt 0 ]; then
