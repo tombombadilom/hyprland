@@ -130,11 +130,32 @@ echo "Mise à jour des paquets..."
 progress_bar 5
 sudo apt-get update -q
 
-# Installation du package nécessaire
-echo "Installation du package..."
-progress_bar 10
-# shellcheck disable=SC2102
-sudo apt-get install -y [nom_du_package]
+# Installation des packages
+total=${#to_install[@]}
+for ((i=1; i<=total; i++)); do
+
+  package=${to_install[$i-1]}
+  
+  sudo apt-get install -y "$package"
+
+  # Vérifier les modules en cas d'échec
+  if [ $? -ne 0 ]; then
+    if [ -f "$modules_dir/$package.sh" ]; then
+      "$modules_dir/$package.sh"
+      echo "$package" >> "$installed_packages_module_log"
+    else
+      echo "$package" >> "$installed_packages_error_log"
+    fi
+  else
+    echo "$package" >> "$installed_packages_log"
+  fi
+
+  # Barre de progression
+  progress=$((i * 100 / total))
+  bar_length=$((progress / 2))
+  printf "\rProgress : [%-${bar_length}s] %d%%" $(printf "%-${bar_length}s" "=") $progress
+  
+done
 
 # Nettoyage après installation
 echo "Nettoyage..."
