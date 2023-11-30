@@ -1,32 +1,15 @@
 #!/usr/bin/env bash
 
-# Répertoires de configuration
-export config_dir="$HOME/.config"
-export local_dir="$HOME/.local"
-export scripts="$(dirname "$0")"
-export source_dir="$scripts/.config"
-export modules_dir="$scripts/modules"
+# Répertoire de logs
+logs_dir="$scripts/logs"
+mkdir -p "$logs_dir"
 
-# Paramètres régionaux
-export user_locale="en_US.UTF-8"
-export LANG="$user_locale"
-user_lang=${user_locale:0:2}
-export user_lang="$user_lang"
-
-# Mise à jour des fichiers de configuration
-if command -v sway &>/dev/null; then
-  echo "export LANG=$user_locale" >> "$config_dir/sway/config"
-fi
-
-if command -v hyprland &>/dev/null; then
-  echo "export LANG=$user_locale" >> "$config_dir/hyprland/hyprland.conf" 
-fi
-
-# Messages
-source ./messages.sh
-
-# Répertoire de destination
-mkdir -p "$local_dir/bin"
+# Fichiers de log
+installed_packages_log="$logs_dir/installed_packages.log"
+# shellcheck disable=SC2034
+installed_packages_warning_log="$logs_dir/installed_packages_warning.log"
+installed_packages_error_log="$logs_dir/installed_packages_error.log"
+installed_packages_module_log="$logs_dir/installed_packages_module.log"
 
 # Liste des packages installés
 installed_packages=($(dpkg --get-selections | grep -v deinstall | cut -f1))
@@ -95,9 +78,10 @@ packages=(
 to_install=()
 
 for package in "${packages[@]}"; do
-  if ! [[ " ${installed_packages[*]} " =~ " $package " ]]; then
+  if ! [[ " ${installed_packages[*]} " =~ $package ]]; then
     to_install+=("$package")
   fi
+
 done
 
 # Installation des packages
@@ -112,7 +96,12 @@ for ((i=1; i<=total; i++)); do
   if [ $? -ne 0 ]; then
     if [ -f "$modules_dir/$package.sh" ]; then
       "$modules_dir/$package.sh"
+      echo "$package" >> "$installed_packages_module_log"
+    else
+      echo "$package" >> "$installed_packages_error_log"
     fi
+  else
+    echo "$package" >> "$installed_packages_log"
   fi
 
   # Barre de progression
