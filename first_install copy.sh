@@ -4,9 +4,10 @@
 config_dir="$HOME/.config"
 local_dir="$HOME/.local"
 scripts="$(dirname "$0")"
+# shellcheck disable=SC2034
 source_dir="$scripts/.config"
 modules_dir="$scripts/modules"
-log_file="$local_dir/installation_log.txt"
+log_file="$scripts/log/installation_log.txt"
 
 # Set user locale
 user_locale="en_US.UTF-8"
