@@ -1,26 +1,41 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Actualizar paquetes
+# Define variables
+package="gojq"
+log_dir="log"
+log_file="$log_dir/$package.log"
+
+# Show progress
+echo "Starting installation..."
+
+# Update packages
 sudo apt update
 
-# Instalar Go si aún no está instalado
+# Check if Go is already installed
 if ! command -v go &>/dev/null; then
-  echo "Instalando Go..."
+  echo "Installing Go..."
   sudo apt install -y golang-go
 fi
 
-# Instalar gojq
-echo "Instalando gojq..."
-go install github.com/itchyny/gojq/cmd/gojq@latest
+# Check if the package is already installed
+if ! command -v $package &>/dev/null; then
+  echo "Installing $package..."
+  go install github.com/itchyny/gojq/cmd/gojq@latest |& tee gojq_install.log
+fi
 
-# Añadir gojq al PATH
-echo "Añadiendo gojq al PATH..."
-echo "export PATH=\$PATH:$(go env GOPATH)/bin" >>~/.bashrc
-source ~/.bashrc
+# Add gojq to the PATH
+if ! grep -q "$(go env GOPATH)/bin" ~/.bashrc; then
+  echo "Adding gojq to the PATH..."
+  echo "export PATH=\$PATH:$(go env GOPATH)/bin" >> ~/.bashrc
+  source ~/.bashrc
+fi
 
-echo "Instalación de gojq completada."
-# Limpieza después de la instalación
-sudo apt-get autoremove -y # Eliminar paquetes innecesarios
-sudo apt-get clean         # Limpiar la caché de paquetes
+# Show progress
+echo "gojq installation completed."
 
-echo "Instalación y limpieza completadas."
+# Cleanup after installation
+sudo apt-get autoremove -y # Remove unnecessary packages
+sudo apt-get clean         # Clean package cache
+
+# Show progress
+echo "Installation and cleanup completed."
