@@ -3,7 +3,7 @@ package="dunst"
 log_dir="log"
 log_file="$log_dir/$package.log"
 
-echo "Entering $package..." | tee -a "$log_file"
+echo "Entering $package..." | tee "$log_file"
 
 # Check if dependencies are already installed
 dependencies=("dbus" "libxinerama-dev" "libxrandr-dev" "libxss-dev" "libglib2.0-dev" "libpango1.0-dev" "libcairo2-dev" "libnotify-dev" "wayland-client-protocols" "xdg-utils")

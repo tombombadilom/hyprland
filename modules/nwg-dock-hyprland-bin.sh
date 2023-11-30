@@ -6,7 +6,7 @@ package="nwg-dock-hyprland-bin"
 log_dir="$scripts/log"
 log_file="$log_dir/$package.log"
 
-echo "Entering $package..." | tee -a "$log_file"
+echo "Entering $package..." | tee  "$log_file"
 
 # Progress bar
 # shellcheck disable=SC2120

@@ -5,7 +5,7 @@ package="gojq"
 log_dir="log"
 log_file="$log_dir/$package.log"
 
-echo "Entering $package..." | tee -a "$log_file"
+echo "Entering $package..." | tee  "$log_file"
 
 # Function to log messages
 log() {

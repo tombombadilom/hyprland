@@ -10,8 +10,8 @@ source_dir="$scripts/.config"
 modules_dir="$scripts/modules"
 # shellcheck disable=SC2154
 log_dir="$script/log"
-log_file="$log_dir/installation_log.txt"
-
+log_file="$log_dir/installation.log"
+echo "Entering First install ..." | tee  "$log_file"
 # Set user locale
 user_locale="en_US.UTF-8"
 LANG="$user_locale"

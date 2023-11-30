@@ -6,7 +6,7 @@ package="nwg-menu"
 log_dir="$script/log"
 log_file="$log_dir/$package.log"
 
-echo "Entering $package..." | tee -a "$log_file"
+echo "Entering $package..." | tee "$log_file"
 
 progress="[                    ]"
 

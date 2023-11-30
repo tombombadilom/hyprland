@@ -7,7 +7,7 @@ package="nwg-bar"
 log_dir="$scripts/log"
 log_file="$log_dir/$package.log"
 
-echo "Entering $package..." | tee -a "$log_file"
+echo "Entering $package..." | tee  "$log_file"
 
 # Create log directory
 mkdir -p $log_dir
