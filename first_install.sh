@@ -157,3 +157,7 @@ dialog --title "Installation Logs" --textbox "$log_file" 20 70
 
 # Remove log file
 rm "$log_file"
+
+# lanch sync_to_system.sh
+./sync_to_system.sh
+sudo dpkg-reconfigure gdm3 

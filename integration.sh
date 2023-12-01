@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Installer pipx
-pip install --user pipx
+sudo apt -y install pipx
 
 # Ajouter pipx au PATH
 pipx ensurepath
@@ -56,6 +56,7 @@ packages=(
   "playerctl"
   "polybar"
   "rofi"
+  "sway-deps"
   "sway"
   "swaybg"
   "swayidle"
@@ -66,11 +67,16 @@ packages=(
   "ttf-nerd-fonts-symbols"
   "unzip"
   "wayland"
+  "wayland-egl"
   "wayland-protocols"
   "wl-clipboard"
   "wlsunset"
   "waybar"
-  "wayfire"
+  "wayland-protocols"
+  "wayland-utils"
+  "wayfire-deps"
+  "wayfire-dev"
+  "wayvnc"
   "wofi"
   "wtype"
   "wunderlist"

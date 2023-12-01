@@ -8,7 +8,7 @@ local_dir="$HOME/.local"
 source_dir="$scripts/.config"
 local_source_dir="$scripts/.local"
 # shellcheck disable=SC2154
-log_dir="$script/log"
+log_dir="$scripts/log"
 log_file="$log_dir/sync_to_system.log"
 
 echo "Starting synchronisation to system..." | tee  "$log_file"
@@ -72,5 +72,3 @@ for dir in "${dirs[@]}"; do
     echo "Le répertoire source $source_dir/$dir n'existe pas." | tee -a "$log_file"
   fi
 done
-
-echo "Synchronisation
