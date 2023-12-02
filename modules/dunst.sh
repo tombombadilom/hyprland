@@ -24,6 +24,9 @@ done
 # Create log directory if it doesn't already exist
 mkdir -p "$log_dir"
 
+# Create log file if it doesn't already exist
+touch "$log_file"
+
 # Clone dunst repository if it doesn't already exist
 if [ ! -d "dunst" ]; then
     git clone https://github.com/dunst-project/dunst.git
@@ -47,7 +50,7 @@ make 2>&1 | {
             fi
         fi
     done
-}
+} | tee -a "$log_file"
 
 # Install dunst
 if sudo make PREFIX=/usr/local install &>> "$log_file"; then
