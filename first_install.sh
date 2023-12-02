@@ -18,9 +18,12 @@ source_dir="$script_dir/.config"
 modules_dir="$script_dir/modules"
 
 # Set log file path
-touch "$script_dir/log/installation.log"
 log_file="$script_dir/log/installation.log"
 
+# Create log file if it doesn't exist
+if [ ! -f "$log_file" ]; then
+    touch "$log_file"
+fi
 # Function to set locales and install on the system
 set_locales() {
   local locale="$1"
@@ -69,6 +72,7 @@ install_package() {
   fi
 
   if [ -f "$modules_dir/$package.sh" ]; then
+    # shellcheck disable=SC1090
     source "$modules_dir/$package.sh"
     echo "$package" >> "$log_file"
   else
@@ -77,6 +81,7 @@ install_package() {
 }
 
 # Install packages
+# shellcheck disable=SC2154
 for package in "${packages[@]}"; do
   install_package "$package"
 done
