@@ -18,6 +18,7 @@ source_dir="$script_dir/.config"
 modules_dir="$script_dir/modules"
 
 # Set log file path
+touch "$script_dir/log/installation.log"
 log_file="$script_dir/log/installation.log"
 
 # Function to set locales and install on the system
@@ -49,8 +50,6 @@ set_locales "$user_locale"
 # Source the messages.sh file
 source "$script_dir/messages.sh"
 
-# Rest of the code...
-
 # Install required packages
 required_packages=("make" "rsync" "git" "shellcheck" "jq")
 missing_packages=()
@@ -69,13 +68,9 @@ install_package() {
     return
   fi
 
-  if ! sudo apt-get install -y "$package"; then
-    if [ -f "$modules_dir/$package.sh" ]; then
-      "$modules_dir/$package.sh"
-      echo "$package" >> "$log_file"
-    else
-      echo "$package" >> "$log_file"
-    fi
+  if [ -f "$modules_dir/$package.sh" ]; then
+    source "$modules_dir/$package.sh"
+    echo "$package" >> "$log_file"
   else
     echo "$package" >> "$log_file"
   fi
@@ -96,6 +91,10 @@ dialog --title "Installation Logs" --textbox "$log_file" 20 70
 # Remove log file
 rm "$log_file"
 
+# Run install_GPU.sh
+"$script_dir/install_GPU.sh"
+# Run checkXdgPortal.sh
+"$script_dir/checkXdgPortal.sh"
 # Run sync_to_system.sh
 "$script_dir/sync_to_system.sh"
 
