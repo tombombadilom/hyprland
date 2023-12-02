@@ -25,7 +25,8 @@ else
 fi
 
 # Perform make operations with progress bar
-make get build 2>&1 | {
+cd dunst
+make 2>&1 | {
     progress=0
     while IFS= read -r line; do
         if [[ "$line" =~ \[.*\]\ (.*)/([0-9]+)% ]]; then
@@ -39,9 +40,10 @@ make get build 2>&1 | {
 }
 
 # Install dunst
-sudo make install
+sudo make PREFIX=/usr/local install
 
 # Clean up
+cd ..
 rm -rf dunst
 sudo apt auto-remove -y
 
