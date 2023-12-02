@@ -39,12 +39,11 @@ git clone https://github.com/nwg-piotr/nwg-dock.git
 cd nwg-dock
 
 echo "Getting dependencies..." | tee -a "$log_file"
-make get | pv -p -s 100 -N "Progress" -l | progress_bar
+go install | pv -p -s 100 -N "Progress" -l | progress_bar
 
 echo "Building..." | tee -a "$log_file"
-make build | pv -p -s 100 -N "Progress" -l | progress_bar
+go build | pv -p -s 100 -N "Progress" -l | progress_bar
 
-sudo make install
 cd ../
 rm -rf nwg-dock
 sudo apt -y remove --autoremove golang-go
