@@ -6,7 +6,6 @@ if ! command -v tqdm &>/dev/null; then
   if ! command -v pipx &>/dev/null; then
     # Installer pipx
     sudo apt -y install pipx
-
     # Ajouter pipx au PATH
     pipx ensurepath
   fi

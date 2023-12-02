@@ -66,6 +66,12 @@
     "alternatives": { "debian": {}, "ubuntu": {} }
   },
   {
+    "name": "dotenv",
+    "URL": "https://aur.archlinux.org/packages/dotenv/",
+    "isArchDependant": false,
+    "alternatives": { "debian": {}, "ubuntu": {} }
+  },
+  {
     "name": "dunst",
     "URL": "https://aur.archlinux.org/packages/dunst/",
     "isArchDependant": false,
