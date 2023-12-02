@@ -31,15 +31,14 @@ log "Cloning $package repository..."
 git clone https://github.com/nwg-piotr/$package.git || { log "Failed to clone repository."; exit 1; }
 
 cd $package || { log "Failed to change directory."; exit 1; }
-
-log "Running 'go mod init'..."
-go mod init || { log "Failed to run 'go mod init'."; exit 1; }
-
-log "Running 'go build'..."
-go build || { log "Failed to run 'go build'."; exit 1; }
-
 log "Installing $package..."
-sudo go mod init || { log "Failed to install $package."; exit 1; }
+python3 setup.py install --optimize=1
+
+log "Installing dependencies..."
+cp nwg-displays.svg /usr/share/pixmaps/
+
+log "Installing desktop file..."
+cp nwg-displays.desktop /usr/share/applications/
 
 cd ../
 
