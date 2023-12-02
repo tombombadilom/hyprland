@@ -8,7 +8,7 @@ echo "Entering $package..." | tee  "$log_file"
 
 install_dependencies() {
     # List of dependencies
-    local dependencies=("libpam0g-dev" "libcairo2-dev" "libxcb1-dev" "libxcb-dpms0-dev" "libxcb-image0-dev" "libxcb-util0-dev" "libxcb-xinerama0-dev" "libxcb-xkb-dev" "libxcb-xrm-dev" "libxcb-randr0-dev" "libxcb-composite0-dev" "libxcb-keysyms1-dev" "libxkbcommon-dev" "libxkbcommon-x11-dev" "autoconf" "imagemagick" "libev-dev")
+    local dependencies=("libcairo2-dev" "libxcb1-dev" "libxcb-dpms0-dev" "libxcb-image0-dev" "libxcb-util0-dev" "libxcb-xinerama0-dev" "libxcb-xkb-dev" "libxcb-xrm-dev" "libxcb-randr0-dev" "libxcb-composite0-dev" "libxcb-keysyms1-dev" "libxkbcommon-dev" "libxkbcommon-x11-dev" "autoconf" "imagemagick" "libev-dev")
 
     # Total number of dependencies
     local total_dependencies="${#dependencies[@]}"
