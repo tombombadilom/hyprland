@@ -14,7 +14,7 @@ then
     echo "anyrun is not installed. Starting installation..." | tee -a "$log_file"
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     source "$HOME"/.cargo/env
-    sudo apt install -y libgtk-3-dev libpango1.0-dev libcairo2-dev libgdk-pixbuf2.0-dev libglib2.0-dev
+    sudo apt install -y libgtk-3-dev libpango1.0-dev libcairo2-dev libgdk-pixbuf2.0-dev
     git clone https://github.com/Kirottu/anyrun.git anyrun
     cd anyrun
     cargo build --release
@@ -64,7 +64,7 @@ sudo make install
 
 # Uninstall dev libraries
 echo "Uninstalling dev libraries..."
-sudo apt remove -y libgtk-3-dev libpango1.0-dev libcairo2-dev libgdk-pixbuf2.0-dev libglib2.0-dev
+sudo apt remove -y libgtk-3-dev libpango1.0-dev libcairo2-dev libgdk-pixbuf2.0-dev
 
 # Installation complete
 echo "Installation complete." | tee -a "$log_file"
