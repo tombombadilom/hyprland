@@ -24,6 +24,7 @@ log_file="$script_dir/log/installation.log"
 if [ ! -f "$log_file" ]; then
     touch "$log_file"
 fi
+
 # Function to set locales and install on the system
 set_locales() {
   local locale="$1"
@@ -90,15 +91,21 @@ done
 echo "Cleaning up..."
 sudo apt-get autoremove -y
 
-# Display installation logs
-cat "$log_file" | xmessage -file -
+# Display installation message
+yad --info --title="Installation Complete" --text="Installation is complete. Click OK to proceed." --button="OK:0" --width="300" --height="100" --center
 
-# Run install_GPU.sh
-"$script_dir/install_GPU.sh"
-# Run checkXdgPortal.sh
-"$script_dir/checkXdgPortal.sh"
-# Run sync_to_system.sh
-"$script_dir/sync_to_system.sh"
+# Run install_GPU.sh and log the output
+echo "Running install_GPU.sh..."
+"$script_dir/install_GPU.sh" >> "$log_file" 2>&1
 
-# Reconfigure gdm3
+# Run checkXdgPortal.sh and log the output
+echo "Running checkXdgPortal.sh..."
+"$script_dir/checkXdgPortal.sh" >> "$log_file" 2>&1
+
+# Run sync_to_system.sh and log the output
+echo "Running sync_to_system.sh..."
+"$script_dir/sync_to_system.sh" >> "$log_file" 2>&1
+
+# Reconfigure gdm3 and log the output
+echo "Reconfiguring gdm3..."
 sudo dpkg-reconfigure gdm3
