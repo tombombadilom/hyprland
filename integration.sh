@@ -14,7 +14,6 @@ fi
 
 # Lista de paquetes
 packages=(
-    "betterlockscreen"
     "azote"
     "bc"
     "blueberry"

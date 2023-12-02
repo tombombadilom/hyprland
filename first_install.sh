@@ -90,7 +90,9 @@ install_package() {
       # shellcheck disable=SC1090
       source "$modules_dir/$package.sh"
     else
-      sudo apt-get install -y "$package"
+      echo "$package not found in modules directory. Skipping..."
+      # shellcheck disable=SC2104
+      continue
     fi
   fi
 
