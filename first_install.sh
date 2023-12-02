@@ -58,7 +58,7 @@ check_install_yad() {
 
 # Source the packages.json file and extract the name of the array
 # shellcheck disable=SC2207
-required_packages=($(jq -r '.packages[] | .name' "$script_dir/packages.json"))
+required_packages=($(jq -r '.[].name' "$script_dir/packages.json"))
 
 # Get user's locale preference
 user_locale=""
