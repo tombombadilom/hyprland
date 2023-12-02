@@ -24,8 +24,13 @@ done
 # Create log directory if it doesn't already exist
 mkdir -p "$log_dir"
 
-# Create log file if it doesn't already exist
-touch "$log_file"
+# Check if log directory exists
+if [ -d "$log_dir" ]; then
+  # Create log file if it doesn't already exist
+  touch "$log_file"
+else
+  echo "Failed to create log directory: $log_dir." >&2
+fi
 
 # Clone dunst repository if it doesn't already exist
 if [ ! -d "dunst" ]; then
