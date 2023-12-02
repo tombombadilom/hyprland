@@ -45,6 +45,14 @@ set_locales() {
   fi
 }
 
+# Function to check and install yad if not already installed
+check_install_yad() {
+  if ! command -v yad &>/dev/null; then
+    echo "Installing yad..."
+    sudo apt-get install -y yad
+  fi
+}
+
 # Prompt user to choose a language
 read -p "Choose a language (e.g., fr_FR.UTF-8): " user_locale
 
@@ -81,6 +89,9 @@ install_package() {
   fi
 }
 
+# Check and install yad if not already installed
+check_install_yad
+
 # Install packages
 # shellcheck disable=SC2154
 for package in "${packages[@]}"; do
@@ -100,7 +111,7 @@ echo "Running install_GPU.sh..."
 
 # Run checkXdgPortal.sh and log the output
 echo "Running checkXdgPortal.sh..."
-"$script_dir/checkXdgPortal.sh" >> "$log_file" 2>&1
+"$script_dir/checkXdgPortal.sh" >>"$log_file" 2>&1
 
 # Run sync_to_system.sh and log the output
 echo "Running sync_to_system.sh..."
