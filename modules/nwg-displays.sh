@@ -32,8 +32,8 @@ git clone https://github.com/nwg-piotr/$package.git || { log "Failed to clone re
 
 cd $package || { log "Failed to change directory."; exit 1; }
 
-log "Running 'go get'..."
-go get || { log "Failed to run 'go get'."; exit 1; }
+log "Running 'go install'..."
+go install || { log "Failed to run 'go install'."; exit 1; }
 
 log "Running 'go build'..."
 go build || { log "Failed to run 'go build'."; exit 1; }
