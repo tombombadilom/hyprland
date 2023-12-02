@@ -11,6 +11,13 @@ dependencies=("dbus" "libxinerama-dev" "libxrandr-dev" "libxss-dev" "libglib2.0-
 for dependency in "${dependencies[@]}"; do
     if dpkg -s "$dependency" &> /dev/null; then
         echo "$dependency is already installed. Skipping installation." | tee -a "$log_file"
+    else
+        echo "Installing $dependency..."
+        if sudo apt-get install -y "$dependency" &>> "$log_file"; then
+            echo "$dependency installed successfully." | tee -a "$log_file"
+        else
+            echo "Failed to install $dependency." | tee -a "$log_file"
+        fi
     fi
 done
 
@@ -40,17 +47,16 @@ make 2>&1 | {
 }
 
 # Install dunst
-sudo make PREFIX=/usr/local install
+if sudo make PREFIX=/usr/local install &>> "$log_file"; then
+    echo "dunst installed successfully." | tee -a "$log_file"
+else
+    echo "Failed to install dunst." | tee -a "$log_file"
+fi
 
 # Clean up
 cd ..
 rm -rf dunst
 sudo apt auto-remove -y
 
-# Uninstall dependencies
-for dependency in "${dependencies[@]}"; do
-    sudo apt remove -y "$dependency"
-done
-
 # Log installation completion
-echo "dunst installation finished successfully." | tee -a "$log_file"
+echo "dunst installation finished." | tee -a "$log_file"
