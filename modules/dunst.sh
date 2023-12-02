@@ -21,6 +21,9 @@ for dependency in "${dependencies[@]}"; do
     fi
 done
 
+# Create log directory if it doesn't already exist
+mkdir -p "$log_dir"
+
 # Clone dunst repository if it doesn't already exist
 if [ ! -d "dunst" ]; then
     git clone https://github.com/dunst-project/dunst.git
