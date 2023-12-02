@@ -91,10 +91,7 @@ echo "Cleaning up..."
 sudo apt-get autoremove -y
 
 # Display installation logs
-dialog --title "Installation Logs" --textbox "$log_file" 20 70
-
-# Remove log file
-rm "$log_file"
+cat "$log_file" | xmessage -file -
 
 # Run install_GPU.sh
 "$script_dir/install_GPU.sh"
