@@ -15,7 +15,7 @@ echo "Starting synchronisation to system..." | tee  "$log_file"
 
 # Liste des répertoires et fichiers à synchroniser
 declare -a dirs=("HybridBar" "nwg-displays" "nwg-dock" "nwg-look" "nwg-panel" "gtklock" "my_bar" "nwg-bar" "nwg-dock-hyprland" "swaync" "nwg-drawer" "sway" "paru" "volumeicon")
-files=("waybar.ini")
+files=("wayfire.ini")
 
 # Crée le répertoire de destination s'il n'existe pas
 mkdir -p "$local_dir/bin"
@@ -74,9 +74,9 @@ for dir in "${dirs[@]}"; do
   fi
 done
 
-# Copie le fichier waybar.ini s'il existe
-if [ -f "$source_dir/waybar.ini" ]; then
-  cp "$source_dir/waybar.ini" "$config_dir/" | tee -a "$log_file"
+# Copie le fichier wayfire.ini s'il existe
+if [ -f "$source_dir/wayfire.ini" ]; then
+  cp "$source_dir/wayfire.ini" "$config_dir/" | tee -a "$log_file"
 else
-  echo "Le fichier waybar.ini n'existe pas dans le répertoire source." | tee -a "$log_file"
+  echo "Le fichier wayfire.ini n'existe pas dans le répertoire source." | tee -a "$log_file"
 fi

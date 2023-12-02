@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+
 # Get the script directory
 script_dir="$(dirname "$0")"
 
@@ -17,34 +20,39 @@ modules_dir="$script_dir/modules"
 # Set log file path
 log_file="$script_dir/log/installation.log"
 
-# Define user locale
-user_locale="en_US.UTF-8"
-LANG="$user_locale"
-user_lang="${user_locale:0:2}"
+# Function to set locales and install on the system
+set_locales() {
+  local locale="$1"
+  LANG="$locale"
+  user_lang="${locale:0:2}"
 
-# Update configuration files for Sway, Hyprland, or Wayland
-if command -v sway &>/dev/null; then
-  echo "export LANG=$user_locale" >> "$config_dir/sway/config"
-fi
+  if ! locale -a | grep -q "$locale"; then
+    echo "Installing $locale locale..."
+    sudo locale-gen "$locale"
+  fi
 
-if command -v hyprland &>/dev/null; then
-  echo "export LANG=$user_locale" >> "$config_dir/hyprland/hyprland.conf"
-fi
+  if command -v sway &>/dev/null; then
+    echo "export LANG=$locale" >> "$config_dir/sway/config"
+  fi
+
+  if command -v hyprland &>/dev/null; then
+    echo "export LANG=$locale" >> "$config_dir/hyprland/hyprland.conf"
+  fi
+}
+
+# Prompt user to choose a language
+read -p "Choose a language (e.g., fr_FR.UTF-8): " user_locale
+
+# Set locales and install on the system
+set_locales "$user_locale"
 
 # Source the messages.sh file
 source "$script_dir/messages.sh"
 
-# Create destination directory if it doesn't exist
-mkdir -p "$local_dir/bin"
-
-# Read packages from packages.json
-packages=()
-while IFS= read -r package; do
-  packages+=("$package")
-done < <(jq -r '.packages[]' "$script_dir/packages.json")
+# Rest of the code...
 
 # Install required packages
-required_packages=("make" "rsync" "git" "shellcheck" "yay" "jq")
+required_packages=("make" "rsync" "git" "shellcheck" "jq")
 missing_packages=()
 
 # Update package list
