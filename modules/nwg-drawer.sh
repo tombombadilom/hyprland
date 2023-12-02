@@ -43,14 +43,14 @@ else
     git clone https://github.com/nwg-piotr/nwg-drawer.git
     cd nwg-drawer || { log "Failed to change directory."; exit 1; }
 
-    log "Running 'make get'..."
-    make get || { log "Failed to run 'make get'."; exit 1; }
+    log "Running 'go get'..."
+    go get || { log "Failed to run 'go get'."; exit 1; }
 
-    log "Running 'make build'..."
-    make build || { log "Failed to run 'make build'."; exit 1; }
+    log "Running 'go build'..."
+    go build || { log "Failed to run 'go build'."; exit 1; }
 
     log "Installing $package..."
-    sudo make install || { log "Failed to install $package."; exit 1; }
+    sudo go install || { log "Failed to install $package."; exit 1; }
 
     cd ../
 
