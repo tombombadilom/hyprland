@@ -32,14 +32,14 @@ git clone https://github.com/nwg-piotr/$package.git || { log "Failed to clone re
 
 cd $package || { log "Failed to change directory."; exit 1; }
 
-log "Running 'go install'..."
-go install || { log "Failed to run 'go install'."; exit 1; }
+log "Running 'go mod init'..."
+go mod init || { log "Failed to run 'go mod init'."; exit 1; }
 
 log "Running 'go build'..."
 go build || { log "Failed to run 'go build'."; exit 1; }
 
 log "Installing $package..."
-sudo go install || { log "Failed to install $package."; exit 1; }
+sudo go mod init || { log "Failed to install $package."; exit 1; }
 
 cd ../
 
