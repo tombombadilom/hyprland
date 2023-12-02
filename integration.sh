@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
 
-# Installer pipx
-sudo apt -y install pipx
-
-# Ajouter pipx au PATH
-pipx ensurepath
-
-# Vérifier l'installation de pipx
-pipx --version
-pipx install tqdm
-
 # Installer la bibliothèque tqdm si elle n'est pas déjà installée
 if ! command -v tqdm &>/dev/null; then
   echo "La bibliothèque tqdm n'est pas installée. Installation en cours..."
+  if ! command -v pipx &>/dev/null; then
+    # Installer pipx
+    sudo apt -y install pipx
+
+    # Ajouter pipx au PATH
+    pipx ensurepath
+  fi
   pipx install tqdm
 fi
 
@@ -29,6 +26,7 @@ packages=(
     "cava"
     "copyq"
     "dmenu"
+    "dotenv"
     "dunst"
     "fish"
     "flameshot"
