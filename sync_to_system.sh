@@ -13,9 +13,13 @@ log_file="$log_dir/sync_to_system.log"
 
 echo "Starting synchronisation to system..." | tee "$log_file"
 
-# Liste des répertoires et fichiers à synchroniser
-declare -a dirs=("HybridBar" "nwg-displays" "nwg-dock" "nwg-look" "nwg-panel" "gtklock" "my_bar" "nwg-bar" "nwg-dock-hyprland" "swaync" "nwg-drawer" "sway" "paru" "volumeicon")
-files=("wayfire.ini")
+# Index all directories in the source directory
+declare -a dirs=()
+for dir in "$source_dir"/*; do
+  if [ -d "$dir" ]; then
+    dirs+=("$(basename "$dir")")
+  fi
+done
 
 # Crée le répertoire de destination s'il n'existe pas
 mkdir -p "$local_dir/bin"
