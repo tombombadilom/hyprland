@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-packages=("cmake" "meson" "ninja" "doxygen" "qt5-default")
+packages=("cmake" "meson" "ninja" "doxygen" "qtbase5-dev")
 
 for package in "${packages[@]}"; do
     if ! dpkg -s "$package" >/dev/null 2>&1; then
@@ -13,8 +13,6 @@ if [ -d "/usr/lib/xdg-desktop-portal-hyprland" ]; then
 else
     # Fix for missing Doxygen and QT packages
     export DOXYGEN_EXECUTABLE=/usr/bin/doxygen
-    export CMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/qt5/
-    export QT_DIR=/usr/lib/x86_64-linux-gnu/qt5/
     git clone --recursive https://github.com/hyprwm/xdg-desktop-portal-hyprland
     # shellcheck disable=SC2164
     cd xdg-desktop-portal-hyprland/
@@ -23,8 +21,6 @@ else
 fi
 echo "xdg-desktop-portal-hyprland est maintenant installé dans /usr/lib/xdg-desktop-portal-hyprland"
 
-
-
 # Remove unnecessary packages after compilation
-sudo apt -y remove "cmake" "meson" "ninja" "doxygen" "qt5-default"
+sudo apt -y remove "cmake" "meson" "ninja" "doxygen" "qtbase5-dev"
 sudo apt -y autoremove
