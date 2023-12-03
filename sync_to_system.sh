@@ -57,7 +57,7 @@ if ! command -v shellcheck > /dev/null 2>&1; then
 fi
 
 # Synchronise les fichiers avec rsync
-rsync -av --progress --exclude="${dirs[*]}" "$local_dir/bin/" "$local_source_dir/bin/" | tee -a "$log_file"
+rsync -av --progress --delete --exclude="${dirs[*]}" "$local_dir/bin/" "$local_source_dir/bin/" | tee -a "$log_file"
 
 # Boucle sur chaque répertoire
 for dir in "${dirs[@]}"; do
@@ -67,16 +67,16 @@ for dir in "${dirs[@]}"; do
   fi
 
   # Vérifiez si le répertoire source existe avant de copier
-  if [ -d "$source_dir/$dir" ]; then
-    cp -r "$source_dir/$dir/"* "$config_dir/$dir/" | tee -a "$log_file"
-  else
-    echo "Le répertoire source $source_dir/$dir n'existe pas." | tee -a "$log_file"
-  fi
-done
-
-# Copie le fichier wayfire.ini s'il existe
-if [ -f "$source_dir/wayfire.ini" ]; then
-  cp "$source_dir/wayfire.ini" "$config_dir/" | tee -a "$log_file"
-else
-  echo "Le fichier wayfire.ini n'existe pas dans le répertoire source." | tee -a "$log_file"
-fi
+   if [ -d "$source_dir/$dir" ]; then
+     rsync -av --delete "$source_dir/$dir/" "$config_dir/$dir/" | tee -a "$log_file"
+   else
+     echo "Le répertoire source $source_dir/$dir n'existe pas." | tee -a "$log_file"
+   fi
+ done
+ 
+ # Copie le fichier wayfire.ini s'il existe
+ if [ -f "$source_dir/wayfire.ini" ]; then
+   cp "$source_dir/wayfire.ini" "$config_dir/" | tee -a "$log_file"
+ else
+   echo "Le fichier wayfire.ini n'existe pas dans le répertoire source." | tee -a "$log_file"
+ fi
