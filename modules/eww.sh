@@ -69,6 +69,6 @@ sudo make install
 # Uninstall dev libraries
 echo "Uninstalling dev libraries..."
 sudo apt remove -y libgtk-3-dev libpango1.0-dev libcairo2-dev libgdk-pixbuf2.0-dev
-
+sudo apt -y auto-remove
 # Installation complete
 echo "Installation complete." | tee -a "$log_file"
