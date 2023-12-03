@@ -18,9 +18,11 @@ else
     cd xdg-desktop-portal-hyprland/
     make all
     sudo make install
+    cd ../
+    rm -rf xdg-desktop-portal-hyprland/
 fi
 echo "xdg-desktop-portal-hyprland est maintenant installé dans /usr/lib/xdg-desktop-portal-hyprland"
-
+rm -rf 
 # Remove unnecessary packages after compilation
-sudo apt -y remove "cmake" "meson" "ninja-build" "doxygen" "qtbase5-dev" "wayland-protocols" "libpipewire-0.3-dev" "libspa-0.2-modules" "libdrm-dev"
+sudo apt -y remove "cmake" "meson" "ninja-build" "doxygen" "qtbase5-dev" "libpipewire-0.3-dev" "libspa-0.2-modules" "libdrm-dev"
 sudo apt -y autoremove
