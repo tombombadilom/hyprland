@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
-if ! dpkg -s cmake meson >/dev/null 2>&1; then
-    sudo apt -y install cmake meson
-fi
+packages=("cmake" "meson" "ninja")
+
+for package in "${packages[@]}"; do
+    if ! dpkg -s "$package" >/dev/null 2>&1; then
+        sudo apt -y install "$package"
+    fi
+done
 
 if [ -d "/usr/lib/xdg-desktop-portal-hyprland" ]; then
     echo "xdg-desktop-portal-hyprland est déjà installé dans /usr/lib/xdg-desktop-portal-hyprland"
