@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-packages=("cmake" "meson" "ninja" "doxygen" "qtbase5-dev")
+packages=("cmake" "meson" "ninja" "doxygen" "qtbase5-dev" "wayland-protocols" "libpipewire-0.3" "libspa-0.2" "libdrm" "gbm")
 
 for package in "${packages[@]}"; do
     if ! dpkg -s "$package" >/dev/null 2>&1; then
@@ -22,5 +22,5 @@ fi
 echo "xdg-desktop-portal-hyprland est maintenant installé dans /usr/lib/xdg-desktop-portal-hyprland"
 
 # Remove unnecessary packages after compilation
-sudo apt -y remove "cmake" "meson" "ninja" "doxygen" "qtbase5-dev"
+sudo apt -y remove "cmake" "meson" "ninja" "doxygen" "qtbase5-dev" "wayland-protocols" "libpipewire-0.3" "libspa-0.2" "libdrm" "gbm"
 sudo apt -y autoremove
