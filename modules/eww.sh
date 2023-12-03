@@ -8,7 +8,7 @@ log_file="$log_dir/$package.log"
 
 echo "Entering $package..." | tee  "$log_file"
 
-# Check if anyrun is already installed
+# Check if eww is already installed
 if ! command -v eww  &> /dev/null
 then
     echo "eww is not installed. Starting installation..." | tee -a "$log_file"
@@ -16,16 +16,16 @@ then
     # shellcheck disable=SC1091
     source "$HOME"/.cargo/env
     sudo apt install -y libgtk-3-dev libpango1.0-dev libcairo2-dev libgdk-pixbuf2.0-dev
-    git clone https://github.com/elkowar/eww.git eww
+    git clone https://github.com/elkowar/eww.git /usr/bin/eww
     # shellcheck disable=SC2164
-    cd eww
+    cd /usr/bin/eww
     cargo build --release
     cargo install --path anyrun/ -y
     mkdir -p ~/.config/eww/plugins
-    cp target/release/*.so ~/.config/eww/plugins
+    cp /usr/bin/eww/target/release/*.so ~/.config/eww/plugins
     rustup self uninstall -y
     cd ../
-    rm -rf eww
+    rm -rf /usr/bin/eww
     echo "eww installation completed successfully." | tee -a "$log_file"
 else
     echo "eww is already installed" | tee -a "$log_file"
@@ -70,5 +70,6 @@ sudo make install
 echo "Uninstalling dev libraries..."
 sudo apt remove -y libgtk-3-dev libpango1.0-dev libcairo2-dev libgdk-pixbuf2.0-dev
 sudo apt -y auto-remove
-# Installation complete
+
+# Installation complete 
 echo "Installation complete." | tee -a "$log_file"
