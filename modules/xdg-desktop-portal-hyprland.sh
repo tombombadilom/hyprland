@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if ! dpkg -s cmake meson >/dev/null 2>&1; then
+    sudo apt -y install cmake meson
+fi
+
 if [ -d "/usr/lib/xdg-desktop-portal-hyprland" ]; then
     echo "xdg-desktop-portal-hyprland est déjà installé dans /usr/lib/xdg-desktop-portal-hyprland"
 else
