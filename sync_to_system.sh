@@ -33,6 +33,8 @@ install_package() {
     brew install "$package_name"
   elif [ -x "$(command -v apt)" ]; then
     sudo apt install -y "$package_name"
+  elif [ -x "$(command -v yay)" ]; then
+    yay -Syu "$package_name"
   else
     echo "Impossible de trouver un gestionnaire de paquets compatible." | tee -a "$log_file"
     exit 1
