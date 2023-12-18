@@ -1,1 +1,18 @@
-swaylock --image /home/tom/Images/wallpaper/img_3979.jpg  --line-color cdd6f4ff --text-color cdd6f4ff --inside-color 1e1e2eff --ring-color 313244ff --line-ver-color cdd6f4ff --text-ver-color cdd6f4ff --inside-ver-color 1e1e2eff --ring-ver-color 313244ff --line-clear-color cdd6f4ff --text-clear-color cdd6f4ff --inside-clear-color 1e1e2eff --ring-clear-color 313244ff --line-clear-color cdd6f4ff --text-wrong-color 313244ff --inside-wrong-color f38ba8ff --ring-wrong-color 313244ff --key-hl-color cba6f7ff
+swaylock \
+	--screenshots \
+	--clock \
+	--indicator \
+	--indicator-image /home/tom/Images/wallpaper/img_3979.jpg \ 
+	--indicator-radius 100 \
+	--indicator-thickness 7 \
+	--effect-scale 0.5 \
+	--effect-blur 7x5 \
+	--effect-scale 4 \
+	--effect-vignette 0.5:0.5 \
+	--ring-color bb00cc \
+	--key-hl-color 880033 \
+	--line-color 00000000 \
+	--inside-color 00000088 \
+	--separator-color 00000000 \
+	--grace 2 \
+	--fade-in 0.5
