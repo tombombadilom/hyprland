@@ -1,3 +1,13 @@
+My intention with this project was to enable hyprland to be used everywhere, including debian and ubuntu, whereas only Arch Linux users could. 
+
+Today things have changed: it's possible to install Hyprland on the new versions of debian 13 (Trixie) and Ubuntu. 
+
+I invite you to go [here](https://github.com/JaKooLit/Debian-Hyprland) to take advantage of the pre-compiled packages. 
+
+In my project, I had to script the compilation and installation, packet by packet, of what was missing. Now that .deb is available, there's no need to do all that anymore.
+
+Anyway it was Fun ! 
+
 # Git directory to backup and restore my wayland, sway , hyprland config
 
 ## Set scripts executables
