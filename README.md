@@ -183,35 +183,6 @@ chmod +x+w *.sh
 - (4) Arch Linux · GitHub. https://github.com/archlinux.
 - (5) GitHub - archlinux/archinstall: Arch Linux installer - https://github.com/archlinux/archinstall.
 
-### Troubleshooting
-
-```bash
-E: Impossible de trouver le paquet anyrun-git
-E: Impossible de trouver le paquet anytype
-E: Impossible de trouver le paquet archlinux-betterlockscreen
-E: Impossible de trouver le paquet archlinux-logout
-E: Impossible de trouver le paquet azote
-E: Impossible de trouver le paquet blueberry
-E: Impossible de trouver le paquet boost-libs
-E: Impossible de trouver le paquet libqalculate
-E: Impossible de trouver le paquet network-manager-applet
-E: Impossible de trouver le paquet nlohmann-json
-E: Impossible de trouver le paquet nwg-bar-bin
-E: Impossible de trouver le paquet nwg-displays
-E: Impossible de trouver le paquet nwg-dock-bin
-E: Impossible de trouver le paquet nwg-dock-hyprland-bin
-E: Impossible de trouver le paquet nwg-drawer-bin
-E: Impossible de trouver le paquet nwg-look-bin
-E: Impossible de trouver le paquet nwg-panel
-E: Impossible de trouver le paquet python-build
-E: Impossible de trouver le paquet python-desktop-entry-lib
-E: Impossible de trouver le paquet python-pillow
-E: Impossible de trouver le paquet python-poetry
-E: Impossible de trouver le paquet python-pywal
-E: Impossible de trouver le paquet starship
-E: Impossible de trouver le paquet ttf-jetbrains-mono
-E: Impossible de trouver le paquet xorg-xrandr
-```
 
 ### sync sway, hyprland and wayland from hyprland repository
 
